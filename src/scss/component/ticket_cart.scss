@@ -1,0 +1,83 @@
+.ticket_cart {
+  background-color: black;
+
+  .top {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+
+    padding: 1rem;
+    background-color: #34334d;
+
+    p {
+      color: #f5f5f5;
+    }
+
+    p:nth-child(1) {
+      text-align: left;
+    }
+    p:nth-child(3) {
+      text-align: right;
+    }
+  }
+}
+
+.ticket_cart_content {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  padding: 1rem;
+
+  p {
+    color: #f5f5f5;
+  }
+
+  .ticket_name {
+    text-align: left;
+
+    p:nth-child(2) {
+      font-size: 0.7rem;
+      padding-top: 0.1rem;
+    }
+  }
+
+  .ticket_price {
+    text-align: right;
+
+    p:nth-child(2) {
+      font-size: 0.7rem;
+      padding-top: 0.1rem;
+    }
+  }
+
+  #ticket_type {
+    font-weight: bold;
+  }
+
+  .amount_ui {
+    #ticket_decre {
+      background-color: #34334d;
+      padding: 7px;
+      border: none;
+      text-align: center;
+      color: #f5f5f5;
+    }
+
+    #amount {
+      color: #f5f5f5;
+      padding-inline: 0.4rem;
+    }
+
+    #ticket_incre {
+      background-color: #34334d;
+      padding: 7px;
+      border: none;
+      text-align: center;
+      color: #f5f5f5;
+    }
+  }
+
+  .ticket_price {
+    .total_ticket_price {
+      font-weight: bold;
+    }
+  }
+}
