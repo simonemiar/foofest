@@ -1,13 +1,16 @@
 import "./App.css";
 import "./scss/style.scss";
-import Header from "./components/Header";
+import AddOnesCart from "./components/AddOnesCart";
+// import Header from "./components/Header";
 
 function App() {
   return (
     <div className="App">
-      <Header />
+      {/* <Header />
       <p>Johnny</p>
-      
+       */}
+
+      <AddOnesCart />
     </div>
   );
 }
