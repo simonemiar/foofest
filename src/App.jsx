@@ -6,8 +6,8 @@ import TicketCart from "./components/TicketCart";
 function App() {
   return (
     <div className="App">
-      <Header />
-      <p>Johnny</p>
+      {/* <Header />
+      <p>Johnny</p> */}
       <TicketCart />
     </div>
   );
