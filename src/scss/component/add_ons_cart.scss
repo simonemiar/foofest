@@ -1,16 +1,15 @@
 #add-ons_cart {
   background-color: #202033;
-  color: #f5f5f5;
   padding: 0.7rem;
+
+  p {
+    color: #f5f5f5;
+  }
 
   .note {
     margin-top: 0.5rem;
     text-align: left;
     font-size: 0.8rem;
-  }
-
-  p {
-    color: #f5f5f5;
   }
 
   #top-bar {
@@ -30,6 +29,7 @@
 
   .amount {
     margin-inline: 0.5rem;
+    color: #f5f5f5;
   }
 
   .two-person_ui {
@@ -66,10 +66,6 @@
 
     .green_total {
       text-align: right;
-    }
-
-    .green-option_check {
-      border: none;
     }
   }
 

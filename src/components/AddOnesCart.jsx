@@ -1,15 +1,17 @@
 import { useState } from "react";
 export default function AddOnesCart() {
+  // Tent price states
   const [twoPersonTent, setTwoPersonTent] = useState(0);
   const [threePersonTent, setThreePersonTent] = useState(0);
+  // Green option states
+  const [greenOptionPrice, setGreenOptionPrice] = useState(0);
+  const [includeGreenOption, setIncludeGreenOption] = useState(false);
 
   // Cart UI varibles:
-
   const totalTwoTent = 299 * twoPersonTent;
   const totalThreeTent = 399 * threePersonTent;
-  const totalPrice = totalTwoTent + totalThreeTent;
-
-  const totalItems = twoPersonTent + threePersonTent;
+  const totalPrice = totalTwoTent + totalThreeTent + greenOptionPrice;
+  const totalItems = twoPersonTent + threePersonTent + includeGreenOption;
 
   // Functions for 2-person tent
 
@@ -38,8 +40,16 @@ export default function AddOnesCart() {
     }
   }
 
-  function includeGreenOption() {
-    console.log("includeGreenOption");
+  // Function for green option add-on
+  function GreenOption(e) {
+    const checked = e.target.checked;
+    if (checked) {
+      setGreenOptionPrice(249);
+      setIncludeGreenOption(true);
+    } else {
+      setGreenOptionPrice(0);
+      setIncludeGreenOption(false);
+    }
   }
 
   return (
@@ -47,11 +57,11 @@ export default function AddOnesCart() {
       <div id="top-bar">
         <p>Add-ons</p>
       </div>
-      <div className="note">
+      <article className="note">
         <p>Note: The price includes the crew setting up your tent</p>
-      </div>
+      </article>
 
-      <article className="add-ons_cart_content">
+      <section className="add-ons_cart_content">
         <article className="two-person_ui">
           <div className="tent_name">
             <p>2 person</p>
@@ -83,19 +93,22 @@ export default function AddOnesCart() {
             <p>{totalThreeTent} kr.</p>
           </div>
         </article>
+
         <article className="green_camping_ui">
           <div className="green_name">
             <p>Green camping</p>
             <p>Option to help change the world</p>
           </div>
+
           <div className="green_ui">
-            <input onChange={includeGreenOption} type="checkbox" className="green-option_check"></input>
+            <input onChange={GreenOption} type="checkbox" className="green-option_check"></input>
           </div>
+
           <div className="green_total">
             <p>249 kr.</p>
           </div>
         </article>
-      </article>
+      </section>
       <article className="total_bar">
         <p>Total ({totalItems} items)</p>
         <p className="total_price">{totalPrice} kr.</p>
