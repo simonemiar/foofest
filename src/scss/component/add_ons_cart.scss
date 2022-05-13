@@ -6,16 +6,30 @@
   .note {
     margin-top: 0.5rem;
     text-align: left;
+    font-size: 0.8rem;
   }
 
   p {
     color: #f5f5f5;
   }
 
-  #top {
+  #top-bar {
     padding: 0.7rem;
     background-color: #34334d;
     text-align: left;
+  }
+
+  button {
+    padding: 3px;
+    background-color: #34334d;
+    border: none;
+    text-align: center;
+    color: #f5f5f5;
+    width: 1.5rem;
+  }
+
+  .amount {
+    margin-inline: 0.5rem;
   }
 
   .two-person_ui {
@@ -23,18 +37,72 @@
     grid-template-columns: 1fr 1fr 1fr;
     margin-top: 2rem;
   }
+
   .three-person_ui {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     margin-top: 2rem;
   }
+
+  .tent_total {
+    text-align: right;
+  }
+
+  .tent_name {
+    text-align: left;
+    p:nth-child(1) {
+      font-weight: bold;
+    }
+    p:nth-child(2) {
+      font-size: 0.8rem;
+      margin-top: 0.2rem;
+    }
+  }
+
   .green_camping_ui {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     margin-top: 2rem;
+
+    .green_total {
+      text-align: right;
+    }
+
+    .green-option_check {
+      border: none;
+    }
   }
 
   .green_name {
     text-align: left;
+    p:nth-child(1) {
+      font-weight: bold;
+    }
+    p:nth-child(2) {
+      font-size: 0.8rem;
+      margin-top: 0.2rem;
+    }
+  }
+
+  .total_bar {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1rem;
+    padding: 0.7rem;
+    background-color: #34334d;
+  }
+
+  .continue_btn {
+    display: flex;
+    justify-content: right;
+
+    button {
+      background-color: #f39b13;
+      color: #f5f5f5;
+      width: 5.5rem;
+      height: 1.875rem;
+      border: none;
+      margin-top: 1rem;
+    }
   }
 }
