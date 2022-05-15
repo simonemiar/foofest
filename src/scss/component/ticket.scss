@@ -1,0 +1,31 @@
+#ticket_container {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+
+  // max-width: 24ch;
+}
+
+.ticket_svg {
+  background-image: url(../../assets/svg/ticket.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  padding: 2rem;
+  //   height: 20vw;
+
+  display: flex;
+  justify-content: center;
+}
+
+.ticket_svg p {
+  max-width: 24ch;
+  text-align: center;
+}
+
+@media screen and (min-width: 750px) {
+  #ticket_container {
+    flex-direction: row;
+    justify-content: center;
+  }
+}
