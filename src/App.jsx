@@ -9,6 +9,8 @@ import { useState, useEffect } from "react";
 // import Header from "./components/Header";
 import CampingArea from "./components/CampingArea";
 import TicketCart from "./components/TicketCart";
+import AddOnesCart from "./components/AddOnesCart";
+// import Header from "./components/Header";
 
 function App() {
   const [bands, setBands] = useState([]);
@@ -61,6 +63,11 @@ function App() {
       {/* <Header />
       <p>Johnny</p> */}
       <TicketCart />
+      {/* <Header />
+      <p>Johnny</p>
+       */}
+
+      <AddOnesCart />
     </div>
   );
 }
