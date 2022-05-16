@@ -8,6 +8,7 @@ import Basket from "./routes/Basket";
 import { useState, useEffect } from "react";
 // import Header from "./components/Header";
 import CampingArea from "./components/CampingArea";
+import TicketCart from "./components/TicketCart";
 
 function App() {
   const [bands, setBands] = useState([]);
@@ -57,6 +58,9 @@ function App() {
       <p>Johnny</p> */}
 
       <CampingArea />
+      {/* <Header />
+      <p>Johnny</p> */}
+      <TicketCart />
     </div>
   );
 }
