@@ -1,0 +1,17 @@
+@use "../base/color";
+
+#details_section{
+    width: 100%;
+    background-color: color.$transparentblue;
+    margin-bottom: 20px;
+
+    summary{
+        text-align: center;
+        padding: 20px;
+    }
+
+    p{
+        color: color.$white;
+        padding: 20px;
+    }
+}
