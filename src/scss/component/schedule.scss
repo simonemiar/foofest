@@ -1,17 +1,23 @@
 @use "../base/color";
 
-#details_section{
+#details_button{
     width: 100%;
     background-color: color.$transparentblue;
-    margin-bottom: 20px;
+    margin: 10px 0px 10px 6px;
+    transform: skewX(-10deg);
 
     summary{
         text-align: center;
         padding: 20px;
+        transform: skewX(10deg);
     }
+}
+
+#details_section{
 
     p{
         color: color.$white;
         padding: 20px;
+        border: 1px solid white;
     }
 }
