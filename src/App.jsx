@@ -4,15 +4,9 @@ import { Routes, Route, Link } from "react-router-dom";
 import Home from "./routes/Home";
 import Schedule from "./routes/Schedule";
 import Basket from "./routes/Basket";
+import Tickets from "./routes/Tickets";
 
 import { useState, useEffect } from "react";
-// import Header from "./components/Header";
-import CampingArea from "./components/CampingArea";
-import TicketCart from "./components/TicketCart";
-import AddOnesCart from "./components/AddOnesCart";
-// import Header from "./components/Header";
-import Ticket from "./components/Ticket";
-import PersonForm from "./components/PersonForm";
 
 function App() {
   const [bands, setBands] = useState([]);
@@ -45,34 +39,20 @@ function App() {
       <header>
         <nav>
           <Link to="/">Home</Link> | <Link to="/schedule">Schedule</Link> |{" "}
-          <Link to="/basket">Basket</Link>
+          <Link to="/tickets">Tickets</Link>
         </nav>
       </header>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/schedule" element={<Schedule />} />
         <Route path="/basket" element={<Basket />} />
+        <Route path="/tickets" element={<Tickets />} />
       </Routes>
       <Header />
       <p>Johnny</p>
       <div className="shape">
         <p>hellow, shape</p>
       </div>
-      {/* <Header />
-      <p>Johnny</p> */}
-      <CampingArea />
-      {/* <Header />
-      <p>Johnny</p> */}
-      <TicketCart />
-      {/* <Header />
-      <p>Johnny</p>
-       */}
-      <AddOnesCart />
-      <section id="ticket_container">
-        <Ticket />
-        <Ticket />
-      </section>
-      <PersonForm />
     </div>
   );
 }
