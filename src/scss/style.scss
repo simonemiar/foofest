@@ -4,10 +4,11 @@
 
 @use "./layout/footer";
 @use "./layout/header";
+@use "./layout/body";
 
 @use "./component/button.scss";
 @use "./component/shape.scss";
-
+@use "./component/schedule.scss";
 @use "./component/camping_area.scss";
 @use "./component/ticket_cart.scss";
 @use "./component/add_ons_cart.scss";

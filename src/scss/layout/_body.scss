@@ -1,0 +1,6 @@
+@use "../base/color";
+
+body{
+    background-color: color.$darkblue;
+    margin: 20px;
+}
