@@ -2,6 +2,7 @@ import "./App.css";
 import "./scss/style.scss";
 import Header from "./components/Header";
 import Ticket from "./components/Ticket";
+import PersonForm from "./components/PersonForm";
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
         <Ticket />
         <Ticket />
       </section>
+      <PersonForm />
     </div>
   );
 }
