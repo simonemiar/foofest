@@ -1,6 +1,29 @@
+import { useRef } from "react";
+
 export default function PersonForm() {
+  const formElm = useRef(null);
+
+  function submitted(e) {
+    e.preventDefault();
+
+    fetch("dbendpoint/orders", {
+      method: "post",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        fullname: formElm.current.elements.fullname.value,
+        email: formElm.current.elements.email.value,
+      })
+        .then((res) => res.json())
+        .then((data) => {}),
+    });
+    console.log(formElm.current.elements.fullname.value);
+    console.log(formElm.current.elements.email.value);
+  }
+
   return (
-    <form id="person_form">
+    <form id="person_form" ref={formElm} onSubmit={submitted}>
       <div className="fullname">
         <label htmlFor="fullname" required>
           Fullname
@@ -22,11 +45,11 @@ export default function PersonForm() {
             <option value="+00">+00</option>
           </select>
         </div>
-        <div className="city">
-          <label htmlFor="city" required>
-            City
+        <div className="phone_num">
+          <label htmlFor="phone_num" required>
+            Phone number
           </label>
-          <input type="text" id="city" />
+          <input type="tel" id="phone_num" maxLength="8" />
         </div>
       </div>
       <div className="street">
@@ -38,17 +61,20 @@ export default function PersonForm() {
       <div className="zip_city">
         <div className="zip_code">
           <label htmlFor="zip_code">Code</label>
-          <select name="zip_code" id="zip_code">
-            <option value="2000">2000</option>
-            <option value="2200">2200</option>
-            <option value="4840">4840</option>
-          </select>
+          <input
+            type="text"
+            id="zip_code"
+            pattern="[0-9]"
+            maxLength="4"
+            // minLength="4"
+            required
+          />
         </div>
-        <div className="phone_num">
-          <label htmlFor="phone_num" required>
-            Phone number
+        <div className="city">
+          <label htmlFor="city" required>
+            City
           </label>
-          <input type="tel" id="phone_num" />
+          <input type="text" id="city" />
         </div>
       </div>
       <div className="country">
