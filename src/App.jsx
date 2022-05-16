@@ -10,6 +10,7 @@ import { useState, useEffect } from "react";
 import CampingArea from "./components/CampingArea";
 import TicketCart from "./components/TicketCart";
 import AddOnesCart from "./components/AddOnesCart";
+import BasketOverview from "./components/BasketOverview";
 // import Header from "./components/Header";
 import Ticket from "./components/Ticket";
 import PersonForm from "./components/PersonForm";
@@ -44,8 +45,7 @@ function App() {
     <div className="App">
       <header>
         <nav>
-          <Link to="/">Home</Link> | <Link to="/schedule">Schedule</Link> |{" "}
-          <Link to="/basket">Basket</Link>
+          <Link to="/">Home</Link> | <Link to="/schedule">Schedule</Link> | <Link to="/basket">Basket</Link>
         </nav>
       </header>
       <Routes>
@@ -64,8 +64,10 @@ function App() {
       {/* <Header />
       <p>Johnny</p> */}
       <TicketCart />
+      <BasketOverview />
       {/* <Header />
       <p>Johnny</p>
+
        */}
       <AddOnesCart />
       <section id="ticket_container">
