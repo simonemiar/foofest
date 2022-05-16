@@ -55,7 +55,9 @@ export default function AddOnesCart() {
   return (
     <section id="add-ons_cart">
       <div id="top-bar">
-        <p>Add-ons</p>
+        <p>Add-on</p>
+        <p>Quanity</p>
+        <p>Price</p>
       </div>
       <article className="note">
         <p>Note: The price includes the crew setting up your tent</p>

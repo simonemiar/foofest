@@ -13,9 +13,17 @@
   }
 
   #top-bar {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
     padding: 0.7rem;
     background-color: #34334d;
-    text-align: left;
+
+    p:nth-child(1) {
+      text-align: left;
+    }
+    p:nth-child(3) {
+      text-align: right;
+    }
   }
 
   button {
@@ -46,10 +54,12 @@
 
   .tent_total {
     text-align: right;
+    margin-right: 0.7rem;
   }
 
   .tent_name {
     text-align: left;
+    margin-left: 0.7rem;
     p:nth-child(1) {
       font-weight: bold;
     }
@@ -66,6 +76,7 @@
 
     .green_total {
       text-align: right;
+      margin-right: 0.7rem;
     }
   }
 
