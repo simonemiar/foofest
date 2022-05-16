@@ -6,6 +6,8 @@ import Schedule from "./routes/Schedule";
 import Basket from "./routes/Basket";
 
 import { useState, useEffect } from "react";
+// import Header from "./components/Header";
+import CampingArea from "./components/CampingArea";
 
 function App() {
   const [bands, setBands] = useState([]);
@@ -51,6 +53,10 @@ function App() {
       <div className="shape">
         <p>hellow, shape</p>
       </div>
+      {/* <Header />
+      <p>Johnny</p> */}
+
+      <CampingArea />
     </div>
   );
 }
