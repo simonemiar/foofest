@@ -49,10 +49,6 @@ function App() {
         <Route path="/tickets" element={<Tickets />} />
       </Routes>
       <Header />
-      <p>Johnny</p>
-      <div className="shape">
-        <p>hellow, shape</p>
-      </div>
     </div>
   );
 }
