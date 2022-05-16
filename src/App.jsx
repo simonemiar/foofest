@@ -11,6 +11,7 @@ import CampingArea from "./components/CampingArea";
 import TicketCart from "./components/TicketCart";
 import AddOnesCart from "./components/AddOnesCart";
 // import Header from "./components/Header";
+import Ticket from "./components/Ticket";
 
 function App() {
   const [bands, setBands] = useState([]);
@@ -42,7 +43,8 @@ function App() {
     <div className="App">
       <header>
         <nav>
-          <Link to="/">Home</Link> | <Link to="/schedule">Schedule</Link> | <Link to="/basket">Basket</Link>
+          <Link to="/">Home</Link> | <Link to="/schedule">Schedule</Link> |{" "}
+          <Link to="/basket">Basket</Link>
         </nav>
       </header>
       <Routes>
@@ -51,23 +53,27 @@ function App() {
         <Route path="/basket" element={<Basket />} />
       </Routes>
       <Header />
-
       <p>Johnny</p>
       <div className="shape">
         <p>hellow, shape</p>
       </div>
       {/* <Header />
       <p>Johnny</p> */}
-
       <CampingArea />
       {/* <Header />
       <p>Johnny</p> */}
       <TicketCart />
       {/* <Header />
       <p>Johnny</p>
+<<<<<<< HEAD
        */}
-
       <AddOnesCart />
+      =======
+      <section id="ticket_container">
+        <Ticket />
+        <Ticket />
+      </section>
+      >>>>>>> ticket
     </div>
   );
 }
