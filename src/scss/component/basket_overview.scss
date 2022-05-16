@@ -1,0 +1,123 @@
+.basket_overview {
+  background-color: #202033;
+  padding: 0.7rem;
+
+  .overview_content {
+    button {
+      padding: 3px;
+      background-color: #34334d;
+      border: none;
+      text-align: center;
+      color: #f5f5f5;
+      width: 1.5rem;
+    }
+  }
+
+  p {
+    color: #f5f5f5;
+  }
+  h2 {
+    text-align: center;
+    color: #f5f5f5;
+    margin-bottom: 1rem;
+  }
+
+  .top-bar {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    padding: 1rem;
+    background-color: #34334d;
+
+    p:nth-child(1) {
+      text-align: left;
+    }
+    p:nth-child(2) {
+      text-align: center;
+    }
+    p:nth-child(3) {
+      text-align: right;
+    }
+  }
+
+  .ticket_row {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    margin-top: 2rem;
+
+    .ticket_name {
+      margin-left: 1rem;
+    }
+
+    .ticket_price {
+      text-align: right;
+      margin-right: 0.7rem;
+    }
+  }
+
+  .ticket_amount {
+    text-align: center;
+
+    #amount_ticket {
+      margin-inline: 0.5rem;
+      color: #f5f5f5;
+    }
+  }
+
+  .tent_row {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    margin-top: 2rem;
+
+    .tent_ui {
+      text-align: center;
+    }
+
+    .tent_name {
+      margin-left: 1rem;
+
+      p:nth-child(2) {
+        font-size: 0.8rem;
+        margin-top: 0.2rem;
+      }
+    }
+
+    #amount_tent {
+      margin-inline: 0.5rem;
+      color: #f5f5f5;
+    }
+
+    .tent_total {
+      text-align: right;
+      margin-right: 0.7rem;
+    }
+  }
+
+  .fee_row {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    margin-top: 2rem;
+
+    .fee_name {
+      margin-left: 1rem;
+      margin-right: 0.7rem;
+    }
+
+    .fee_total {
+      grid-column: 3;
+      text-align: right;
+      margin-right: 0.7rem;
+    }
+  }
+
+  .total_bar {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1rem;
+    padding: 0.7rem;
+    background-color: #34334d;
+
+    p:nth-child(1) {
+      margin-left: 0.3rem;
+    }
+  }
+}
