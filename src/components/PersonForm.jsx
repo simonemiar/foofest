@@ -61,14 +61,7 @@ export default function PersonForm() {
       <div className="zip_city">
         <div className="zip_code">
           <label htmlFor="zip_code">Code</label>
-          <input
-            type="text"
-            id="zip_code"
-            pattern="[0-9]"
-            maxLength="4"
-            // minLength="4"
-            required
-          />
+          <input type="text" id="zip_code" pattern="^\d{4}$" maxLength="4" required />
         </div>
         <div className="city">
           <label htmlFor="city" required>
