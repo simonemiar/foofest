@@ -116,7 +116,7 @@ export default function AddOnesCart() {
         <p className="total_price">{totalPrice} kr.</p>
       </article>
       <div className="continue_btn">
-        <button>Continue</button>
+        <button className="shape">Continue</button>
       </div>
     </section>
   );
