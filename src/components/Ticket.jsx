@@ -1,5 +1,6 @@
 import { useState } from "react";
 import ReactCardFlip from "react-card-flip";
+import { Link } from "react-router-dom";
 
 export default function Ticket() {
   const [isFlipped, setIsFlipped] = useState(false);
@@ -17,7 +18,7 @@ export default function Ticket() {
             <h4>FooFest 2022</h4>
             <p>1299 DKK</p>
             <div className="ticket_btn">
-              <button>Buy</button> OR
+              <button>{<Link to="/basket">Buy</Link>}</button> OR
               <button type="primary" onClick={handleClick}>
                 Read more
               </button>
@@ -32,7 +33,7 @@ export default function Ticket() {
               is a big nice festival with big artist.
             </p>
             <div className="ticket_btn">
-              <button>Buy</button> OR
+              <button>{<Link to="/basket">Buy</Link>}</button> OR
               <button type="primary" onClick={handleClick}>
                 Read less
               </button>

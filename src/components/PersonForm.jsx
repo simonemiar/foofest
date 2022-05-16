@@ -76,7 +76,9 @@ export default function PersonForm() {
         </label>
         <input type="text" id="country" />
       </div>
-      <button type="submit">Send data</button>
+      <button className="shape" type="submit">
+        Send data
+      </button>
     </form>
   );
 }
