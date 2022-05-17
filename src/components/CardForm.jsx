@@ -1,6 +1,6 @@
 import { useRef } from "react";
 
-export default function CardForm() {
+export default function CardForm(props) {
   const formElm = useRef(null);
 
   function submitted(e) {
@@ -42,6 +42,24 @@ export default function CardForm() {
         </div>
         <button type="sumbit">Pay</button>
       </form>
+      <button
+        className="back_btn shape"
+        onClick={() => {
+          props.toggleComponentsArr.setToggleCardForm(false);
+          props.toggleComponentsArr.setToggleBasketOverview(true);
+        }}
+      >
+        Back
+      </button>
+      <button
+        className="continue_btn shape"
+        onClick={() => {
+          props.toggleComponentsArr.setToggleCardForm(false);
+          props.toggleComponentsArr.setToggleFlowComplete(true);
+        }}
+      >
+        Continue
+      </button>
     </>
   );
 }

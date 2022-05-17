@@ -1,5 +1,5 @@
 import { useState } from "react";
-export default function BasketOverview() {
+export default function BasketOverview(props) {
   const [threePersonTent, setThreePersonTent] = useState(0);
   const [ticketCount, SetTicketCount] = useState(1);
   const ticketPrize = 799;
@@ -86,6 +86,24 @@ export default function BasketOverview() {
           <p>Total ({totalItems} items)</p>
           <p className="total_price">{totalPrice} kr.</p>
         </article>
+        <button
+          className="back_btn shape"
+          onClick={() => {
+            props.toggleComponentsArr.setToggleBasketOverview(false);
+            props.toggleComponentsArr.setTogglePersonInfo(true);
+          }}
+        >
+          Back
+        </button>
+        <button
+          className="continue_btn shape"
+          onClick={() => {
+            props.toggleComponentsArr.setToggleBasketOverview(false);
+            props.toggleComponentsArr.setToggleCardForm(true);
+          }}
+        >
+          Continue
+        </button>
       </section>
     </section>
   );
