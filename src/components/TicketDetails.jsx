@@ -16,18 +16,20 @@ export default function TicketDetails(props) {
       <CampingArea />
       <AddOnesCart />
 
-      <Link to="/tickets">
-        <button className="shape">Back</button>
-      </Link>
-      <button
-        className="continue_btn shape"
-        onClick={() => {
-          props.toggleComponentsArr.setToggleTicketDetails(false);
-          props.toggleComponentsArr.setTogglePersonInfo(true);
-        }}
-      >
-        Continue
-      </button>
+      <div className="booking_flow_nav">
+        <Link to="/tickets">
+          <button className="back_btn shape">Back</button>
+        </Link>
+        <button
+          className="continue_btn shape"
+          onClick={() => {
+            props.toggleComponentsArr.setToggleTicketDetails(false);
+            props.toggleComponentsArr.setTogglePersonInfo(true);
+          }}
+        >
+          Continue
+        </button>
+      </div>
     </section>
   );
 }

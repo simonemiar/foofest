@@ -42,24 +42,26 @@ export default function CardForm(props) {
         </div>
         <button type="sumbit">Pay</button>
       </form>
-      <button
-        className="back_btn shape"
-        onClick={() => {
-          props.toggleComponentsArr.setToggleCardForm(false);
-          props.toggleComponentsArr.setToggleBasketOverview(true);
-        }}
-      >
-        Back
-      </button>
-      <button
-        className="continue_btn shape"
-        onClick={() => {
-          props.toggleComponentsArr.setToggleCardForm(false);
-          props.toggleComponentsArr.setToggleFlowComplete(true);
-        }}
-      >
-        Continue
-      </button>
+      <div className="booking_flow_nav">
+        <button
+          className="back_btn shape"
+          onClick={() => {
+            props.toggleComponentsArr.setToggleCardForm(false);
+            props.toggleComponentsArr.setToggleBasketOverview(true);
+          }}
+        >
+          Back
+        </button>
+        <button
+          className="continue_btn shape"
+          onClick={() => {
+            props.toggleComponentsArr.setToggleCardForm(false);
+            props.toggleComponentsArr.setToggleFlowComplete(true);
+          }}
+        >
+          Pay
+        </button>
+      </div>
     </>
   );
 }

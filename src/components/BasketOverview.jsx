@@ -86,6 +86,8 @@ export default function BasketOverview(props) {
           <p>Total ({totalItems} items)</p>
           <p className="total_price">{totalPrice} kr.</p>
         </article>
+      </section>
+      <div className="booking_flow_nav">
         <button
           className="back_btn shape"
           onClick={() => {
@@ -104,7 +106,7 @@ export default function BasketOverview(props) {
         >
           Continue
         </button>
-      </section>
+      </div>
     </section>
   );
 }
