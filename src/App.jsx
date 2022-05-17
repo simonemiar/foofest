@@ -1,12 +1,15 @@
-import "./scss/style.scss";
-import Header from "./components/Header";
+import { useState, useEffect } from "react";
 import { Routes, Route, Link } from "react-router-dom";
+
+import Header from "./components/Header";
 import Home from "./routes/Home";
 import Schedule from "./routes/Schedule";
 import Basket from "./routes/Basket";
 import Tickets from "./routes/Tickets";
 
-import { useState, useEffect } from "react";
+import { TicketBasketProvider } from "./contexts/TicketBasketContext";
+
+import "./scss/style.scss";
 
 function App() {
   const [bands, setBands] = useState([]);
@@ -42,13 +45,15 @@ function App() {
           <Link to="/tickets">Tickets</Link>
         </nav>
       </header>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/schedule" element={<Schedule />} />
-        <Route path="/basket" element={<Basket />} />
-        <Route path="/tickets" element={<Tickets />} />
-      </Routes>
-      <Header />
+      <TicketBasketProvider>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/schedule" element={<Schedule />} />
+          <Route path="/basket" element={<Basket />} />
+          <Route path="/tickets" element={<Tickets />} />
+        </Routes>
+        <Header />
+      </TicketBasketProvider>
     </div>
   );
 }

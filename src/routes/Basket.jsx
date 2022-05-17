@@ -1,10 +1,12 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 
 import TicketDetails from "../components/TicketDetails";
 import PersonInfo from "../components/PersonInfo";
 import CardForm from "../components/CardForm";
 import BasketOverview from "../components/BasketOverview";
 import FlowComplete from "../components/FlowComplete";
+
+import { TicketBasketContext } from "../contexts/TicketBasketContext";
 
 export default function Basket() {
   const [ToggleTicketDetails, setToggleTicketDetails] = useState(true);
@@ -25,6 +27,10 @@ export default function Basket() {
     ToggleFlowComplete: ToggleFlowComplete,
     setToggleFlowComplete: setToggleFlowComplete,
   };
+
+  const { ticketBasket } = useContext(TicketBasketContext);
+  // const [totalPrice, setTotalPrice] = useState(0);
+
   return (
     <main>
       {ToggleTicketDetails ? <TicketDetails toggleComponentsArr={toggleComponentsArr} /> : null}
@@ -33,20 +39,11 @@ export default function Basket() {
       {ToggleCardForm ? <CardForm toggleComponentsArr={toggleComponentsArr} /> : null}
       {ToggleFlowComplete ? <FlowComplete toggleComponentsArr={toggleComponentsArr} /> : null}
 
-      {/* {TogglePersonInfo ? <TicketDetails /> : <PersonInfo />} */}
-
-      {/* <button onClick={() => TogglePersonInfo(true)}>Person info</button>
-
-      <button onClick={() => setTogglePersonInfo(false)}>Details</button> */}
-
-      {/* <BasketOverview />
-
-      {TogglePersonInfo ? (
-        <PersonInfo TogglePersonInfo={TogglePersonInfo} setTogglePersonInfo={setTogglePersonInfo} />
-      ) : (
-        <TicketDetails TogglePersonInfo={TogglePersonInfo} setTogglePersonInfo={setTogglePersonInfo} />
-      )}
-      <CardForm /> */}
+      <h1>{ticketBasket}</h1>
+      {/* <article className="total_bar">
+        <p>Total ({totalItems} items)</p>
+        <p className="total_price">{totalPrice} kr.</p>
+      </article> */}
     </main>
   );
 }
