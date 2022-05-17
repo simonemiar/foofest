@@ -6,8 +6,6 @@ import AddOnesCart from "../components/AddOnesCart";
 import ticketImg from "../assets/svg/ticket.svg";
 
 export default function TicketDetails(props) {
-  // { setToggleTicketDetails, setTogglePersonInfo }
-  console.log(props);
   return (
     <section id="ticket_details">
       <h2>Ticket details</h2>
