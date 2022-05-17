@@ -4,6 +4,7 @@ import { useState } from "react";
 
 import TicketDetails from "../components/TicketDetails";
 import PersonInfo from "../components/PersonInfo";
+import CardForm from "../components/CardForm";
 // import Header from "../components/Header";
 
 export default function Basket() {
@@ -20,6 +21,7 @@ export default function Basket() {
       ) : (
         <TicketDetails showPersonInfo={showPersonInfo} setShowPersonInfo={setShowPersonInfo} />
       )}
+      <CardForm />
     </main>
   );
 }
