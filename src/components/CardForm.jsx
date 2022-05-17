@@ -1,6 +1,6 @@
 import { useRef } from "react";
 
-export default function CardForm() {
+export default function CardForm(props) {
   const formElm = useRef(null);
 
   function submitted(e) {
@@ -24,24 +24,44 @@ export default function CardForm() {
   return (
     <>
       <form id="card_form" ref={formElm} onSubmit={submitted}>
-        <div class="field-container">
-          <label for="name">Name</label>
+        <div className="field-container">
+          <label htmlFor="name">Name</label>
           <input id="name" maxLength="20" type="text" />
         </div>
-        <div class="field-container">
-          <label for="cardnumber">Card Number</label>
-          <input id="cardnumber" type="text" pattern="[0-9]*" inputmode="numeric" />
+        <div className="field-container">
+          <label htmlFor="cardnumber">Card Number</label>
+          <input id="cardnumber" type="text" pattern="[0-9]*" inputMode="numeric" />
         </div>
-        <div class="field-container">
-          <label for="expirationdate">Expiration (mm/yy)</label>
-          <input id="expirationdate" type="text" pattern="[0-9]*" inputmode="numeric" />
+        <div className="field-container">
+          <label htmlFor="expirationdate">Expiration (mm/yy)</label>
+          <input id="expirationdate" type="text" pattern="[0-9]*" inputMode="numeric" />
         </div>
-        <div class="field-container">
-          <label for="securitycode">Security Code</label>
-          <input id="securitycode" type="text" pattern="[0-9]*" inputmode="numeric" />
+        <div className="field-container">
+          <label htmlFor="securitycode">Security Code</label>
+          <input id="securitycode" type="text" pattern="[0-9]*" inputMode="numeric" />
         </div>
         <button type="sumbit">Pay</button>
       </form>
+      <div className="booking_flow_nav">
+        <button
+          className="back_btn shape"
+          onClick={() => {
+            props.toggleComponentsArr.setToggleCardForm(false);
+            props.toggleComponentsArr.setToggleBasketOverview(true);
+          }}
+        >
+          Back
+        </button>
+        <button
+          className="continue_btn shape"
+          onClick={() => {
+            props.toggleComponentsArr.setToggleCardForm(false);
+            props.toggleComponentsArr.setToggleFlowComplete(true);
+          }}
+        >
+          Pay
+        </button>
+      </div>
     </>
   );
 }

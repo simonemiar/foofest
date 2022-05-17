@@ -1,27 +1,52 @@
-// import Header from "./components/Header";
-
 import { useState } from "react";
 
 import TicketDetails from "../components/TicketDetails";
 import PersonInfo from "../components/PersonInfo";
 import CardForm from "../components/CardForm";
-// import Header from "../components/Header";
+import BasketOverview from "../components/BasketOverview";
+import FlowComplete from "../components/FlowComplete";
 
 export default function Basket() {
-  const [showPersonInfo, setShowPersonInfo] = useState(false);
+  const [ToggleTicketDetails, setToggleTicketDetails] = useState(true);
+  const [TogglePersonInfo, setTogglePersonInfo] = useState(false);
+  const [ToggleBasketOverview, setToggleBasketOverview] = useState(false);
+  const [ToggleCardForm, setToggleCardForm] = useState(false);
+  const [ToggleFlowComplete, setToggleFlowComplete] = useState(false);
 
+  const toggleComponentsArr = {
+    ToggleTicketDetails: ToggleTicketDetails,
+    setToggleTicketDetails: setToggleTicketDetails,
+    TogglePersonInfo: TogglePersonInfo,
+    setTogglePersonInfo: setTogglePersonInfo,
+    ToggleBasketOverview: ToggleBasketOverview,
+    setToggleBasketOverview: setToggleBasketOverview,
+    ToggleCardForm: ToggleCardForm,
+    setToggleCardForm: setToggleCardForm,
+    ToggleFlowComplete: ToggleFlowComplete,
+    setToggleFlowComplete: setToggleFlowComplete,
+  };
   return (
     <main>
-      {/* <button onClick={() => showPersonInfo(true)}>Person info</button>
+      {ToggleTicketDetails ? <TicketDetails toggleComponentsArr={toggleComponentsArr} /> : null}
+      {TogglePersonInfo ? <PersonInfo toggleComponentsArr={toggleComponentsArr} /> : null}
+      {ToggleBasketOverview ? <BasketOverview toggleComponentsArr={toggleComponentsArr} /> : null}
+      {ToggleCardForm ? <CardForm toggleComponentsArr={toggleComponentsArr} /> : null}
+      {ToggleFlowComplete ? <FlowComplete toggleComponentsArr={toggleComponentsArr} /> : null}
 
-      <button onClick={() => setShowPersonInfo(false)}>Details</button> */}
+      {/* {TogglePersonInfo ? <TicketDetails /> : <PersonInfo />} */}
 
-      {showPersonInfo ? (
-        <PersonInfo showPersonInfo={showPersonInfo} setShowPersonInfo={setShowPersonInfo} />
+      {/* <button onClick={() => TogglePersonInfo(true)}>Person info</button>
+
+      <button onClick={() => setTogglePersonInfo(false)}>Details</button> */}
+
+      {/* <BasketOverview />
+
+      {TogglePersonInfo ? (
+        <PersonInfo TogglePersonInfo={TogglePersonInfo} setTogglePersonInfo={setTogglePersonInfo} />
       ) : (
-        <TicketDetails showPersonInfo={showPersonInfo} setShowPersonInfo={setShowPersonInfo} />
+        <TicketDetails TogglePersonInfo={TogglePersonInfo} setTogglePersonInfo={setTogglePersonInfo} />
       )}
-      <CardForm />
+      <CardForm /> */}
     </main>
   );
 }
