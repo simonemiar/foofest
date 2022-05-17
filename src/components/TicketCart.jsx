@@ -1,19 +1,27 @@
 import { useState } from "react";
-export default function TicketCart() {
-  const [ticketCount, SetTicketCount] = useState(1);
+export default function TicketCart(props) {
+  const [ticketCount, setTicketCount] = useState(1);
   const ticketPrize = 799;
   const bookingFeee = 25;
   const totalTicketPrize = ticketPrize * ticketCount + bookingFeee;
 
+  const ticketAmount = 3;
+
+  const ticketOverviewInfo = {
+    ticketAmount: ticketAmount,
+  };
+
+  console.log(ticketOverviewInfo);
+
   function addTicket() {
-    SetTicketCount(ticketCount + 1);
+    setTicketCount(ticketCount + 1);
   }
 
   function removeTicket() {
     if (ticketCount === 1) {
-      SetTicketCount(1);
+      setTicketCount(1);
     } else {
-      SetTicketCount(ticketCount - 1);
+      setTicketCount(ticketCount - 1);
     }
   }
 

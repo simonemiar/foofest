@@ -10,9 +10,9 @@ export default function TicketDetails(props) {
     <section id="ticket_details">
       <h2>Ticket details</h2>
       <img src={ticketImg} alt="ticket" />
-      <TicketCart />
-      <CampingArea />
-      <AddOnesCart />
+      <TicketCart basketItem={props.basketItem} setBasketItem={props.setBasketItem} />
+      <CampingArea basketItem={props.basketItem} setBasketItem={props.setBasketItem} />
+      <AddOnesCart basketItem={props.basketItem} setBasketItem={props.setBasketItem} />
 
       <div className="booking_flow_nav">
         <Link to="/tickets">

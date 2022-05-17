@@ -9,6 +9,9 @@ import FlowComplete from "../components/FlowComplete";
 import { TicketBasketContext } from "../contexts/TicketBasketContext";
 
 export default function Basket() {
+  const { ticketBasket } = useContext(TicketBasketContext);
+  const [basketItem, setBasketItem] = useState([]);
+
   const [ToggleTicketDetails, setToggleTicketDetails] = useState(true);
   const [TogglePersonInfo, setTogglePersonInfo] = useState(false);
   const [ToggleBasketOverview, setToggleBasketOverview] = useState(false);
@@ -28,22 +31,21 @@ export default function Basket() {
     setToggleFlowComplete: setToggleFlowComplete,
   };
 
-  const { ticketBasket } = useContext(TicketBasketContext);
-  // const [totalPrice, setTotalPrice] = useState(0);
-
   return (
     <main>
-      {ToggleTicketDetails ? <TicketDetails toggleComponentsArr={toggleComponentsArr} /> : null}
+      {ToggleTicketDetails ? (
+        <TicketDetails
+          toggleComponentsArr={toggleComponentsArr}
+          basketItem={basketItem}
+          setBasketItem={setBasketItem}
+        />
+      ) : null}
       {TogglePersonInfo ? <PersonInfo toggleComponentsArr={toggleComponentsArr} /> : null}
       {ToggleBasketOverview ? <BasketOverview toggleComponentsArr={toggleComponentsArr} /> : null}
       {ToggleCardForm ? <CardForm toggleComponentsArr={toggleComponentsArr} /> : null}
       {ToggleFlowComplete ? <FlowComplete toggleComponentsArr={toggleComponentsArr} /> : null}
 
-      <h1>{ticketBasket}</h1>
-      {/* <article className="total_bar">
-        <p>Total ({totalItems} items)</p>
-        <p className="total_price">{totalPrice} kr.</p>
-      </article> */}
+      <h1>Basket: {ticketBasket ? "empty" : ticketBasket}</h1>
     </main>
   );
 }
