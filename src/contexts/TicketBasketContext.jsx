@@ -5,14 +5,15 @@ export const TicketBasketContext = createContext();
 export const TicketBasketProvider = ({ children }) => {
   const [ticketBasket, setTicketBasket] = useState({
     ticketType: "",
-    ticketAmount: null,
+    ticketAmount: 1,
     ticketPrice: null,
     bookingFee: 99,
     campingArea: "",
-    tent2PersonAmount: null,
+    tent2PersonAmount: 0,
     tent2PersonPrice: 299,
-    tent3PersonAmount: null,
+    tent3PersonAmount: 0,
     tent3PersonPrice: 399,
+    isGreenCamping: false,
     greenCamping: 249,
   });
   // {
