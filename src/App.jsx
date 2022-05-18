@@ -47,6 +47,7 @@ function App() {
         <Route path="/basket" element={<Basket />} />
         <Route path="/tickets" element={<Tickets />} />
       </Routes>
+      
       <Header />
     </div>
   );
