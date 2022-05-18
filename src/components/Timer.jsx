@@ -23,7 +23,7 @@ export default function Timer(endTime) {
 
       if (targetLeft === 0) {
         clearInterval(timer);
-        alert("time is up!");
+        console.log("time is up!");
       }
     }, 1000);
 
