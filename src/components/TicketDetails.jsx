@@ -10,13 +10,13 @@ export default function TicketDetails(props) {
     <section id="ticket_details">
       <h2>Ticket details</h2>
       <img src={ticketImg} alt="ticket" />
-      <TicketCart basketItems={props.basketItems} setBasketItems={props.setBasketItems} />
-      <CampingArea basketItems={props.basketItems} setBasketItems={props.setBasketItems} />
-      <AddOnesCart basketItems={props.basketItems} setBasketItems={props.setBasketItems} />
+      <TicketCart />
+      <CampingArea />
+      <AddOnesCart />
 
       <div className="booking_flow_nav">
         <Link to="/tickets">
-          <button className="back_btn shape">Back</button>
+          <button>Back</button>
         </Link>
         <button
           className="continue_btn shape"

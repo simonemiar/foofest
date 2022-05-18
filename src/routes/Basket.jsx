@@ -14,7 +14,6 @@ import { TicketBasketContext } from "../contexts/TicketBasketContext";
 
 export default function Basket() {
   const { ticketBasket } = useContext(TicketBasketContext);
-  const [basketItems, setBasketItems] = useState([]);
 
   // console.log(ticketBasket);
 
@@ -39,13 +38,7 @@ export default function Basket() {
 
   return (
     <main>
-      {ToggleTicketDetails ? (
-        <TicketDetails
-          toggleComponentsArr={toggleComponentsArr}
-          basketItem={basketItems}
-          setBasketItem={setBasketItems}
-        />
-      ) : null}
+      {ToggleTicketDetails ? <TicketDetails toggleComponentsArr={toggleComponentsArr} /> : null}
       {TogglePersonInfo ? <PersonInfo toggleComponentsArr={toggleComponentsArr} /> : null}
       {ToggleBasketOverview ? <BasketOverview toggleComponentsArr={toggleComponentsArr} /> : null}
       {ToggleCardForm ? <CardForm toggleComponentsArr={toggleComponentsArr} /> : null}
