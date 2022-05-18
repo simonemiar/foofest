@@ -1,21 +1,45 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
+
+import { TicketBasketContext } from "../contexts/TicketBasketContext";
+
 export default function TicketCart(props) {
   const [ticketCount, setTicketCount] = useState(1);
   const ticketPrize = 799;
   const bookingFeee = 25;
   const totalTicketPrize = ticketPrize * ticketCount + bookingFeee;
 
-  const ticketAmount = 3;
+  const { ticketBasket, setTicketBasket } = useContext(TicketBasketContext);
 
-  const ticketOverviewInfo = {
-    ticketAmount: ticketAmount,
-  };
-
-  console.log(ticketOverviewInfo);
+  console.log(ticketBasket);
+  // console.log(ticketBasket[0].bookingFee);
 
   function addTicket() {
-    setTicketCount(ticketCount + 1);
+    // setTicketCount(ticketCount + 1);
+    setTicketBasket(() => (ticketBasket[0].ticketAmount = setTicketCount(ticketCount + 1)));
   }
+
+  // setTicketBasket((oldState) => [
+  //   // ...oldState,
+  //   basketInfo,
+  // ]);
+
+  // function addToBasket() {
+  //   if (basket.find((item) => item.id === props.product.id)) {
+  //     console.log("in the basket");
+  //     setBasket((old) =>
+  //       old.map((item) => {
+  //         if (item.id === props.product.id) {
+  //           const copy = { ...item };
+  //           copy.amount++;
+  //           return copy;
+  //         }
+  //         return item;
+  //       })
+  //     );
+  //   } else {
+  //     setBasket((oldBasket) => [...oldBasket, { ...props.product, amount: 1 }]);
+  //   }
+  // }
 
   function removeTicket() {
     if (ticketCount === 1) {
@@ -49,7 +73,12 @@ export default function TicketCart(props) {
         </div>
         <div className="ticket_price">
           <p className="total_ticket_price">{totalTicketPrize} kr.</p>
-          <p className="fee_price"> Fee: 25 kr.</p>
+          <p className="fee_price">
+            {" "}
+            Fee:
+            {/* {ticketBasket[0].bookingFee}  */}
+            kr.
+          </p>
         </div>
       </section>
     </section>
