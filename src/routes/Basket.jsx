@@ -8,9 +8,15 @@ import FlowComplete from "../components/FlowComplete";
 
 import { TicketBasketContext } from "../contexts/TicketBasketContext";
 
+// import { useState, useContext } from "react";
+// import { TicketBasketContext } from "../contexts/TicketBasketContext";
+// const { ticketBasket, setTicketBasket } = useContext(TicketBasketContext);
+
 export default function Basket() {
   const { ticketBasket } = useContext(TicketBasketContext);
-  const [basketItem, setBasketItem] = useState([]);
+  const [basketItems, setBasketItems] = useState([]);
+
+  // console.log(ticketBasket);
 
   const [ToggleTicketDetails, setToggleTicketDetails] = useState(true);
   const [TogglePersonInfo, setTogglePersonInfo] = useState(false);
@@ -36,8 +42,8 @@ export default function Basket() {
       {ToggleTicketDetails ? (
         <TicketDetails
           toggleComponentsArr={toggleComponentsArr}
-          basketItem={basketItem}
-          setBasketItem={setBasketItem}
+          basketItem={basketItems}
+          setBasketItem={setBasketItems}
         />
       ) : null}
       {TogglePersonInfo ? <PersonInfo toggleComponentsArr={toggleComponentsArr} /> : null}
