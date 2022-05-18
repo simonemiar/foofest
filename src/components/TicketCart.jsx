@@ -3,49 +3,50 @@ import { useState, useContext } from "react";
 import { TicketBasketContext } from "../contexts/TicketBasketContext";
 
 export default function TicketCart(props) {
-  const [ticketCount, setTicketCount] = useState(1);
-  const ticketPrize = 799;
-  const bookingFeee = 25;
-  const totalTicketPrize = ticketPrize * ticketCount + bookingFeee;
-
   const { ticketBasket, setTicketBasket } = useContext(TicketBasketContext);
 
-  console.log(ticketBasket);
-  // console.log(ticketBasket[0].bookingFee);
+  // const [ticketCount, setTicketCount] = useState(1);
+  // const ticketPrize = 799;
+  // const bookingFeee = 25;
+  // const totalTicketPrize = ticketBasket.ticketPrice * ticketCount + bookingFeee;
+
+  const totalTicketPrize =
+    ticketBasket.ticketPrice * ticketBasket.ticketAmount + ticketBasket.bookingFee;
 
   function addTicket() {
     // setTicketCount(ticketCount + 1);
-    setTicketBasket(() => (ticketBasket[0].ticketAmount = setTicketCount(ticketCount + 1)));
+    if (ticketBasket.ticketAmount === 5) {
+      alert("You can max buy 5 tickets a the time");
+    } else {
+      setTicketBasket((old) => {
+        return {
+          ...old,
+          ticketAmount: old.ticketAmount + 1,
+        };
+      });
+    }
+
+    console.log(ticketBasket);
   }
 
-  // setTicketBasket((oldState) => [
-  //   // ...oldState,
-  //   basketInfo,
-  // ]);
-
-  // function addToBasket() {
-  //   if (basket.find((item) => item.id === props.product.id)) {
-  //     console.log("in the basket");
-  //     setBasket((old) =>
-  //       old.map((item) => {
-  //         if (item.id === props.product.id) {
-  //           const copy = { ...item };
-  //           copy.amount++;
-  //           return copy;
-  //         }
-  //         return item;
-  //       })
-  //     );
-  //   } else {
-  //     setBasket((oldBasket) => [...oldBasket, { ...props.product, amount: 1 }]);
-  //   }
-  // }
-
   function removeTicket() {
-    if (ticketCount === 1) {
-      setTicketCount(1);
+    if (ticketBasket.ticketAmount === 1) {
+      // setTicketCount(1);
+      setTicketBasket((old) => {
+        return {
+          ...old,
+          ticketAmount: (old.ticketAmount = 1),
+        };
+      });
+      alert("You need to have minimum 1 ticket");
     } else {
-      setTicketCount(ticketCount - 1);
+      // setTicketCount(ticketCount - 1);
+      setTicketBasket((old) => {
+        return {
+          ...old,
+          ticketAmount: old.ticketAmount - 1,
+        };
+      });
     }
   }
 
@@ -59,26 +60,21 @@ export default function TicketCart(props) {
 
       <section className="ticket_cart_content">
         <div className="ticket_name">
-          <p id="ticket_type">Regular</p>
+          <p id="ticket_type">{ticketBasket.ticketType}</p>
           <p>Ticket</p>
         </div>
         <div className="amount_ui">
           <button onClick={removeTicket} id="ticket_decre">
             -
           </button>
-          <span id="amount">{ticketCount}</span>
+          <span id="amount">{ticketBasket.ticketAmount}</span>
           <button onClick={addTicket} id="ticket_incre">
             +
           </button>
         </div>
         <div className="ticket_price">
           <p className="total_ticket_price">{totalTicketPrize} kr.</p>
-          <p className="fee_price">
-            {" "}
-            Fee:
-            {/* {ticketBasket[0].bookingFee}  */}
-            kr.
-          </p>
+          <p className="fee_price">Fee: {ticketBasket.bookingFee} kr.</p>
         </div>
       </section>
     </section>

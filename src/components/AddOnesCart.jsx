@@ -1,59 +1,115 @@
-import { useState } from "react";
-// import { useContext } from "react";
-// import { TicketBasketContext } from "../contexts/TicketBasketContext";
+import { useState, useContext } from "react";
+
+import { TicketBasketContext } from "../contexts/TicketBasketContext";
 
 export default function AddOnesCart() {
-  // const { ticketBasket } = useContext(TicketBasketContext);
+  const { ticketBasket, setTicketBasket } = useContext(TicketBasketContext);
 
   // Tent price states
-  const [twoPersonTent, setTwoPersonTent] = useState(0);
-  const [threePersonTent, setThreePersonTent] = useState(0);
+  // const [twoPersonTent, setTwoPersonTent] = useState(0);
+  // const [threePersonTent, setThreePersonTent] = useState(0);
   // Green option states
-  const [greenOptionPrice, setGreenOptionPrice] = useState(0);
-  const [includeGreenOption, setIncludeGreenOption] = useState(false);
+  // const [greenOptionPrice, setGreenOptionPrice] = useState(0);
+  // const [includeGreenOption, setIncludeGreenOption] = useState(false);
 
   // Cart UI varibles:
-  const totalTwoTent = 299 * twoPersonTent;
-  const totalThreeTent = 399 * threePersonTent;
-  const totalPrice = totalTwoTent + totalThreeTent + greenOptionPrice;
-  const totalItems = twoPersonTent + threePersonTent + includeGreenOption;
+  const totalTwoTent = ticketBasket.tent2PersonPrice * ticketBasket.tent2PersonAmount;
+  const totalThreeTent = ticketBasket.tent3PersonPrice * ticketBasket.tent3PersonAmount;
+
+  const totalPrice =
+    totalTwoTent + totalThreeTent + (ticketBasket.isGreenCamping ? ticketBasket.greenCamping : 0);
+  const totalItems =
+    ticketBasket.tent2PersonAmount + ticketBasket.tent3PersonAmount + ticketBasket.isGreenCamping;
+
+  // const totalPrice = totalTwoTent + totalThreeTent + greenOptionPrice;
+  // const totalItems = twoPersonTent + threePersonTent + includeGreenOption;
 
   // Functions for 2-person tent
-
   function addTwoTent() {
-    setTwoPersonTent(twoPersonTent + 1);
+    // setTwoPersonTent(twoPersonTent + 1);
+    if (ticketBasket.tent2PersonAmount === ticketBasket.ticketAmount) {
+      alert("You can only have as many tent as tickets");
+    } else {
+      setTicketBasket((old) => {
+        return {
+          ...old,
+          tent2PersonAmount: ticketBasket.tent2PersonAmount + 1,
+        };
+      });
+    }
   }
 
   function removeTwoTent() {
-    if (twoPersonTent === 0) {
-      setTwoPersonTent(0);
+    if (ticketBasket.tent2PersonAmount === 0) {
+      // setTwoPersonTent(0);
+      setTicketBasket((old) => {
+        return {
+          ...old,
+          tent2PersonAmount: (ticketBasket.tent2PersonAmount = 0),
+        };
+      });
     } else {
-      setTwoPersonTent(twoPersonTent - 1);
+      // setTwoPersonTent(twoPersonTent - 1);
+      setTicketBasket((old) => {
+        return { ...old, tent2PersonAmount: ticketBasket.tent2PersonAmount - 1 };
+      });
     }
   }
 
   // Functions for 3-person tent
   function addThreeTent() {
-    setThreePersonTent(threePersonTent + 1);
+    // setThreePersonTent(threePersonTent + 1);
+    if (ticketBasket.tent3PersonAmount === ticketBasket.ticketAmount) {
+      alert("You can only have as many tent as tickets");
+    } else {
+      setTicketBasket((old) => {
+        return {
+          ...old,
+          tent3PersonAmount: ticketBasket.tent3PersonAmount + 1,
+        };
+      });
+    }
   }
 
   function removeThreeTent() {
-    if (threePersonTent === 0) {
-      setThreePersonTent(0);
+    if (ticketBasket.tent3PersonAmount === 0) {
+      // setThreePersonTent(0);
+
+      setTicketBasket((old) => {
+        return {
+          ...old,
+          tent3PersonAmount: (ticketBasket.tent3PersonAmount = 0),
+        };
+      });
     } else {
-      setThreePersonTent(threePersonTent - 1);
+      // setThreePersonTent(threePersonTent - 1);
+      setTicketBasket((old) => {
+        return { ...old, tent3PersonAmount: ticketBasket.tent3PersonAmount - 1 };
+      });
     }
   }
 
   // Function for green option add-on
-  function GreenOption(e) {
+  function greenOption(e) {
     const checked = e.target.checked;
     if (checked) {
-      setGreenOptionPrice(249);
-      setIncludeGreenOption(true);
+      // setGreenOptionPrice(249);
+      // setIncludeGreenOption(true);
+      setTicketBasket((old) => {
+        return {
+          ...old,
+          isGreenCamping: true,
+        };
+      });
     } else {
-      setGreenOptionPrice(0);
-      setIncludeGreenOption(false);
+      // setGreenOptionPrice(0);
+      // setIncludeGreenOption(false);
+      setTicketBasket((old) => {
+        return {
+          ...old,
+          isGreenCamping: false,
+        };
+      });
     }
   }
 
@@ -76,12 +132,12 @@ export default function AddOnesCart() {
           </div>
           <div className="tent_ui">
             <button onClick={removeTwoTent}>-</button>
-            <span className="amount">{twoPersonTent}</span>
+            <span className="amount">{ticketBasket.tent2PersonAmount}</span>
             <button onClick={addTwoTent}>+</button>
           </div>
 
           <div className="tent_total">
-            <p>{totalTwoTent} kr.</p>
+            {ticketBasket.tent2PersonAmount > 1 ? totalTwoTent : ticketBasket.tent2PersonPrice} kr.
           </div>
         </article>
 
@@ -92,12 +148,15 @@ export default function AddOnesCart() {
           </div>
           <div className="tent_ui">
             <button onClick={removeThreeTent}>-</button>
-            <span className="amount">{threePersonTent}</span>
+            <span className="amount">{ticketBasket.tent3PersonAmount}</span>
             <button onClick={addThreeTent}>+</button>
           </div>
 
           <div className="tent_total">
-            <p>{totalThreeTent} kr.</p>
+            <p>
+              {ticketBasket.tent3PersonAmount > 1 ? totalThreeTent : ticketBasket.tent3PersonPrice}{" "}
+              kr.
+            </p>
           </div>
         </article>
 
@@ -108,7 +167,7 @@ export default function AddOnesCart() {
           </div>
 
           <div className="green_ui">
-            <input onChange={GreenOption} type="checkbox" className="green-option_check"></input>
+            <input onChange={greenOption} type="checkbox" className="green-option_check"></input>
           </div>
 
           <div className="green_total">

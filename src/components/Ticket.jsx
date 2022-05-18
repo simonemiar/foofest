@@ -12,29 +12,17 @@ export default function Ticket(props) {
     setIsFlipped((prevState) => !prevState);
   }
 
-  const basketInfo = {
-    ticketType: "",
-    ticketAmount: null,
-    ticketPrice: null,
-    bookingFee: 99,
-    campingArea: "",
-    tent2PersonAmount: null,
-    tent2PersonPrice: 299,
-    tent3PersonAmount: null,
-    tent3PersonPrice: 399,
-    greenCamping: 249,
-  };
-
   function addTicketTypeToBasket() {
-    // setTicketBasket((ticketBasket.ticketType = props.ticketType));
-    // setTicketBasket([(ticketBasket.ticketType = props.ticketType), ticketBasket]);
-    // setTicketBasket((ticketBasket.ticketType = props.ticketType));
-    basketInfo.ticketType = props.ticketType;
-    setTicketBasket((oldState) => [
-      // ...oldState,
-      basketInfo,
-    ]);
-    console.log(ticketBasket);
+    setTicketBasket((old) => {
+      return {
+        ...old,
+        ticketType: props.ticketType,
+        ticketAmount: 1,
+        ticketPrice: props.ticketPrice,
+      };
+    });
+
+    console.log("ticketType and ticketAmount + 1 add: ", ticketBasket);
   }
 
   return (
@@ -61,7 +49,7 @@ export default function Ticket(props) {
               {props.ticketPrice} DKK, and is a big nice festival with big artist.
             </p>
             <div className="ticket_btn">
-              <button>{<Link to="/basket">Buy</Link>}</button> OR
+              <button onClick={addTicketTypeToBasket}>{<Link to="/basket">Buy</Link>}</button> OR
               <button type="primary" onClick={handleClick}>
                 Read less
               </button>
