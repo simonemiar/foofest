@@ -1,8 +1,9 @@
-import { useState, useContext } from "react";
-import { TicketBasketContext } from "../contexts/TicketBasketContext";
+import { useState } from "react";
+// import { useContext } from "react";
+// import { TicketBasketContext } from "../contexts/TicketBasketContext";
 
 export default function AddOnesCart() {
-  const { ticketBasket } = useContext(TicketBasketContext);
+  // const { ticketBasket } = useContext(TicketBasketContext);
 
   // Tent price states
   const [twoPersonTent, setTwoPersonTent] = useState(0);
