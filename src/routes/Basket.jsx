@@ -5,6 +5,8 @@ import PersonInfo from "../components/PersonInfo";
 import CardForm from "../components/CardForm";
 import BasketOverview from "../components/BasketOverview";
 import FlowComplete from "../components/FlowComplete";
+import Timer from "../components/Timer";
+// import Header from "../components/Header";
 
 export default function Basket() {
   const [ToggleTicketDetails, setToggleTicketDetails] = useState(true);
@@ -46,6 +48,10 @@ export default function Basket() {
       ) : (
         <TicketDetails TogglePersonInfo={TogglePersonInfo} setTogglePersonInfo={setTogglePersonInfo} />
       )}
+      <CardForm /> */}
+      <Timer />
+
+      {/* {showPersonInfo ? <PersonInfo showPersonInfo={showPersonInfo} setShowPersonInfo={setShowPersonInfo} /> : <TicketDetails showPersonInfo={showPersonInfo} setShowPersonInfo={setShowPersonInfo} />}
       <CardForm /> */}
     </main>
   );
