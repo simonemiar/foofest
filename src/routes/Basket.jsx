@@ -7,6 +7,7 @@ import BasketOverview from "../components/BasketOverview";
 import FlowComplete from "../components/FlowComplete";
 import Timer from "../components/Timer";
 // import Header from "../components/Header";
+import ProgressBar from "../components/ProgressBar";
 
 export default function Basket() {
   const [ToggleTicketDetails, setToggleTicketDetails] = useState(true);
@@ -29,6 +30,7 @@ export default function Basket() {
   };
   return (
     <main>
+      <ProgressBar />
       {ToggleTicketDetails ? <TicketDetails toggleComponentsArr={toggleComponentsArr} /> : null}
       {TogglePersonInfo ? <PersonInfo toggleComponentsArr={toggleComponentsArr} /> : null}
       {ToggleBasketOverview ? <BasketOverview toggleComponentsArr={toggleComponentsArr} /> : null}
