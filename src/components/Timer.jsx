@@ -1,34 +1,38 @@
-import { useEffect, useState } from "react";
+// source:
+// https://www.codegrepper.com/code-examples/javascript/react+countdown+timer+minutes+seconds
+import React from "react";
+import { useState, useEffect } from "react";
 
-const calcTimeLeft = (t) => {
-  if (!t) return 0;
-
-  const left = t - new Date().getTime();
-
-  if (left < 0) return 0;
-
-  return left;
-};
-
-export default function Timer(endTime) {
-  const [end, setEndTime] = useState(endTime);
-  const [timeLeft, setTimeLeft] = useState(() => calcTimeLeft(end));
-
+const Timer = (props) => {
+  const { initialMinute = 0, initialSeconds = 10 } = props;
+  const [minutes, setMinutes] = useState(initialMinute);
+  const [seconds, setSeconds] = useState(initialSeconds);
   useEffect(() => {
-    setTimeLeft(calcTimeLeft(end));
-
-    const timer = setInterval(() => {
-      const targetLeft = calcTimeLeft(end);
-      setTimeLeft(targetLeft);
-
-      if (targetLeft === 0) {
-        clearInterval(timer);
-        console.log("time is up!");
+    let myInterval = setInterval(() => {
+      if (seconds > 0) {
+        setSeconds(seconds - 1);
+      }
+      if (seconds === 0) {
+        if (minutes === 0) {
+          clearInterval(myInterval);
+        } else {
+          setMinutes(minutes - 1);
+          setSeconds(59);
+        }
       }
     }, 1000);
+    return () => {
+      clearInterval(myInterval);
+    };
+  });
 
-    return () => clearInterval(timer);
-  }, [end]);
+  function ended() {
+    console.log("time is up!");
 
-  return [timeLeft, setEndTime];
-}
+    return <h2>Time left: 0:00</h2>;
+  }
+
+  return <div className="timer_container">{minutes === 0 && seconds === 0 ? ended() : <h2>Time left: {`${minutes}:${seconds < 10 ? `0${seconds}` : seconds} `}</h2>}</div>;
+};
+
+export default Timer;
