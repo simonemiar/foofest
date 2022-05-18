@@ -22,17 +22,17 @@ function App() {
       const resBands = await fetch("https://prototype-masters-foofest.herokuapp.com/bands");
       const bandsData = await resBands.json();
       setBands(bandsData);
-      console.log("bandsdata:", bandsData);
+      // console.log("bandsdata:", bandsData);
 
       const resSchedule = await fetch("https://prototype-masters-foofest.herokuapp.com/schedule");
       const scheduleData = await resSchedule.json();
       setSchedule(scheduleData);
-      console.log("scheduleData:", scheduleData);
+      // console.log("scheduleData:", scheduleData);
 
       const resEvents = await fetch("https://prototype-masters-foofest.herokuapp.com/events");
       const eventsData = await resEvents.json();
       setEvents(eventsData);
-      console.log("eventsData:", eventsData);
+      // console.log("eventsData:", eventsData);
     }
     get();
   }, []);
