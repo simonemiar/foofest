@@ -1,4 +1,4 @@
-import Ticket from "../../Ticket";
+import Ticket from "../../booking/Ticket";
 
 export default function Tickets() {
   return (
@@ -11,4 +11,3 @@ export default function Tickets() {
     </main>
   );
 }
-

@@ -1,13 +1,13 @@
 import { useState } from "react";
 
-import TicketDetails from "../../TicketDetails";
-import PersonInfo from "../../PersonInfo";
-import CardForm from "../../CardForm";
-import BasketOverview from "../../BasketOverview";
-import FlowComplete from "../../FlowComplete";
-import Timer from "../../Timer";
+import TicketDetails from "../../booking/TicketDetails";
+import PersonInfo from "../../booking/PersonInfo";
+import CardForm from "../../booking/CardForm";
+import BasketOverview from "../../booking/BasketOverview";
+import FlowComplete from "../../booking/FlowComplete";
+import Timer from "../../booking/Timer";
 // import Header from "../components/Header";
-import ProgressBar from "../../ProgressBar";
+import ProgressBar from "../../booking/ProgressBar";
 
 export default function Basket() {
   const [ToggleTicketDetails, setToggleTicketDetails] = useState(true);
@@ -33,10 +33,34 @@ export default function Basket() {
     <main>
       <Timer />
       <ProgressBar isCurrent={isCurrent} setIsCurrent={setIsCurrent} />
-      {ToggleTicketDetails ? <TicketDetails isCurrent={isCurrent} setIsCurrent={setIsCurrent} toggleComponentsArr={toggleComponentsArr} /> : null}
-      {TogglePersonInfo ? <PersonInfo isCurrent={isCurrent} setIsCurrent={setIsCurrent} toggleComponentsArr={toggleComponentsArr} /> : null}
-      {ToggleBasketOverview ? <BasketOverview isCurrent={isCurrent} setIsCurrent={setIsCurrent} toggleComponentsArr={toggleComponentsArr} /> : null}
-      {ToggleCardForm ? <CardForm isCurrent={isCurrent} setIsCurrent={setIsCurrent} toggleComponentsArr={toggleComponentsArr} /> : null}
+      {ToggleTicketDetails ? (
+        <TicketDetails
+          isCurrent={isCurrent}
+          setIsCurrent={setIsCurrent}
+          toggleComponentsArr={toggleComponentsArr}
+        />
+      ) : null}
+      {TogglePersonInfo ? (
+        <PersonInfo
+          isCurrent={isCurrent}
+          setIsCurrent={setIsCurrent}
+          toggleComponentsArr={toggleComponentsArr}
+        />
+      ) : null}
+      {ToggleBasketOverview ? (
+        <BasketOverview
+          isCurrent={isCurrent}
+          setIsCurrent={setIsCurrent}
+          toggleComponentsArr={toggleComponentsArr}
+        />
+      ) : null}
+      {ToggleCardForm ? (
+        <CardForm
+          isCurrent={isCurrent}
+          setIsCurrent={setIsCurrent}
+          toggleComponentsArr={toggleComponentsArr}
+        />
+      ) : null}
       {ToggleFlowComplete ? <FlowComplete toggleComponentsArr={toggleComponentsArr} /> : null}
 
       {/* {TogglePersonInfo ? <TicketDetails /> : <PersonInfo />} */}

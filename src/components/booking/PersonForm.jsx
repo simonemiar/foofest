@@ -1,6 +1,6 @@
 import { useRef, useContext } from "react";
 
-import { TicketBasketContext } from "../contexts/TicketBasketContext";
+import { TicketBasketContext } from "../../contexts/TicketBasketContext";
 
 export default function PersonForm(props) {
   const { ticketBasket, setTicketBasket } = useContext(TicketBasketContext);

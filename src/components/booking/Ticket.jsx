@@ -2,7 +2,7 @@ import { useState, useContext } from "react";
 import ReactCardFlip from "react-card-flip";
 import { Link } from "react-router-dom";
 
-import { TicketBasketContext } from "../contexts/TicketBasketContext";
+import { TicketBasketContext } from "../../contexts/TicketBasketContext";
 
 export default function Ticket(props) {
   const [isFlipped, setIsFlipped] = useState(false);

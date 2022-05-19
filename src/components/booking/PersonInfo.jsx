@@ -1,4 +1,4 @@
-import PersonForm from "../components/PersonForm";
+import PersonForm from "../booking/PersonForm";
 
 export default function TicketDetails(props) {
   return (

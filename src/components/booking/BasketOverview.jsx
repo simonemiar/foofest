@@ -1,6 +1,6 @@
 import { useState, useContext, useEffect } from "react";
 
-import { TicketBasketContext } from "../contexts/TicketBasketContext";
+import { TicketBasketContext } from "../../contexts/TicketBasketContext";
 
 export default function BasketOverview(props) {
   const { ticketBasket, setTicketBasket } = useContext(TicketBasketContext);
