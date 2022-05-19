@@ -1,4 +1,4 @@
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 
 import { TicketBasketContext } from "../contexts/TicketBasketContext";
 
@@ -21,16 +21,25 @@ export default function BasketOverview(props) {
   const totalTicketPrize = ticketBasket.ticketPrice * ticketBasket.ticketAmount;
   const totalTwoTent = ticketBasket.tent2PersonPrice * ticketBasket.tent2PersonAmount;
   const totalThreeTent = ticketBasket.tent3PersonPrice * ticketBasket.tent3PersonAmount;
-  const totalPrice =
-    totalTwoTent + totalThreeTent + (ticketBasket.isGreenCamping ? ticketBasket.greenCamping : 0);
-  const totalItems =
-    ticketBasket.tent2PersonAmount + ticketBasket.tent3PersonAmount + ticketBasket.isGreenCamping;
 
-  function testValues() {
-    setTicketBasket((old) => {
-      return { ...old, ticketAmount: 5, tent3PersonAmount: 3 };
-    });
-  }
+  const totalPrice =
+    totalTwoTent +
+    totalThreeTent +
+    (ticketBasket.isGreenCamping ? ticketBasket.greenCamping : 0) +
+    ticketBasket.ticketPrice * ticketBasket.ticketAmount;
+  const totalItems =
+    ticketBasket.tent2PersonAmount +
+    ticketBasket.tent3PersonAmount +
+    ticketBasket.isGreenCamping +
+    ticketBasket.ticketAmount;
+
+  useEffect(() => {
+    setToggleTent2Person(ticketBasket.tent2PersonAmount ? true : false);
+    setToggleTent3Person(ticketBasket.tent3PersonAmount ? true : false);
+    setToggleGreenCamping(ticketBasket.isGreenCamping ? true : false);
+  }, []);
+
+  // setBasketOvervies();
 
   //TicketAmount
 
@@ -183,7 +192,6 @@ export default function BasketOverview(props) {
         </div>
 
         <section className="overview_content">
-          <button onClick={testValues}>Set test values</button>
           <article className="ticket_row">
             <div className="ticket_name">
               <p id="ticket_type">Regular Ticket</p>
@@ -198,30 +206,31 @@ export default function BasketOverview(props) {
               <p className="total_ticket_price">{totalTicketPrize} kr.</p>
             </div>
           </article>
-          {
+
+          {toggleTent2Person ? (
             <article className="tent_row">
               <div className="tent_name">
                 <p>2 person tent</p>
               </div>
               <div className="tent_ui">
                 <button onClick={removeTwoTent}>-</button>
-                <span className="amount">{ticketBasket.tent2PersonAmount}</span>
+                <span className="amount" id="amount_tent">
+                  {ticketBasket.tent2PersonAmount}
+                </span>
                 <button onClick={addTwoTent}>+</button>
               </div>
 
               <div className="tent_total">
-                {ticketBasket.tent2PersonAmount > 1 ? totalTwoTent : ticketBasket.tent2PersonPrice}{" "}
-                kr.
+                <p>
+                  {ticketBasket.tent2PersonAmount > 1
+                    ? totalTwoTent
+                    : ticketBasket.tent2PersonPrice}{" "}
+                  kr.
+                </p>
               </div>
             </article>
-          }
-          {
-            // setToggleTent3Person(ticketBasket.tent3PersonAmount ? true : false)
-            // () => {
-            //   setToggleTent3Person(ticketBasket.tent3PersonAmount ? true : false);
-            //   console.log(setToggleTent3Person(ticketBasket.tent3PersonAmount ? true : false));
-            // }
-          }
+          ) : null}
+
           {toggleTent3Person ? (
             <article className="tent_row">
               <div className="tent_name">
@@ -235,13 +244,37 @@ export default function BasketOverview(props) {
               </div>
 
               <div className="tent_total">
-                {ticketBasket.tent3PersonAmount > 1
-                  ? totalThreeTent
-                  : ticketBasket.tent3PersonPrice}{" "}
-                kr.
+                <p>
+                  {ticketBasket.tent3PersonAmount > 1
+                    ? totalThreeTent
+                    : ticketBasket.tent3PersonPrice}{" "}
+                  kr.
+                </p>
               </div>
             </article>
           ) : null}
+
+          {toggleGreenCamping ? (
+            <article className="tent_row">
+              <div className="green_name">
+                <p>Green camping</p>
+                <p>Option to help change the world</p>
+              </div>
+              <div className="green_ui">
+                <input
+                  onChange={greenOption}
+                  type="checkbox"
+                  checked={ticketBasket.isGreenCamping}
+                  className="green-option_check"
+                ></input>
+              </div>
+
+              <div className="green_total">
+                <p>249 kr.</p>
+              </div>
+            </article>
+          ) : null}
+
           <article className="fee_row">
             <div className="fee_name">
               <p>Booking fee</p>
