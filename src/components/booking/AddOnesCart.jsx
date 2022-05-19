@@ -1,6 +1,6 @@
 import { useState, useContext } from "react";
 
-import { TicketBasketContext } from "../contexts/TicketBasketContext";
+import { TicketBasketContext } from "../../contexts/TicketBasketContext";
 
 export default function AddOnesCart() {
   const { ticketBasket, setTicketBasket } = useContext(TicketBasketContext);

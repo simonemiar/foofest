@@ -1,6 +1,6 @@
 import { useContext } from "react";
 
-import { TicketBasketContext } from "../contexts/TicketBasketContext";
+import { TicketBasketContext } from "../../contexts/TicketBasketContext";
 
 export default function CampingArea() {
   const { setTicketBasket } = useContext(TicketBasketContext);

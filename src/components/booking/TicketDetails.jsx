@@ -1,9 +1,9 @@
 import { Link } from "react-router-dom";
 
-import CampingArea from "../components/CampingArea";
-import TicketCart from "../components/TicketCart";
-import AddOnesCart from "../components/AddOnesCart";
-import ticketImg from "../assets/svg/ticket.svg";
+import CampingArea from "../booking/CampingArea";
+import TicketCart from "../booking/TicketCart";
+import AddOnesCart from "../booking/AddOnesCart";
+import ticketImg from "../../assets/svg/ticket.svg";
 
 export default function TicketDetails(props) {
   return (
