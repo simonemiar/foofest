@@ -60,7 +60,15 @@ export default function TicketCart(props) {
 
       <section className="ticket_cart_content">
         <div className="ticket_name">
-          <p id="ticket_type">{ticketBasket.ticketType}</p>
+          <p id="ticket_type">
+            {ticketBasket.ticketType}
+            {/* {
+              (ticketBasket.ticketType =
+                "Regular" || "VIP"
+                  ? alert("You need to pick at ticket type, back to pick one")
+                  : null)
+            } */}
+          </p>
           <p>Ticket</p>
         </div>
         <div className="amount_ui">
