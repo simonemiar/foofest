@@ -27,6 +27,10 @@
   background-color: color.$transparentblue;
   border: none;
   color: color.$white;
+
+  outline-style: none;
+  box-shadow: none;
+  border-color: transparent;
 }
 
 .full_phone > div,
@@ -45,6 +49,16 @@
 }
 
 // Validation:
+
+#person_form input[type="text"]:focus {
+  border: 2px solid #a08cc2;
+}
+#person_form input[type="tel"]:focus {
+  border: 2px solid #a08cc2;
+}
+#person_form input[type="email"]:focus {
+  border: 2px solid #a08cc2;
+}
 
 #person_form input:invalid:not(:placeholder-shown, :focus) {
   background-position: right 16px center;

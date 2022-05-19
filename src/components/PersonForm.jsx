@@ -82,16 +82,9 @@ export default function PersonForm(props) {
             <label htmlFor="phone_num" required>
               Phone number
             </label>
-            <input type="tel" id="phone_num" inputMode="tel" pattern="" maxLength="8" />
+            <input type="tel" id="phone_num" inputMode="tel" pattern="[0-9]+" maxLength="8" />
           </div>
         </div>
-        <div className="street">
-          <label htmlFor="street" required>
-            Street
-          </label>
-          <input type="text" id="street" />
-        </div>
-
         <div className="street">
           <label htmlFor="street" required>
             Street
@@ -101,34 +94,20 @@ export default function PersonForm(props) {
         <div className="zip_city">
           <div className="zip_code">
             <label htmlFor="zip_code">Zip code</label>
-            <input type="text" id="zip_code" pattern="^\d{4}$" maxLength="4" required />
-            <div className="zip_city">
-              <div className="zip_code">
-                <label htmlFor="zip_code">Code</label>
-                <input
-                  type="text"
-                  id="zip_code"
-                  inputMode="numeric"
-                  // pattern="^\d{4}$"
-                  pattern="[0-9]+"
-                  maxLength="4"
-                  required
-                />
-              </div>
-              <div className="city">
-                <label htmlFor="city" required>
-                  City
-                </label>
-                <input type="text" id="city" />
-              </div>
-            </div>
-            <div className="country">
-              <label htmlFor="country" required>
-                Country
-              </label>
-              <input type="text" id="country" />
-            </div>
+            <input type="text" id="zip_code" inputMode="numeric" pattern="[0-9]+" maxLength="4" required />
           </div>
+          <div className="city">
+            <label htmlFor="city" required>
+              City
+            </label>
+            <input type="text" id="city" />
+          </div>
+        </div>
+        <div className="country">
+          <label htmlFor="country" required>
+            Country
+          </label>
+          <input type="text" id="country" />
         </div>
         {/* <div className="booking_flow_nav">
         <button
