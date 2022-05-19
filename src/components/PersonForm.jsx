@@ -4,6 +4,7 @@ export default function PersonForm() {
   const formElm = useRef(null);
 
   function submitted(e) {
+    console.log("submit complete");
     e.preventDefault();
 
     fetch("dbendpoint/orders", {
@@ -60,7 +61,7 @@ export default function PersonForm() {
       </div>
       <div className="zip_city">
         <div className="zip_code">
-          <label htmlFor="zip_code">Code</label>
+          <label htmlFor="zip_code">Zip code</label>
           <input type="text" id="zip_code" pattern="^\d{4}$" maxLength="4" required />
         </div>
         <div className="city">
