@@ -16,15 +16,7 @@ export const TicketBasketProvider = ({ children }) => {
     isGreenCamping: false,
     greenCamping: 249,
   });
-  // {
-  //   ticketType: "",
-  //   ticketAmount: null,
-  //   bookingFee: 99,
-  //   campingArea: "",
-  //   tent2PersonAmount: null,
-  //   tent3PersonAmount: null,
-  //   greenCamping: null,
-  // }
+
   const value = {
     ticketBasket,
     setTicketBasket,
