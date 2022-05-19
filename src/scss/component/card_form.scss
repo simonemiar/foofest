@@ -1,7 +1,9 @@
+@use "../base/color";
+
 #card_form {
   max-width: 420px;
-  background-color: #202033;
-  color: #f5f5f5;
+  background-color: color.$darkblue;
+  color: color.$white;
 
   display: grid;
   grid-template-columns: auto auto;
@@ -13,9 +15,9 @@
 #card_form input {
   width: 100%;
   padding: 0.5rem;
-  background-color: #34334d;
+  background-color: color.$transparentblue;
   border: none;
-  color: #f5f5f5;
+  color: color.$white;
 }
 
 #card_form .field-container:first-of-type {

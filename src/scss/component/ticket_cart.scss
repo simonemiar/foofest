@@ -1,5 +1,7 @@
+@use "../base/color";
+
 .ticket_cart {
-  background-color: #202033;
+  background-color: color.$darkblue;
 
   .top {
     display: grid;
@@ -9,7 +11,7 @@
     background-color: #34334d;
 
     p {
-      color: #f5f5f5;
+      color: color.$white;
     }
 
     p:nth-child(1) {
@@ -30,7 +32,7 @@
   padding: 1rem;
 
   p {
-    color: #f5f5f5;
+    color: color.$white;
   }
 
   .ticket_name {
@@ -62,20 +64,20 @@
       padding: 7px;
       border: none;
       text-align: center;
-      color: #f5f5f5;
+      color: color.$white;
     }
 
     #amount {
-      color: #f5f5f5;
+      color: color.$white;
       padding-inline: 0.4rem;
     }
 
     #ticket_incre {
-      background-color: #34334d;
+      background-color: color.$transparentblue;
       padding: 7px;
       border: none;
       text-align: center;
-      color: #f5f5f5;
+      color: color.$white;
     }
   }
 

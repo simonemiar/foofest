@@ -4,7 +4,7 @@ export default function TicketDetails(props) {
   return (
     <section id="person_info">
       <h2 className="heading">Your personal information</h2>
-      <PersonForm />
+      <PersonForm props={props} />
       <div className="booking_flow_nav">
         <button
           className="back_btn shape"

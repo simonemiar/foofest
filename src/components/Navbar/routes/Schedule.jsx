@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 export default function Schedule(){
     return (
@@ -31,21 +31,3 @@ function Details(){
         </div>
       );
 }
-
-//BELOW IS WORKING 
-// // Fetch all the details element.
-// const detailss = document.querySelectorAll("details");
-
-// // Add the onclick listeners.
-// detailss.forEach((targetDetail) => {
-//   targetDetail.addEventListener("click", () => {
-//     // Close all the details that are not targetDetail.
-//     detailss.forEach((detail) => {
-//       if (detail !== targetDetail) {
-//         detail.removeAttribute("open");
-//       }
-//     });
-//   });
-// });
-
-
