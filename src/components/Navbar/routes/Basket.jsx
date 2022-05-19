@@ -6,7 +6,6 @@ import CardForm from "../../booking/CardForm";
 import BasketOverview from "../../booking/BasketOverview";
 import FlowComplete from "../../booking/FlowComplete";
 import Timer from "../../booking/Timer";
-// import Header from "../components/Header";
 import ProgressBar from "../../booking/ProgressBar";
 
 export default function Basket() {
@@ -62,24 +61,6 @@ export default function Basket() {
         />
       ) : null}
       {ToggleFlowComplete ? <FlowComplete toggleComponentsArr={toggleComponentsArr} /> : null}
-
-      {/* {TogglePersonInfo ? <TicketDetails /> : <PersonInfo />} */}
-
-      {/* <button onClick={() => TogglePersonInfo(true)}>Person info</button>
-
-      <button onClick={() => setTogglePersonInfo(false)}>Details</button> */}
-
-      {/* <BasketOverview />
-
-      {TogglePersonInfo ? (
-        <PersonInfo TogglePersonInfo={TogglePersonInfo} setTogglePersonInfo={setTogglePersonInfo} />
-      ) : (
-        <TicketDetails TogglePersonInfo={TogglePersonInfo} setTogglePersonInfo={setTogglePersonInfo} />
-      )}
-      <CardForm /> */}
-
-      {/* {showPersonInfo ? <PersonInfo showPersonInfo={showPersonInfo} setShowPersonInfo={setShowPersonInfo} /> : <TicketDetails showPersonInfo={showPersonInfo} setShowPersonInfo={setShowPersonInfo} />}
-      <CardForm /> */}
     </main>
   );
 }

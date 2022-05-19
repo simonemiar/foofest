@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { NavLink } from "react-router-dom";
 import "./NavBar.css";
 
@@ -17,39 +17,20 @@ function NavBar() {
 
           <ul className={click ? "nav-menu active" : "nav-menu"}>
             <li className="nav-item">
-              <NavLink
-                exact
-                to="/"
-                className="active"
-                className="nav-links"
-                onClick={handleClick}
-              >
+              <NavLink exact to="/" className="nav-links active" onClick={handleClick}>
                 Home
               </NavLink>
             </li>
             <li className="nav-item">
-              <NavLink
-                exact
-                to="/schedule"
-                className="active"
-                className="nav-links"
-                onClick={handleClick}
-              >
+              <NavLink exact to="/schedule" className="nav-links active" onClick={handleClick}>
                 Schedule
               </NavLink>
             </li>
             <li className="nav-item">
-              <NavLink
-                exact
-                to="/tickets"
-                className="active"
-                className="nav-links"
-                onClick={handleClick}
-              >
+              <NavLink exact to="/tickets" className="nav-links active" onClick={handleClick}>
                 Tickets
               </NavLink>
             </li>
-            
           </ul>
           {/* BURGER MENU ICON  */}
           <div className="nav-icon" onClick={handleClick}>

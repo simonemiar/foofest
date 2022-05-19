@@ -3,7 +3,7 @@ import { useRef, useContext } from "react";
 import { TicketBasketContext } from "../../contexts/TicketBasketContext";
 
 export default function PersonForm(props) {
-  const { ticketBasket, setTicketBasket } = useContext(TicketBasketContext);
+  const { setTicketBasket } = useContext(TicketBasketContext);
   const formElm = useRef(null);
 
   let btnText = "Send data";
@@ -11,10 +11,6 @@ export default function PersonForm(props) {
   function submitted(e) {
     e.preventDefault();
     console.log(props);
-
-    // props.setIsCurrent(props.isCurrent + 1);
-    // console.log(props.toggleComponentsArr);
-    // console.log("Yo", props.toggleComponentsArr.TogglePersonInfo);
 
     const personInfo = {
       fullname: formElm.current.elements.fullname.value,
@@ -30,28 +26,7 @@ export default function PersonForm(props) {
     setTicketBasket((old) => {
       return { ...old, personInfo };
     });
-    // console.log(personInfo);
-
     alert("Your info is saved, press the coninue");
-
-    // props.toggleComponentsArr.setTogglePersonInfo(false);
-    // props.toggleComponentsArr.setToggleBasketOverview(true);
-    // props.setIsCurrent(props.isCurrent + 1);
-
-    // fetch("dbendpoint/orders", {
-    //   method: "post",
-    //   headers: {
-    //     "Content-Type": "application/json",
-    //   },
-    //   body: JSON.stringify({
-    //     fullname: formElm.current.elements.fullname.value,
-    //     email: formElm.current.elements.email.value,
-    //   })
-    //     .then((res) => res.json())
-    //     .then((data) => {}),
-    // });
-    // console.log(formElm.current.elements.fullname.value);
-    // console.log(formElm.current.elements.email.value);
   }
 
   return (
@@ -98,7 +73,6 @@ export default function PersonForm(props) {
               type="text"
               id="zip_code"
               inputMode="numeric"
-              // pattern="^\d{4}$"
               pattern="[0-9]+"
               maxLength="4"
               required
