@@ -8,6 +8,8 @@ import Schedule from "./components/Navbar/routes/Schedule";
 import Tickets from "./components/Navbar/routes/Tickets";
 import Basket from "./components/Navbar/routes/Basket";
 import { TicketBasketProvider } from "./contexts/TicketBasketContext";
+//
+import { useState, useEffect } from "react";
 
 function App() {
 
@@ -16,12 +18,12 @@ function App() {
       <TicketBasketProvider>
         <NavBar />
 
-          <Routes>
-            <Route exact path="/" element={<Home />} />
-            <Route path="/schedule" element={<Schedule />} />
-            <Route path="/basket" element={<Basket />} />
-            <Route path="/tickets" element={<Tickets />} />
-          </Routes>  
+        <Routes>
+          <Route exact path="/" element={<Home />} />
+          <Route path="/schedule" element={<Schedule />} />
+          <Route path="/basket" element={<Basket />} />
+          <Route path="/tickets" element={<Tickets />} />
+        </Routes>
       </TicketBasketProvider>
     </div>
   );
