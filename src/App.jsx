@@ -1,17 +1,3 @@
-<<<<<<< HEAD
-import { useState, useEffect } from "react";
-import { Routes, Route, Link } from "react-router-dom";
-
-import Header from "./components/Header";
-import Home from "./routes/Home";
-import Schedule from "./routes/Schedule";
-import Basket from "./routes/Basket";
-import Tickets from "./routes/Tickets";
-
-import { TicketBasketProvider } from "./contexts/TicketBasketContext";
-
-import "./scss/style.scss";
-=======
 import "./scss/style.scss";
 import Header from "./components/Header";
 import { Link } from "react-router-dom";
@@ -25,7 +11,6 @@ import Tickets from "./components/Navbar/routes/Tickets";
 import Basket from "./components/Navbar/routes/Basket";
 // 
 import { useState, useEffect } from "react";
->>>>>>> brugermenu
 
 function App() {
   const [bands, setBands] = useState([]);
@@ -70,23 +55,10 @@ function App() {
         <nav>
           <Link to="/">Home</Link> | <Link to="/schedule">Schedule</Link> | <Link to="/tickets">Tickets</Link>
         </nav>
-<<<<<<< HEAD
-      </header>
-      <TicketBasketProvider>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/schedule" element={<Schedule />} />
-          <Route path="/basket" element={<Basket />} />
-          <Route path="/tickets" element={<Tickets />} />
-        </Routes>
-        <Header />
-      </TicketBasketProvider>
-=======
       </header> */}
       
       
       <Header />
->>>>>>> brugermenu
     </div>
   );
 }

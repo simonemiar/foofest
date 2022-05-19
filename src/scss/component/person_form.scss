@@ -9,9 +9,9 @@
 
 #person_form {
   max-width: 420px;
-  background-color: #202033;
+  background-color: color.$darkblue;
   padding: 0.7rem;
-  color: #f5f5f5;
+  color: color.$white;
   display: flex;
   flex-direction: column;
   gap: 1rem;
@@ -22,9 +22,9 @@
 #person_form select {
   width: 100%;
   padding: 0.5rem;
-  background-color: #34334d;
+  background-color: color.$transparentblue;
   border: none;
-  color: #f5f5f5;
+  color: color.$white;
 }
 
 .full_phone > div,
