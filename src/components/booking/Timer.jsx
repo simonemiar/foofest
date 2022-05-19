@@ -1,6 +1,4 @@
-// source:
-// https://www.codegrepper.com/code-examples/javascript/react+countdown+timer+minutes+seconds
-import React from "react";
+// source: https://www.codegrepper.com/code-examples/javascript/react+countdown+timer+minutes+seconds
 import { useState, useEffect } from "react";
 
 const Timer = (props) => {
@@ -35,7 +33,11 @@ const Timer = (props) => {
   return (
     <div className="timer_container">
       <h2>BASKET</h2>
-      {minutes === 0 && seconds === 0 ? ended() : <h3>TIME LEFT: {`${minutes}:${seconds < 10 ? `0${seconds}` : seconds} `}</h3>}
+      {minutes === 0 && seconds === 0 ? (
+        ended()
+      ) : (
+        <h3>TIME LEFT: {`${minutes}:${seconds < 10 ? `0${seconds}` : seconds} `}</h3>
+      )}
     </div>
   );
 };

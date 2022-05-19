@@ -1,5 +1,4 @@
-// Source:
-//https://codepen.io/vijayshinde/pen/eYGMMJY?editors=1100
+// Source: https://codepen.io/vijayshinde/pen/eYGMMJY?editors=1100
 
 export default function ProgressBar({ isCurrent, setIsCurrent }) {
   return (

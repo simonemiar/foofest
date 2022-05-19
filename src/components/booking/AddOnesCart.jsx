@@ -5,13 +5,6 @@ import { TicketBasketContext } from "../../contexts/TicketBasketContext";
 export default function AddOnesCart() {
   const { ticketBasket, setTicketBasket } = useContext(TicketBasketContext);
 
-  // Tent price states
-  // const [twoPersonTent, setTwoPersonTent] = useState(0);
-  // const [threePersonTent, setThreePersonTent] = useState(0);
-  // Green option states
-  // const [greenOptionPrice, setGreenOptionPrice] = useState(0);
-  // const [includeGreenOption, setIncludeGreenOption] = useState(false);
-
   // Cart UI varibles:
   const totalTwoTent = ticketBasket.tent2PersonPrice * ticketBasket.tent2PersonAmount;
   const totalThreeTent = ticketBasket.tent3PersonPrice * ticketBasket.tent3PersonAmount;
@@ -27,12 +20,8 @@ export default function AddOnesCart() {
     ticketBasket.isGreenCamping +
     ticketBasket.ticketAmount;
 
-  // const totalPrice = totalTwoTent + totalThreeTent + greenOptionPrice;
-  // const totalItems = twoPersonTent + threePersonTent + includeGreenOption;
-
   // Functions for 2-person tent
   function addTwoTent() {
-    // setTwoPersonTent(twoPersonTent + 1);
     if (ticketBasket.tent2PersonAmount === ticketBasket.ticketAmount) {
       alert("You can only have as many tent as tickets");
     } else {
@@ -47,7 +36,6 @@ export default function AddOnesCart() {
 
   function removeTwoTent() {
     if (ticketBasket.tent2PersonAmount === 0) {
-      // setTwoPersonTent(0);
       setTicketBasket((old) => {
         return {
           ...old,
@@ -55,7 +43,6 @@ export default function AddOnesCart() {
         };
       });
     } else {
-      // setTwoPersonTent(twoPersonTent - 1);
       setTicketBasket((old) => {
         return { ...old, tent2PersonAmount: ticketBasket.tent2PersonAmount - 1 };
       });
@@ -64,7 +51,6 @@ export default function AddOnesCart() {
 
   // Functions for 3-person tent
   function addThreeTent() {
-    // setThreePersonTent(threePersonTent + 1);
     if (ticketBasket.tent3PersonAmount === ticketBasket.ticketAmount) {
       alert("You can only have as many tent as tickets");
     } else {
@@ -79,8 +65,6 @@ export default function AddOnesCart() {
 
   function removeThreeTent() {
     if (ticketBasket.tent3PersonAmount === 0) {
-      // setThreePersonTent(0);
-
       setTicketBasket((old) => {
         return {
           ...old,
@@ -88,7 +72,6 @@ export default function AddOnesCart() {
         };
       });
     } else {
-      // setThreePersonTent(threePersonTent - 1);
       setTicketBasket((old) => {
         return { ...old, tent3PersonAmount: ticketBasket.tent3PersonAmount - 1 };
       });
@@ -99,8 +82,6 @@ export default function AddOnesCart() {
   function greenOption(e) {
     const checked = e.target.checked;
     if (checked) {
-      // setGreenOptionPrice(249);
-      // setIncludeGreenOption(true);
       setTicketBasket((old) => {
         return {
           ...old,
@@ -108,8 +89,6 @@ export default function AddOnesCart() {
         };
       });
     } else {
-      // setGreenOptionPrice(0);
-      // setIncludeGreenOption(false);
       setTicketBasket((old) => {
         return {
           ...old,
