@@ -19,6 +19,9 @@ export default function Ticket(props) {
         ticketType: props.ticketType,
         ticketAmount: 1,
         ticketPrice: props.ticketPrice,
+        tent2PersonAmount: 0,
+        tent3PersonAmount: 0,
+        isGreenCamping: false,
       };
     });
 
