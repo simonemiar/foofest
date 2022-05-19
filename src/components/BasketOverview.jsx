@@ -93,6 +93,7 @@ export default function BasketOverview(props) {
           onClick={() => {
             props.toggleComponentsArr.setToggleBasketOverview(false);
             props.toggleComponentsArr.setTogglePersonInfo(true);
+            props.setIsCurrent(props.isCurrent - 1);
           }}
         >
           Back
@@ -102,6 +103,7 @@ export default function BasketOverview(props) {
           onClick={() => {
             props.toggleComponentsArr.setToggleBasketOverview(false);
             props.toggleComponentsArr.setToggleCardForm(true);
+            props.setIsCurrent(props.isCurrent + 1);
           }}
         >
           Continue

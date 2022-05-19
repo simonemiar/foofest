@@ -15,6 +15,7 @@ export default function Basket() {
   const [ToggleBasketOverview, setToggleBasketOverview] = useState(false);
   const [ToggleCardForm, setToggleCardForm] = useState(false);
   const [ToggleFlowComplete, setToggleFlowComplete] = useState(false);
+  const [isCurrent, setIsCurrent] = useState(1);
 
   const toggleComponentsArr = {
     ToggleTicketDetails: ToggleTicketDetails,
@@ -30,11 +31,12 @@ export default function Basket() {
   };
   return (
     <main>
-      <ProgressBar />
-      {ToggleTicketDetails ? <TicketDetails toggleComponentsArr={toggleComponentsArr} /> : null}
-      {TogglePersonInfo ? <PersonInfo toggleComponentsArr={toggleComponentsArr} /> : null}
-      {ToggleBasketOverview ? <BasketOverview toggleComponentsArr={toggleComponentsArr} /> : null}
-      {ToggleCardForm ? <CardForm toggleComponentsArr={toggleComponentsArr} /> : null}
+      <Timer />
+      <ProgressBar isCurrent={isCurrent} setIsCurrent={setIsCurrent} />
+      {ToggleTicketDetails ? <TicketDetails isCurrent={isCurrent} setIsCurrent={setIsCurrent} toggleComponentsArr={toggleComponentsArr} /> : null}
+      {TogglePersonInfo ? <PersonInfo isCurrent={isCurrent} setIsCurrent={setIsCurrent} toggleComponentsArr={toggleComponentsArr} /> : null}
+      {ToggleBasketOverview ? <BasketOverview isCurrent={isCurrent} setIsCurrent={setIsCurrent} toggleComponentsArr={toggleComponentsArr} /> : null}
+      {ToggleCardForm ? <CardForm isCurrent={isCurrent} setIsCurrent={setIsCurrent} toggleComponentsArr={toggleComponentsArr} /> : null}
       {ToggleFlowComplete ? <FlowComplete toggleComponentsArr={toggleComponentsArr} /> : null}
 
       {/* {TogglePersonInfo ? <TicketDetails /> : <PersonInfo />} */}
@@ -51,7 +53,6 @@ export default function Basket() {
         <TicketDetails TogglePersonInfo={TogglePersonInfo} setTogglePersonInfo={setTogglePersonInfo} />
       )}
       <CardForm /> */}
-      <Timer />
 
       {/* {showPersonInfo ? <PersonInfo showPersonInfo={showPersonInfo} setShowPersonInfo={setShowPersonInfo} /> : <TicketDetails showPersonInfo={showPersonInfo} setShowPersonInfo={setShowPersonInfo} />}
       <CardForm /> */}

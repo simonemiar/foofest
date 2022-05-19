@@ -2,9 +2,8 @@
   background-color: #202033;
 
   #camping-area_main-content {
-    padding-inline: 0.7rem;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+    display: flex;
+    justify-content: space-between;
   }
 
   p {
@@ -47,8 +46,8 @@
   }
 
   .svg_img {
-    width: 15rem;
-    height: 15rem;
+    min-width: 12rem;
+    min-height: 12rem;
     background-color: #f5f5f5;
   }
 }

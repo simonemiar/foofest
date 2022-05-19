@@ -2,33 +2,34 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-block: 3rem;
 }
 .steps_container {
   list-style-type: none;
   display: flex;
-  padding: 20px 10px;
   position: relative;
   z-index: 10;
+  min-width: 24rem;
 }
 
 .step-item {
-  padding: 0 20px;
+  padding: 0 15px;
   flex-basis: 0;
   -webkit-box-flex: 1;
   -ms-flex-positive: 1;
   flex-grow: 1;
-  max-width: 100%;
   display: flex;
   flex-direction: column;
   text-align: center;
   min-width: 70px;
+  width: 110px;
   position: relative;
 }
 .step-item + .step-item:after {
   content: "";
   position: absolute;
   left: 0;
-  top: 23px;
+  top: 16px;
   background: #f5f5f5;
   width: 100%;
   height: 3px;
@@ -36,8 +37,6 @@
   z-index: -10;
 }
 .progress-count {
-  height: 40px;
-  width: 40px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -46,9 +45,8 @@
   margin: 0 auto;
   position: relative;
   z-index: 10;
-  color: transparent;
-  width: 100px;
-  height: 50px;
+  width: 5rem;
+  height: 2rem;
   background-color: #34334d;
   transform: skewX(-15deg);
   color: #f5f5f5;
@@ -65,4 +63,19 @@
 
 .current_item .progress-count {
   background-color: #f39b13;
+}
+
+@media only screen and (min-width: 850px) {
+  .step-item + .step-item:after {
+    top: 23px;
+  }
+
+  .progress-count {
+    width: 6rem;
+    height: 3rem;
+  }
+
+  .steps_container {
+    min-width: 55rem;
+  }
 }

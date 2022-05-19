@@ -7,6 +7,7 @@
   grid-template-columns: auto auto;
   gap: 1rem;
   grid-template-areas: "name name" "number number" "expiration security" "button button";
+  margin-inline: auto;
 }
 
 #card_form input {
