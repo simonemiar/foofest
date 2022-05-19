@@ -3,7 +3,7 @@ import PersonForm from "../components/PersonForm";
 export default function TicketDetails(props) {
   return (
     <section id="person_info">
-      <h2>Your personal information</h2>
+      <h2 className="heading">Your personal information</h2>
       <PersonForm />
       <div className="booking_flow_nav">
         <button
@@ -11,6 +11,7 @@ export default function TicketDetails(props) {
           onClick={() => {
             props.toggleComponentsArr.setTogglePersonInfo(false);
             props.toggleComponentsArr.setToggleTicketDetails(true);
+            props.setIsCurrent(props.isCurrent - 1);
           }}
         >
           Back
@@ -20,6 +21,7 @@ export default function TicketDetails(props) {
           onClick={() => {
             props.toggleComponentsArr.setTogglePersonInfo(false);
             props.toggleComponentsArr.setToggleBasketOverview(true);
+            props.setIsCurrent(props.isCurrent + 1);
           }}
         >
           Continue

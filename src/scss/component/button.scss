@@ -2,13 +2,24 @@
 @use "../base/fonts";
 
 .back_btn {
-  padding: 0.5rem;
-  background-color: color.$white;
-  color: color.$darkblue;
+  width: 5.5rem;
+  height: 1.875rem;
+  background-color: color.$darkblue;
+  color: color.$white;
+  border: 1px solid color.$orange;
+  cursor: pointer;
 }
 
 .continue_btn {
-  padding: 0.5rem;
+  width: 5.5rem;
+  height: 1.875rem;
   background-color: color.$orange;
-  color: color.$white;
+  color: color.$darkblue;
+  border: none;
+  cursor: pointer;
 }
+
+//Width:  88px
+//
+// Height :  30.71px
+//

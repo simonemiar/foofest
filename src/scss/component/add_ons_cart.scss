@@ -1,6 +1,5 @@
 #add-ons_cart {
   background-color: #202033;
-  padding: 0.7rem;
 
   p {
     color: #f5f5f5;
@@ -20,6 +19,9 @@
 
     p:nth-child(1) {
       text-align: left;
+    }
+    p:nth-child(2) {
+      text-align: center;
     }
     p:nth-child(3) {
       text-align: right;
@@ -46,6 +48,10 @@
     margin-top: 2rem;
   }
 
+  .tent_ui {
+    text-align: center;
+  }
+
   .three-person_ui {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
@@ -69,10 +75,16 @@
     }
   }
 
+  .green_ui {
+    text-align: center;
+    margin-right: 0.7rem;
+  }
+
   .green_camping_ui {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     margin-top: 2rem;
+    margin-left: 0.7rem;
 
     .green_total {
       text-align: right;
