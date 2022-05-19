@@ -1,4 +1,4 @@
-import { Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import NavBar from "./components/Navbar/NavBar";
 import Home from "./components/Navbar/routes/Home";
@@ -14,13 +14,15 @@ function App() {
   return (
     <div className="App">
       <TicketBasketProvider>
-        <NavBar />
-        <Routes>
-          <Route exact="true" path="/" element={<Home />} />
-          <Route path="/schedule" element={<Schedule />} />
-          <Route path="/basket" element={<Basket />} />
-          <Route path="/tickets" element={<Tickets />} />
-        </Routes>
+        <BrowserRouter>
+          <NavBar />
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/schedule" element={<Schedule />} />
+            <Route path="/basket" element={<Basket />} />
+            <Route path="/tickets" element={<Tickets />} />
+          </Routes>
+        </BrowserRouter>
       </TicketBasketProvider>
     </div>
   );
