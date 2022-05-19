@@ -1,11 +1,15 @@
 import "./scss/style.scss";
 import Header from "./components/Header";
-import { Routes, Route, Link } from "react-router-dom";
-import Home from "./routes/Home";
-import Schedule from "./routes/Schedule";
-import Basket from "./routes/Basket";
-import Tickets from "./routes/Tickets";
+import { Link } from "react-router-dom";
 
+// simone test
+import NavBar from "./components/Navbar/NavBar";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Home from "./components/Navbar/routes/Home";
+import Schedule from "./components/Navbar/routes/Schedule";
+import Tickets from "./components/Navbar/routes/Tickets";
+import Basket from "./components/Navbar/routes/Basket";
+// 
 import { useState, useEffect } from "react";
 
 function App() {
@@ -36,17 +40,23 @@ function App() {
 
   return (
     <div className="App">
-      <header>
+      
+        <NavBar />
+
+          <Routes>
+            <Route exact path="/" element={<Home />} />
+            <Route path="/schedule" element={<Schedule />} />
+            <Route path="/basket" element={<Basket />} />
+            <Route path="/tickets" element={<Tickets />} />
+          </Routes>
+    
+      
+      {/* <header>
         <nav>
           <Link to="/">Home</Link> | <Link to="/schedule">Schedule</Link> | <Link to="/tickets">Tickets</Link>
         </nav>
-      </header>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/schedule" element={<Schedule />} />
-        <Route path="/basket" element={<Basket />} />
-        <Route path="/tickets" element={<Tickets />} />
-      </Routes>
+      </header> */}
+      
       
       <Header />
     </div>
