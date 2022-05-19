@@ -1,46 +1,13 @@
 import { useContext } from "react";
 
 import { TicketBasketContext } from "../../contexts/TicketBasketContext";
+import { addTicket, removeTicket } from "./ticketFunction";
 
 export default function TicketCart(props) {
   const { ticketBasket, setTicketBasket } = useContext(TicketBasketContext);
 
   const totalTicketPrize =
     ticketBasket.ticketPrice * ticketBasket.ticketAmount + ticketBasket.bookingFee;
-
-  function addTicket() {
-    if (ticketBasket.ticketAmount === 5) {
-      alert("You can max buy 5 tickets a the time");
-    } else {
-      setTicketBasket((old) => {
-        return {
-          ...old,
-          ticketAmount: old.ticketAmount + 1,
-        };
-      });
-    }
-
-    console.log(ticketBasket);
-  }
-
-  function removeTicket() {
-    if (ticketBasket.ticketAmount === 1) {
-      setTicketBasket((old) => {
-        return {
-          ...old,
-          ticketAmount: (old.ticketAmount = 1),
-        };
-      });
-      alert("You need to have minimum 1 ticket");
-    } else {
-      setTicketBasket((old) => {
-        return {
-          ...old,
-          ticketAmount: old.ticketAmount - 1,
-        };
-      });
-    }
-  }
 
   return (
     <section className="ticket_cart">
@@ -64,11 +31,11 @@ export default function TicketCart(props) {
           <p>Ticket</p>
         </div>
         <div className="amount_ui">
-          <button onClick={removeTicket} id="ticket_decre">
+          <button onClick={() => removeTicket(ticketBasket, setTicketBasket)} id="ticket_decre">
             -
           </button>
           <span id="amount">{ticketBasket.ticketAmount}</span>
-          <button onClick={addTicket} id="ticket_incre">
+          <button onClick={() => addTicket(ticketBasket, setTicketBasket)} id="ticket_incre">
             +
           </button>
         </div>

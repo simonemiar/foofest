@@ -1,7 +1,13 @@
-import { useState, useContext } from "react";
+import { useContext } from "react";
 
 import { TicketBasketContext } from "../../contexts/TicketBasketContext";
-
+import {
+  addTwoTent,
+  removeTwoTent,
+  addThreeTent,
+  removeThreeTent,
+  // greenOption,
+} from "./ticketFunction";
 export default function AddOnesCart() {
   const { ticketBasket, setTicketBasket } = useContext(TicketBasketContext);
 
@@ -19,64 +25,6 @@ export default function AddOnesCart() {
     ticketBasket.tent3PersonAmount +
     ticketBasket.isGreenCamping +
     ticketBasket.ticketAmount;
-
-  // Functions for 2-person tent
-  function addTwoTent() {
-    if (ticketBasket.tent2PersonAmount === ticketBasket.ticketAmount) {
-      alert("You can only have as many tent as tickets");
-    } else {
-      setTicketBasket((old) => {
-        return {
-          ...old,
-          tent2PersonAmount: ticketBasket.tent2PersonAmount + 1,
-        };
-      });
-    }
-  }
-
-  function removeTwoTent() {
-    if (ticketBasket.tent2PersonAmount === 0) {
-      setTicketBasket((old) => {
-        return {
-          ...old,
-          tent2PersonAmount: (ticketBasket.tent2PersonAmount = 0),
-        };
-      });
-    } else {
-      setTicketBasket((old) => {
-        return { ...old, tent2PersonAmount: ticketBasket.tent2PersonAmount - 1 };
-      });
-    }
-  }
-
-  // Functions for 3-person tent
-  function addThreeTent() {
-    if (ticketBasket.tent3PersonAmount === ticketBasket.ticketAmount) {
-      alert("You can only have as many tent as tickets");
-    } else {
-      setTicketBasket((old) => {
-        return {
-          ...old,
-          tent3PersonAmount: ticketBasket.tent3PersonAmount + 1,
-        };
-      });
-    }
-  }
-
-  function removeThreeTent() {
-    if (ticketBasket.tent3PersonAmount === 0) {
-      setTicketBasket((old) => {
-        return {
-          ...old,
-          tent3PersonAmount: (ticketBasket.tent3PersonAmount = 0),
-        };
-      });
-    } else {
-      setTicketBasket((old) => {
-        return { ...old, tent3PersonAmount: ticketBasket.tent3PersonAmount - 1 };
-      });
-    }
-  }
 
   // Function for green option add-on
   function greenOption(e) {
@@ -116,9 +64,9 @@ export default function AddOnesCart() {
             <p>Tent</p>
           </div>
           <div className="tent_ui">
-            <button onClick={removeTwoTent}>-</button>
+            <button onClick={() => removeTwoTent(ticketBasket, setTicketBasket)}>-</button>
             <span className="amount">{ticketBasket.tent2PersonAmount}</span>
-            <button onClick={addTwoTent}>+</button>
+            <button onClick={() => addTwoTent(ticketBasket, setTicketBasket)}>+</button>
           </div>
 
           <div className="tent_total">
@@ -132,9 +80,9 @@ export default function AddOnesCart() {
             <p>Tent</p>
           </div>
           <div className="tent_ui">
-            <button onClick={removeThreeTent}>-</button>
+            <button onClick={() => removeThreeTent(ticketBasket, setTicketBasket)}>-</button>
             <span className="amount">{ticketBasket.tent3PersonAmount}</span>
-            <button onClick={addThreeTent}>+</button>
+            <button onClick={() => addThreeTent(ticketBasket, setTicketBasket)}>+</button>
           </div>
 
           <div className="tent_total">
