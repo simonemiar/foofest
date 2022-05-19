@@ -26,20 +26,20 @@ export default function CardForm(props) {
       <h2 className="heading">Payment information</h2>
       <form id="card_form" ref={formElm} onSubmit={submitted}>
         <div className="field-container">
-          <label htmlFor="name">Name</label>
+          <label htmlFor="name">Name on card</label>
           <input id="name" maxLength="20" type="text" />
         </div>
         <div className="field-container">
           <label htmlFor="cardnumber">Card Number</label>
-          <input id="cardnumber" type="text" pattern="[0-9]*" inputMode="numeric" />
+          <input id="cardnumber" type="text" pattern="[0-9]+" inputMode="numeric" />
         </div>
         <div className="field-container">
           <label htmlFor="expirationdate">Expiration (mm/yy)</label>
-          <input id="expirationdate" type="text" pattern="[0-9]*" inputMode="numeric" />
+          <input id="expirationdate" type="text" inputMode="numeric" />
         </div>
         <div className="field-container">
           <label htmlFor="securitycode">Security Code</label>
-          <input id="securitycode" type="text" pattern="[0-9]*" inputMode="numeric" />
+          <input id="securitycode" type="text" pattern="[0-9]+" inputMode="numeric" maxLength="3" />
         </div>
         <button type="sumbit">Pay</button>
       </form>
