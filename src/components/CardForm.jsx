@@ -23,6 +23,7 @@ export default function CardForm(props) {
   }
   return (
     <>
+      <h2 className="heading">Payment information</h2>
       <form id="card_form" ref={formElm} onSubmit={submitted}>
         <div className="field-container">
           <label htmlFor="name">Name</label>
@@ -48,6 +49,7 @@ export default function CardForm(props) {
           onClick={() => {
             props.toggleComponentsArr.setToggleCardForm(false);
             props.toggleComponentsArr.setToggleBasketOverview(true);
+            props.setIsCurrent(props.isCurrent - 1);
           }}
         >
           Back
@@ -57,6 +59,7 @@ export default function CardForm(props) {
           onClick={() => {
             props.toggleComponentsArr.setToggleCardForm(false);
             props.toggleComponentsArr.setToggleFlowComplete(true);
+            props.setIsCurrent(props.isCurrent + 1);
           }}
         >
           Pay

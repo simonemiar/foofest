@@ -1,0 +1,21 @@
+.heading {
+  text-align: center;
+  margin-block: 2rem;
+}
+
+.ticket_img {
+  width: 100%;
+  margin-bottom: 2rem;
+}
+
+@media only screen and (min-width: 768px) {
+  .img_cart_container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+  }
+
+  #ticket_details {
+    margin-inline: 2rem;
+  }
+}

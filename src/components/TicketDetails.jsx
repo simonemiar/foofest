@@ -10,9 +10,11 @@ export default function TicketDetails(props) {
   console.log(props);
   return (
     <section id="ticket_details">
-      <h2>Ticket details</h2>
-      <img src={ticketImg} alt="ticket" />
-      <TicketCart />
+      <h2 className="heading">Ticket details</h2>
+      <section className="img_cart_container">
+        <img className="ticket_img" src={ticketImg} alt="ticket" />
+        <TicketCart />
+      </section>
       <CampingArea />
       <AddOnesCart />
 
@@ -25,6 +27,7 @@ export default function TicketDetails(props) {
           onClick={() => {
             props.toggleComponentsArr.setToggleTicketDetails(false);
             props.toggleComponentsArr.setTogglePersonInfo(true);
+            props.setIsCurrent(props.isCurrent + 1);
           }}
         >
           Continue
