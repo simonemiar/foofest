@@ -17,9 +17,15 @@ export default function AddOnesCart() {
   const totalThreeTent = ticketBasket.tent3PersonPrice * ticketBasket.tent3PersonAmount;
 
   const totalPrice =
-    totalTwoTent + totalThreeTent + (ticketBasket.isGreenCamping ? ticketBasket.greenCamping : 0);
+    totalTwoTent +
+    totalThreeTent +
+    (ticketBasket.isGreenCamping ? ticketBasket.greenCamping : 0) +
+    ticketBasket.ticketPrice * ticketBasket.ticketAmount;
   const totalItems =
-    ticketBasket.tent2PersonAmount + ticketBasket.tent3PersonAmount + ticketBasket.isGreenCamping;
+    ticketBasket.tent2PersonAmount +
+    ticketBasket.tent3PersonAmount +
+    ticketBasket.isGreenCamping +
+    ticketBasket.ticketAmount;
 
   // const totalPrice = totalTwoTent + totalThreeTent + greenOptionPrice;
   // const totalItems = twoPersonTent + threePersonTent + includeGreenOption;
@@ -167,7 +173,12 @@ export default function AddOnesCart() {
           </div>
 
           <div className="green_ui">
-            <input onChange={greenOption} type="checkbox" className="green-option_check"></input>
+            <input
+              onChange={greenOption}
+              type="checkbox"
+              checked={ticketBasket.isGreenCamping}
+              className="green-option_check"
+            ></input>
           </div>
 
           <div className="green_total">
