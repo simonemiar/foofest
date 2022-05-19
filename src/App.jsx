@@ -41,7 +41,8 @@ function App() {
     <div className="App">
       <header>
         <nav>
-          <Link to="/">Home</Link> | <Link to="/schedule">Schedule</Link> | <Link to="/tickets">Tickets</Link>
+          <Link to="/">Home</Link> | <Link to="/schedule">Schedule</Link> |{" "}
+          <Link to="/tickets">Tickets</Link>
         </nav>
       </header>
       <TicketBasketProvider>
