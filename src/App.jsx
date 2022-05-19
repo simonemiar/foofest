@@ -1,5 +1,4 @@
 import "./scss/style.scss";
-import Header from "./components/Header";
 import { Link } from "react-router-dom";
 
 // simone test
@@ -48,17 +47,7 @@ function App() {
             <Route path="/schedule" element={<Schedule />} />
             <Route path="/basket" element={<Basket />} />
             <Route path="/tickets" element={<Tickets />} />
-          </Routes>
-    
-      
-      {/* <header>
-        <nav>
-          <Link to="/">Home</Link> | <Link to="/schedule">Schedule</Link> | <Link to="/tickets">Tickets</Link>
-        </nav>
-      </header> */}
-      
-      
-      <Header />
+          </Routes>  
     </div>
   );
 }
