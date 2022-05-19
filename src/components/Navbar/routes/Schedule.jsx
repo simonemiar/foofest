@@ -1,33 +1,38 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import ScheduleDetails from "../../ScheduleDetails";
 
 export default function Schedule(){
-    return (
-    <div>
-    <h1>Schedule</h1>
-    <Details />
-    <Details />
-    <Details />
-    <Details />
-    <Details />
-    <Details />
-    <Details />
-    </div>
-    )
-}
+    const [bands, setBands] = useState([]);
+    const [schedule, setSchedule] = useState([]);
+    const [events, setEvents] = useState([]);
+      // Fetching bands, schedule and events data:
+    useEffect(() => {
+        async function get() {
+        const resBands = await fetch("https://prototype-masters-foofest.herokuapp.com/bands");
+        const bandsData = await resBands.json();
+        setBands(bandsData);
+        // console.log("bandsdata:", bandsData);
 
-function Details(){
-    const [showSchedule, setScheduleMore] = useState(false);
+        const resSchedule = await fetch("https://prototype-masters-foofest.herokuapp.com/schedule");
+        const scheduleData = await resSchedule.json();
+        setSchedule([scheduleData]);
+        // console.log("scheduleData:", scheduleData);
 
+        const resEvents = await fetch("https://prototype-masters-foofest.herokuapp.com/events");
+        const eventsData = await resEvents.json();
+        setEvents(eventsData);
+        // console.log("eventsData:", eventsData);
+        }
+        get();
+    }, []);
     return (
         <div>
-
-        <button id="details_button" onClick={()=> setScheduleMore((old) => !old)}><summary><h3>MONDAY</h3></summary></button> 
-        <section id="details_section" style={{display: showSchedule ? "block" : "none"}}>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis non rerum ipsam porro sed a tempore optio, architecto voluptatibus voluptate deserunt mollitia quas numquam dolor vero aliquid nam, magnam tenetur. Ipsum officia eum explicabo iusto ea porro ab quo voluptatibus dolor magnam, nulla corporis maiores similique enim? Illum, reiciendis aperiam? Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis non rerum ipsam porro sed a tempore optio, architecto voluptatibus voluptate deserunt mollitia quas numquam dolor vero aliquid nam, magnam tenetur. Ipsum officia eum explicabo iusto ea porro ab quo voluptatibus dolor magnam, nulla corporis maiores similique enim? Illum, reiciendis aperiam?</p>
-
-        </section>
-
-
+        <ScheduleDetails />
+        {/* <h1>Schedule</h1>
+        <section>
+            {schedule[0]}
+        {schedule.map((info)=>(<ScheduleDetails info={info}/>))}
+        </section> */}
         </div>
-      );
+    )
 }
