@@ -27,23 +27,26 @@ export default function Schedule() {
     get();
   }, []);
 
-  const days = {
-    monday: "monday",
-    tuesday: "tuesday",
-    wendsday: "wendsday",
-    torsday: "torsday",
-    friday: "friday",
-    sataerday: "sataerday",
-    sunday: "sunday",
+  const transformDays = {
+    mon: "monday",
+    tue: "tuesday",
+    wen: "wednesday",
+    tor: "thursday",
+    fri: "friday",
+    sat: "saturday",
+    sun: "sunday",
     schedule: schedule,
   };
 
+  const newDate = Object.create(transformDays);
+
   return (
-    <div>
+    <>
+
       {/* <ScheduleDetails /> */}
       {schedule.map((stage) => (
         <ScheduleDetails key={Math.random()} stage={stage} />
-      ))}
-    </div>
+      ))} 
+    </>
   );
 }

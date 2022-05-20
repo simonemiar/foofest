@@ -7,8 +7,7 @@ export default function ScheduleDetails(props) {
 
   return (
     <>
-      <button id="details_button" onClick={() => setScheduleMore((old) => !old)}>
-        MONDAY
+      <button id="details_button" onClick={() => setScheduleMore((old) => !old)}>monday
       </button>
       {props.stage.Midgard.mon[0].act}
       <section id="details_section" style={{ display: showSchedule ? "block" : "none" }}>
