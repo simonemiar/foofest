@@ -1,5 +1,4 @@
 import { useContext } from "react";
-
 import { TicketBasketContext } from "../../contexts/TicketBasketContext";
 import {
   addTwoTent,
@@ -8,6 +7,8 @@ import {
   removeThreeTent,
   // greenOption,
 } from "./ticketFunction";
+import QuantityLine from "./QuantityLine";
+
 export default function AddOnesCart() {
   const { ticketBasket, setTicketBasket } = useContext(TicketBasketContext);
 
@@ -58,40 +59,26 @@ export default function AddOnesCart() {
       </article>
 
       <section className="add-ons_cart_content">
-        <article className="two-person_ui">
-          <div className="tent_name">
-            <p>2 person</p>
-            <p>Tent</p>
-          </div>
-          <div className="tent_ui">
-            <button onClick={() => removeTwoTent(ticketBasket, setTicketBasket)}>-</button>
-            <span className="amount">{ticketBasket.tent2PersonAmount}</span>
-            <button onClick={() => addTwoTent(ticketBasket, setTicketBasket)}>+</button>
-          </div>
-
-          <div className="tent_total">
-            {ticketBasket.tent2PersonAmount > 1 ? totalTwoTent : ticketBasket.tent2PersonPrice} kr.
-          </div>
-        </article>
-
-        <article className="three-person_ui">
-          <div className="tent_name">
-            <p>3 person</p>
-            <p>Tent</p>
-          </div>
-          <div className="tent_ui">
-            <button onClick={() => removeThreeTent(ticketBasket, setTicketBasket)}>-</button>
-            <span className="amount">{ticketBasket.tent3PersonAmount}</span>
-            <button onClick={() => addThreeTent(ticketBasket, setTicketBasket)}>+</button>
-          </div>
-
-          <div className="tent_total">
-            <p>
-              {ticketBasket.tent3PersonAmount > 1 ? totalThreeTent : ticketBasket.tent3PersonPrice}{" "}
-              kr.
-            </p>
-          </div>
-        </article>
+        <QuantityLine
+          ticketBasket={ticketBasket}
+          setTicketBasket={setTicketBasket}
+          addTent={addTwoTent}
+          removeTent={removeTwoTent}
+          totalTent={totalTwoTent}
+          tentPersonAmount={ticketBasket.tent2PersonAmount}
+          tentPersonPrice={ticketBasket.tent2PersonPrice}
+          title={"2 person"}
+        />
+        <QuantityLine
+          ticketBasket={ticketBasket}
+          setTicketBasket={setTicketBasket}
+          addTent={addThreeTent}
+          removeTent={removeThreeTent}
+          totalTent={totalThreeTent}
+          tentPersonAmount={ticketBasket.tent3PersonAmount}
+          tentPersonPrice={ticketBasket.tent3PersonPrice}
+          title={"3 person"}
+        />
 
         <article className="green_camping_ui">
           <div className="green_name">

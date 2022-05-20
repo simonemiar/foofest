@@ -11,6 +11,8 @@ import {
   // greenOption,
 } from "./ticketFunction";
 
+import QuantityLine from "./QuantityLine";
+
 export default function BasketOverview(props) {
   const { ticketBasket, setTicketBasket } = useContext(TicketBasketContext);
 
@@ -72,9 +74,32 @@ export default function BasketOverview(props) {
         </div>
 
         <section className="overview_content">
+          {/* <section className="ticket_cart_content">
+        <div className="ticket_name">
+          <p id="ticket_type">
+            {ticketBasket.ticketType}
+          </p>
+          <p>Ticket</p>
+        </div>
+        <div className="amount_ui">
+          <button onClick={() => removeTicket(ticketBasket, setTicketBasket)} id="ticket_decre">
+            -
+          </button>
+          <span id="amount">{ticketBasket.ticketAmount}</span>
+          <button onClick={() => addTicket(ticketBasket, setTicketBasket)} id="ticket_incre">
+            +
+          </button>
+        </div>
+        <div className="ticket_price">
+          <p className="total_ticket_price">{totalTicketPrize} kr.</p>
+          <p className="fee_price">Fee: {ticketBasket.bookingFee} kr.</p>
+        </div>
+      </section> */}
+
           <article className="ticket_row">
             <div className="ticket_name">
-              <p id="ticket_type">Regular Ticket</p>
+              <p id="ticket_type">{ticketBasket.ticketType}</p>
+              <p>Ticket</p>
             </div>
 
             <div className="ticket_amount">
@@ -88,50 +113,29 @@ export default function BasketOverview(props) {
           </article>
 
           {toggleTent2Person ? (
-            <article className="tent_row">
-              <div className="tent_name">
-                <p>2 person tent</p>
-              </div>
-              <div className="tent_ui">
-                <button onClick={() => removeTwoTent(ticketBasket, setTicketBasket)}>-</button>
-                <span className="amount" id="amount_tent">
-                  {ticketBasket.tent2PersonAmount}
-                </span>
-                <button onClick={() => addTwoTent(ticketBasket, setTicketBasket)}>+</button>
-              </div>
-
-              <div className="tent_total">
-                <p>
-                  {ticketBasket.tent2PersonAmount > 1
-                    ? totalTwoTent
-                    : ticketBasket.tent2PersonPrice}{" "}
-                  kr.
-                </p>
-              </div>
-            </article>
+            <QuantityLine
+              ticketBasket={ticketBasket}
+              setTicketBasket={setTicketBasket}
+              addTent={addTwoTent}
+              removeTent={removeTwoTent}
+              totalTent={totalTwoTent}
+              tentPersonAmount={ticketBasket.tent2PersonAmount}
+              tentPersonPrice={ticketBasket.tent2PersonPrice}
+              title={"2 person"}
+            />
           ) : null}
 
           {toggleTent3Person ? (
-            <article className="tent_row">
-              <div className="tent_name">
-                <p>3 person tent</p>
-                <p>Remove</p>
-              </div>
-              <div className="tent_ui">
-                <button onClick={() => removeThreeTent(ticketBasket, setTicketBasket)}>-</button>
-                <span id="amount_tent">{ticketBasket.tent3PersonAmount}</span>
-                <button onClick={() => addThreeTent(ticketBasket, setTicketBasket)}>+</button>
-              </div>
-
-              <div className="tent_total">
-                <p>
-                  {ticketBasket.tent3PersonAmount > 1
-                    ? totalThreeTent
-                    : ticketBasket.tent3PersonPrice}{" "}
-                  kr.
-                </p>
-              </div>
-            </article>
+            <QuantityLine
+              ticketBasket={ticketBasket}
+              setTicketBasket={setTicketBasket}
+              addTent={addThreeTent}
+              removeTent={removeThreeTent}
+              totalTent={totalThreeTent}
+              tentPersonAmount={ticketBasket.tent3PersonAmount}
+              tentPersonPrice={ticketBasket.tent3PersonPrice}
+              title={"3 person"}
+            />
           ) : null}
 
           {toggleGreenCamping ? (
