@@ -14,6 +14,7 @@ export default function Basket() {
   const [ToggleBasketOverview, setToggleBasketOverview] = useState(false);
   const [ToggleCardForm, setToggleCardForm] = useState(false);
   const [ToggleFlowComplete, setToggleFlowComplete] = useState(false);
+  const [toggleBasketHeader, setToggleBasketHeader] = useState(false);
   const [isCurrent, setIsCurrent] = useState(1);
 
   const toggleComponentsArr = {
@@ -27,12 +28,16 @@ export default function Basket() {
     setToggleCardForm: setToggleCardForm,
     ToggleFlowComplete: ToggleFlowComplete,
     setToggleFlowComplete: setToggleFlowComplete,
+    toggleBasketHeader: toggleBasketHeader,
+    setToggleBasketHeader: setToggleBasketHeader,
   };
   return (
     <main>
-      <Timer />
-      <ProgressBar isCurrent={isCurrent} setIsCurrent={setIsCurrent} />
-      {ToggleTicketDetails ? (
+      { toggleBasketHeader ? null :(
+     <><Timer />
+      <ProgressBar isCurrent={isCurrent} setIsCurrent={setIsCurrent}/>
+      </>) }  
+       {ToggleTicketDetails ? (
         <TicketDetails
           isCurrent={isCurrent}
           setIsCurrent={setIsCurrent}

@@ -58,8 +58,10 @@ export default function CardForm(props) {
           className="continue_btn shape"
           onClick={() => {
             props.toggleComponentsArr.setToggleCardForm(false);
+            props.toggleComponentsArr.setToggleBasketHeader(true);
             props.toggleComponentsArr.setToggleFlowComplete(true);
             props.setIsCurrent(props.isCurrent + 1);
+            
           }}
         >
           Pay
