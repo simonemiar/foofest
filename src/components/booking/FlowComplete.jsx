@@ -1,6 +1,5 @@
-import { useState, useContext, useEffect } from "react";
+import { useContext } from "react";
 import { addTicket, removeTicket} from "./ticketFunction";
-import ProgressBar from "./ProgressBar";
 import { TicketBasketContext } from "../../contexts/TicketBasketContext";
 
 export default function FlowComplete(props) {
@@ -11,7 +10,6 @@ export default function FlowComplete(props) {
   console.log(props);
   return (
     <>
-    {/* <ProgressBar disabled={true}/> */}
     <section id="ticket_details">
       <h2>Purchase confirmation</h2>
       <div className="top-bar">
