@@ -1,13 +1,16 @@
 import { useState } from "react";
 
-export default function ScheduleDetails() {
+export default function ScheduleDetails(props) {
   const [showSchedule, setScheduleMore] = useState(false);
+
+  // console.log(props.stage.Midgard);
 
   return (
     <>
       <button id="details_button" onClick={() => setScheduleMore((old) => !old)}>
         MONDAY
       </button>
+      {props.stage.Midgard.mon[0].act}
       <section id="details_section" style={{ display: showSchedule ? "block" : "none" }}>
         <p>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis non rerum ipsam porro sed
