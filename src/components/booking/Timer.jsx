@@ -6,8 +6,9 @@ const Timer = (props) => {
   const { initialMinute = 0, initialSeconds = 10 } = props;
   const [minutes, setMinutes] = useState(initialMinute);
   const [seconds, setSeconds] = useState(initialSeconds);
+
   // Popup
-  const [popup, setPopup] = useState(false);
+  // const [popup, setPopup] = useState(false);
 
   useEffect(() => {
     let myInterval = setInterval(() => {
@@ -22,22 +23,25 @@ const Timer = (props) => {
           setSeconds(59);
         }
       }
+      if (!props.toggleComponentsArr.ToggleFlowComplete) {
+        if (minutes === 0 && seconds === 1) {
+          props.setPopup(true);
+        }
+      }
     }, 1000);
     return () => {
       clearInterval(myInterval);
     };
   });
 
-  function ended() {
-    console.log(setPopup((old) => !old));
-  }
-
   return (
     <>
-      <TimeExpired popup={popup} />
+      <TimeExpired popup={props.popup} />
       <div className="timer_container">
         <h2>BASKET</h2>
-        {minutes === 0 && seconds === 0 ? () => ended() : <h3>TIME LEFT: {`${minutes}:${seconds < 10 ? `0${seconds}` : seconds} `}</h3>}
+        {/* {minutes === 0 && seconds === 0 ? null : ( */}
+        <h3>TIME LEFT: {`${minutes}:${seconds < 10 ? `0${seconds}` : seconds} `}</h3>
+        {/* )} */}
       </div>
     </>
   );
