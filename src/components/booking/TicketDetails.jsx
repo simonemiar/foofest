@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import CampingArea from "../booking/CampingArea";
 import TicketCart from "../booking/TicketCart";
 import AddOnesCart from "../booking/AddOnesCart";
+// import TimeExpired from "../booking/TimeExpired";
 import ticketImg from "../../assets/svg/ticket.svg";
 
 export default function TicketDetails(props) {
@@ -15,6 +16,7 @@ export default function TicketDetails(props) {
       </section>
       <CampingArea />
       <AddOnesCart />
+      {/* <TimeExpired /> */}
 
       <div className="booking_flow_nav">
         <Link to="/tickets">

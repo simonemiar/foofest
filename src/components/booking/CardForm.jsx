@@ -61,7 +61,7 @@ export default function CardForm(props) {
             props.toggleComponentsArr.setToggleBasketHeader(true);
             props.toggleComponentsArr.setToggleFlowComplete(true);
             props.setIsCurrent(props.isCurrent + 1);
-            
+            props.setPopup(false);
           }}
         >
           Pay
