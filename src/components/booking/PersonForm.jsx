@@ -9,16 +9,17 @@ export default function PersonForm(props) {
   let btnText = "Send data";
 
   function submitted(e) {
-    console.log("submit complete");
+    console.log("Submit completed");
     e.preventDefault();
-    console.log(props);
+    // console.log(props);
 
     const personInfo = {
       fullname: formElm.current.elements.fullname.value,
       email: formElm.current.elements.email.value,
-      phone_number:
-        formElm.current.elements.phone_code.value + formElm.current.elements.phone_num.value,
-      zip_code: formElm.current.elements.zip_code.value,
+      phone_number: Number(
+        formElm.current.elements.phone_code.value + formElm.current.elements.phone_num.value
+      ),
+      zip_code: Number(formElm.current.elements.zip_code.value),
       street: formElm.current.elements.street.value,
       city: formElm.current.elements.city.value,
       country: formElm.current.elements.country.value,
@@ -27,6 +28,7 @@ export default function PersonForm(props) {
     setTicketBasket((old) => {
       return { ...old, personInfo };
     });
+
     alert("Your info is saved, press the coninue");
   }
 
@@ -49,9 +51,9 @@ export default function PersonForm(props) {
           <div className="phone_code">
             <label htmlFor="phone_code">Code</label>
             <select name="phone_code" id="phone_code">
-              <option value="+45">+45</option>
-              <option value="+47">+47</option>
-              <option value="+00">+00</option>
+              <option value="45">+45</option>
+              <option value="47">+47</option>
+              <option value="00">+00</option>
             </select>
           </div>
           <div className="phone_num">

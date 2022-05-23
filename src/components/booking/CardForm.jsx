@@ -1,26 +1,55 @@
-import { useRef } from "react";
+import { useRef, useContext } from "react";
+
+import { TicketBasketContext } from "../../contexts/TicketBasketContext";
 
 export default function CardForm(props) {
   const formElm = useRef(null);
-
+  const { ticketBasket } = useContext(TicketBasketContext);
+  // console.log(ticketBasket);
   function submitted(e) {
     e.preventDefault();
 
-    fetch("dbendpoint/orders", {
-      method: "post",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        fullname: formElm.current.elements.fullname.value,
-        email: formElm.current.elements.email.value,
+    const LINK = "https://frontend-54ac.restdb.io/rest/booking-info";
+    const APIKEY = "6245613d67937c128d7c9394";
+
+    const ticketInfo = {
+      ticketType: ticketBasket.ticketType,
+      ticketAmount: ticketBasket.ticketAmount,
+      campingArea: ticketBasket.campingArea,
+      tent2PersonAmount: ticketBasket.tent2PersonAmount,
+      tent3PersonAmount: ticketBasket.tent3PersonAmount,
+      isGreenCamping: ticketBasket.isGreenCamping,
+      fullname: ticketBasket.personInfo.fullname,
+      email: ticketBasket.personInfo.email,
+      phone_number: ticketBasket.personInfo.phone_number,
+      zip_code: ticketBasket.personInfo.zip_code,
+      street: ticketBasket.personInfo.street,
+      city: ticketBasket.personInfo.city,
+      country: ticketBasket.personInfo.country,
+    };
+
+    // console.log(ticketBasket);
+
+    // console.log(ticketInfo);
+
+    function postData(data) {
+      const postData = JSON.stringify(data);
+
+      fetch(LINK, {
+        method: "post",
+        headers: {
+          "Content-Type": "application/json",
+          "x-apikey": APIKEY,
+        },
+        body: postData,
       })
         .then((res) => res.json())
-        .then((data) => {}),
-    });
-    console.log(formElm.current.elements.fullname.value);
-    console.log(formElm.current.elements.email.value);
+        .then((data) => console.log(data));
+    }
+
+    postData(ticketInfo);
   }
+
   return (
     <>
       <h2 className="heading">Payment information</h2>
