@@ -15,6 +15,7 @@ export const TicketBasketProvider = ({ children }) => {
     tent3PersonPrice: 399,
     isGreenCamping: false,
     greenCamping: 249,
+    personInfo: [],
   });
 
   const value = {

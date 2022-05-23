@@ -11,8 +11,6 @@ export function addTicket(ticketBasket, setTicketBasket) {
       };
     });
   }
-
-  console.log(ticketBasket);
 }
 
 export function removeTicket(ticketBasket, setTicketBasket) {

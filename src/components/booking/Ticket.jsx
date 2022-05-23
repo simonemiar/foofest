@@ -24,8 +24,6 @@ export default function Ticket(props) {
         isGreenCamping: false,
       };
     });
-
-    console.log("ticketType and ticketAmount + 1 add: ", ticketBasket);
   }
 
   return (

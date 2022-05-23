@@ -3,36 +3,49 @@ import { useRef, useContext } from "react";
 import { TicketBasketContext } from "../../contexts/TicketBasketContext";
 
 export default function PersonForm(props) {
-  const { setTicketBasket } = useContext(TicketBasketContext);
+  const { ticketBasket, setTicketBasket } = useContext(TicketBasketContext);
   const formElm = useRef(null);
 
   let btnText = "Send data";
 
   function submitted(e) {
-    console.log("submit complete");
+    console.log("Submit completed");
     e.preventDefault();
-    console.log(props);
+    // console.log(props);
 
     const personInfo = {
       fullname: formElm.current.elements.fullname.value,
       email: formElm.current.elements.email.value,
-      phone_number:
-        formElm.current.elements.phone_code.value + formElm.current.elements.phone_num.value,
-      zip_code: formElm.current.elements.zip_code.value,
+      phone_number: Number(
+        formElm.current.elements.phone_code.value + formElm.current.elements.phone_num.value
+      ),
+      zip_code: Number(formElm.current.elements.zip_code.value),
       street: formElm.current.elements.street.value,
       city: formElm.current.elements.city.value,
       country: formElm.current.elements.country.value,
     };
 
+    console.log(ticketBasket.personInfo);
+
     setTicketBasket((old) => {
-      return { ...old, personInfo };
+      return { ...old, personInfo: [...old.personInfo, personInfo] };
+      // return { ...old, ...old.personInfo, personInfo };
     });
+
+    // setTicketBasket((old) => {
+    //   return {
+    //     ...old,
+    //     ticketAmount: old.ticketAmount + 1,
+    //   };
+    // });
+
     alert("Your info is saved, press the coninue");
   }
 
   return (
     <>
       <form id="person_form" ref={formElm} onSubmit={submitted}>
+        <h3>Person {props.ticket}</h3>
         <div className="fullname">
           <label htmlFor="fullname" required>
             Fullname
@@ -49,9 +62,9 @@ export default function PersonForm(props) {
           <div className="phone_code">
             <label htmlFor="phone_code">Code</label>
             <select name="phone_code" id="phone_code">
-              <option value="+45">+45</option>
-              <option value="+47">+47</option>
-              <option value="+00">+00</option>
+              <option value="45">+45</option>
+              <option value="47">+47</option>
+              <option value="00">+00</option>
             </select>
           </div>
           <div className="phone_num">
