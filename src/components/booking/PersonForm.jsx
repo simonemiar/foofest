@@ -25,9 +25,19 @@ export default function PersonForm(props) {
       country: formElm.current.elements.country.value,
     };
 
+    console.log(ticketBasket.personInfo);
+
     setTicketBasket((old) => {
-      return { ...old, personInfo };
+      return { ...old, personInfo: [...old.personInfo, personInfo] };
+      // return { ...old, ...old.personInfo, personInfo };
     });
+
+    // setTicketBasket((old) => {
+    //   return {
+    //     ...old,
+    //     ticketAmount: old.ticketAmount + 1,
+    //   };
+    // });
 
     alert("Your info is saved, press the coninue");
   }
@@ -35,6 +45,7 @@ export default function PersonForm(props) {
   return (
     <>
       <form id="person_form" ref={formElm} onSubmit={submitted}>
+        <h3>Person {props.ticket}</h3>
         <div className="fullname">
           <label htmlFor="fullname" required>
             Fullname
