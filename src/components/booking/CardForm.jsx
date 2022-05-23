@@ -9,8 +9,22 @@ export default function CardForm(props) {
   function submitted(e) {
     e.preventDefault();
 
-    const LINK = "https://frontend-54ac.restdb.io/rest/booking-info";
-    const APIKEY = "6245613d67937c128d7c9394";
+    function fullfillSpot() {
+      const reserveSpotId = { id: ticketBasket.reserveSpotId };
+      const postFullfillSpot = JSON.stringify(reserveSpotId);
+      fetch("https://prototype-masters-foofest.herokuapp.com/fullfill-reservation", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: postFullfillSpot,
+      })
+        .then((response) => console.log(response))
+        .then((data) => console.log(data))
+        .catch((err) => console.error(err));
+    }
+
+    fullfillSpot();
 
     const ticketInfo = {
       ticketType: ticketBasket.ticketType,
@@ -28,13 +42,11 @@ export default function CardForm(props) {
       country: ticketBasket.personInfo.country,
     };
 
-    // console.log(ticketBasket);
-
-    // console.log(ticketInfo);
-
     function postData(data) {
-      const postData = JSON.stringify(data);
+      const LINK = "https://frontend-54ac.restdb.io/rest/booking-info";
+      const APIKEY = "6245613d67937c128d7c9394";
 
+      const postData = JSON.stringify(data);
       fetch(LINK, {
         method: "post",
         headers: {
