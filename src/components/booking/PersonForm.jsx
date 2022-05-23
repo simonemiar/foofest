@@ -3,7 +3,7 @@ import { useRef, useContext } from "react";
 import { TicketBasketContext } from "../../contexts/TicketBasketContext";
 
 export default function PersonForm(props) {
-  const { setTicketBasket } = useContext(TicketBasketContext);
+  const { ticketBasket, setTicketBasket } = useContext(TicketBasketContext);
   const formElm = useRef(null);
 
   let btnText = "Send data";
