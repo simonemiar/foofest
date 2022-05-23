@@ -16,7 +16,7 @@ export default function Schedule() {
 
       const resSchedule = await fetch("https://prototype-masters-foofest.herokuapp.com/schedule");
       const scheduleData = await resSchedule.json();
-      setSchedule([scheduleData]);
+      setSchedule(scheduleData);
       console.log("scheduleData:", scheduleData);
 
       // const resEvents = await fetch("https://prototype-masters-foofest.herokuapp.com/events");
@@ -27,26 +27,59 @@ export default function Schedule() {
     get();
   }, []);
 
-  const transformDays = {
-    mon: "monday",
-    tue: "tuesday",
-    wen: "wednesday",
-    tor: "thursday",
-    fri: "friday",
-    sat: "saturday",
-    sun: "sunday",
-    schedule: schedule,
-  };
+  const daysSchedule = [
+    "monday",
+    "tuesday",
+    "wednesday",
+    "thursday",
+    "friday",
+    "saturday",
+    "sunday",
+  ];
 
-  const newDate = Object.create(transformDays);
+  // scheduleObj = {
+  //   monday: {
+  //     day: "monday",
+  //     Midgard: schedule.Midgard.mon,
+  //     Vanaheim: schedule.Vanaheim.mon,
+  //     Jotunheim: schedule.Jotunheim.mon,
+  //   },
+  //   tuesday: {
+  //     day: "monday",
+  //     Midgard: schedule.Midgard.tue,
+  //     Vanaheim: schedule.Vanaheim.tue,
+  //     Jotunheim: schedule.Jotunheim.tue,
+  //   },
+  // };
+
+  // const scheduleObj = [
+  //   {
+  //     day: "monday",
+  //     Midgard: schedule.Midgard.mon,
+  //     Vanaheim: schedule.Vanaheim.mon,
+  //     Jotunheim: schedule.Jotunheim.mon,
+  //   },
+  //   {
+  //     day: "monday",
+  //     Midgard: schedule.Midgard.tue,
+  //     Vanaheim: schedule.Vanaheim.tue,
+  //     Jotunheim: schedule.Jotunheim.tue,
+  //   },
+  // ];
 
   return (
     <>
+      {/* {schedule.map((stage) => (
+        <ScheduleDetails key={Math.random()} stage={stage} daysSchedule={daysSchedule} />
+      ))} */}
 
-      {/* <ScheduleDetails /> */}
-      {schedule.map((stage) => (
-        <ScheduleDetails key={Math.random()} stage={stage} />
-      ))} 
+      {daysSchedule.map((day) => (
+        <ScheduleDetails key={Math.random()} schedule={schedule} day={day} />
+      ))}
+
+      {/* {scheduleObj.map((day, index) => (
+        <ScheduleDetails key={index} day={day} />
+      ))} */}
     </>
   );
 }

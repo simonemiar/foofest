@@ -1,16 +1,34 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
-export default function ScheduleDetails(props) {
+import BandInfo from "./BandInfo";
+
+export default function ScheduleDetails({ day, schedule }) {
   const [showSchedule, setScheduleMore] = useState(false);
 
-  // console.log(props.stage.Midgard);
+  useEffect(() => {
+    // console.log(schedule);
+  });
 
   return (
     <>
-      <button id="details_button" onClick={() => setScheduleMore((old) => !old)}>monday
+      <button id="details_button" onClick={() => setScheduleMore((old) => !old)}>
+        {/* monday */}
+        {day}
       </button>
-      {props.stage.Midgard.mon[0].act}
+      {/* <p>{schedule.Midgard.mon[0].act}</p> */}
+      {/* <p>
+          {schedule.map((stage) => (
+            <BandInfo key={Math.random()} stage={stage} />
+          ))}
+        </p> */}
+
       <section id="details_section" style={{ display: showSchedule ? "block" : "none" }}>
+        {<BandInfo />}
+        {/* <p>
+          {Object.values(schedule).map((stage) => (
+            <BandInfo key={Math.random()} stage={stage} />
+          ))}
+        </p> */}
         <p>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis non rerum ipsam porro sed
           a tempore optio, architecto voluptatibus voluptate deserunt mollitia quas numquam dolor
