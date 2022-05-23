@@ -6,6 +6,8 @@
     background-color: color.$transparentblue;
     margin: 10px 0px 10px 6px;
     transform: skewX(-10deg);
+    border: none;
+    color: color.$white;
 
     summary{
         text-align: center;
@@ -14,11 +16,3 @@
     }
 }
 
-#details_section{
-
-    p{
-        color: color.$white;
-        padding: 20px;
-        border: 1px solid color.$white;
-    }
-}
