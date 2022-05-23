@@ -63,26 +63,26 @@ export default function ScheduleDetails({ day, schedule }) {
             <td className="time_border">23:00</td>
     </tr>
     <tr>
-        <th className="height">MIDGARD</th>
-        <td>{<BandInfo />}</td>
-        <td>The Obelisks</td>
-        <td>The What</td>
+        <th className="stage">MIDGARD</th>
+        <td className="artist">{<BandInfo />}</td>
+        <td className="artist">The Obelisks</td>
+        <td className="artist">The What</td>
     </tr>
     <tr>
-        <th className="height">JOTUNHEIM</th>
-        <td>Main Hall</td>
-        <td>West Wing</td>
-        <td>Main Hall</td>
-        <td>West Wing</td>
-        <td>West Wing</td>
-        <td>West Wing</td>
-        <td>West Wing</td>
+        <th className="stage">JOTUNHEIM</th>
+        <td className="artist">Main Hall</td>
+        <td className="artist">West Wing</td>
+        <td className="artist">Main Hall</td>
+        <td className="artist">West Wing</td>
+        <td className="artist">West Wing</td>
+        <td className="artist">West Wing</td>
+        <td className="artist">West Wing</td>
     </tr>
     <tr>
-        <th className="height">VANEHEIM</th>
-        <td>Main Hall</td>
-        <td>West Wing</td>
-        <td>Main Hall</td>
+        <th className="stage">VANEHEIM</th>
+        <td className="artist">Main Hall</td>
+        <td className="artist">West Wing</td>
+        <td className="artist">Main Hall</td>
     </tr>
     </thead>
 </table>

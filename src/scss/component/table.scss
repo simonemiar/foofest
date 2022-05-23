@@ -14,20 +14,9 @@
         position: relative;
         background-color: color.$transparentblue;
 
-        // th, .border {
-        //     border: 1px solid color.$white;
-        //     background-color: color.$transparentblue;
-        //     padding: 8px;
-
-        //     &:first-child {
-        //         z-index: 3;                
-        //     }
-
-        // }
-
-
         thead {
             tr{
+                border: 3px solid color.$darkblue;
                 th {
                     position: sticky;
                     position: -webkit-sticky; // safari
@@ -35,37 +24,34 @@
                     background-color: color.$transparentblue;
                     padding: 8px;
 
-                    .time_border{
-                        background-color: color.$darkblue;
-                        border: 1px solid color.$darkblue;
-
-                        &:first-child {
-                            z-index: 3; 
-                            
-  
-                        }
-                    }
-
-
                 }
 
                 td{
                     border-bottom: 1px solid color.$darkblue;
-                    background-color: color.$purple;
                     width: 100%;
                     max-width: 90px;
                     min-width: 90px;
 
                 }
 
-                
+                .time_border{
+
+                    &:first-child {
+                        z-index: 3; 
+                        
+
+                    }
+                }
+
+                .artist{
+                    background-color: color.$purple;
+                }
+   
             }
             
-
-
         }
 
-        .height{
+        .stage{
             height: 100px;
         }
 
