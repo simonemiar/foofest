@@ -20,7 +20,7 @@ export default function TicketDetails(props) {
 
       <div className="booking_flow_nav">
         <Link to="/tickets">
-          <button>Back</button>
+          <button className="back_btn shape">Back</button>
         </Link>
         <button
           className="continue_btn shape"
