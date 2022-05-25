@@ -9,6 +9,12 @@ export default function CardForm(props) {
   function submitted(e) {
     e.preventDefault();
 
+    props.toggleComponentsArr.setToggleCardForm(false);
+    props.toggleComponentsArr.setToggleBasketHeader(true);
+    props.toggleComponentsArr.setToggleFlowComplete(true);
+    props.setIsCurrent(props.isCurrent + 1);
+    props.setPopup(false);
+
     function fullfillSpot() {
       const reserveSpotId = { id: ticketBasket.reserveSpotId };
       const postFullfillSpot = JSON.stringify(reserveSpotId);
@@ -82,9 +88,19 @@ export default function CardForm(props) {
           <label htmlFor="securitycode">Security Code</label>
           <input id="securitycode" type="text" pattern="[0-9]+" inputMode="numeric" maxLength="3" />
         </div>
+        <button
+          className="back_btn shape"
+          onClick={() => {
+            props.toggleComponentsArr.setToggleCardForm(false);
+            props.toggleComponentsArr.setToggleBasketOverview(true);
+            props.setIsCurrent(props.isCurrent - 1);
+          }}
+        >
+          Back
+        </button>
         <button type="sumbit">Pay</button>
       </form>
-      <div className="booking_flow_nav">
+      {/* <div className="booking_flow_nav">
         <button
           className="back_btn shape"
           onClick={() => {
@@ -107,7 +123,7 @@ export default function CardForm(props) {
         >
           Pay
         </button>
-      </div>
+      </div> */}
     </>
   );
 }
