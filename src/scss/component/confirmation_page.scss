@@ -67,6 +67,15 @@
 
     .ticket_name {
       margin-left: 1rem;
+
+      #ticket_type {
+        font-weight: bold;
+      }
+
+      p:nth-child(2) {
+        font-size: 0.7rem;
+        padding-top: 0.1rem;
+      }
     }
 
     .ticket_price {

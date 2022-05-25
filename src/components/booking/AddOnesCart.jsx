@@ -16,16 +16,8 @@ export default function AddOnesCart() {
   const totalTwoTent = ticketBasket.tent2PersonPrice * ticketBasket.tent2PersonAmount;
   const totalThreeTent = ticketBasket.tent3PersonPrice * ticketBasket.tent3PersonAmount;
 
-  const totalPrice =
-    totalTwoTent +
-    totalThreeTent +
-    (ticketBasket.isGreenCamping ? ticketBasket.greenCamping : 0) +
-    ticketBasket.ticketPrice * ticketBasket.ticketAmount;
-  const totalItems =
-    ticketBasket.tent2PersonAmount +
-    ticketBasket.tent3PersonAmount +
-    ticketBasket.isGreenCamping +
-    ticketBasket.ticketAmount;
+  const totalPrice = totalTwoTent + totalThreeTent + (ticketBasket.isGreenCamping ? ticketBasket.greenCamping : 0) + ticketBasket.ticketPrice * ticketBasket.ticketAmount;
+  const totalItems = ticketBasket.tent2PersonAmount + ticketBasket.tent3PersonAmount + ticketBasket.isGreenCamping + ticketBasket.ticketAmount;
 
   // Function for green option add-on
   function greenOption(e) {
@@ -87,12 +79,7 @@ export default function AddOnesCart() {
           </div>
 
           <div className="green_ui">
-            <input
-              onChange={greenOption}
-              type="checkbox"
-              checked={ticketBasket.isGreenCamping}
-              className="green-option_check"
-            ></input>
+            <input onChange={greenOption} type="checkbox" checked={ticketBasket.isGreenCamping} className="green-option_check"></input>
           </div>
 
           <div className="green_total">
@@ -101,7 +88,9 @@ export default function AddOnesCart() {
         </article>
       </section>
       <article className="total_bar">
-        <p>Total ({totalItems} items)</p>
+        <p>
+          Total ({totalItems} {totalItems > 1 ? "items" : "item"})
+        </p>
         <p className="total_price">{totalPrice} kr.</p>
       </article>
     </section>

@@ -36,7 +36,7 @@ export default function FlowComplete(props) {
       </div>
 
       <div className="text_info">
-        <h3>We’ve received your order, and we will email it to you as fast as possible</h3>
+        <h3>We’ve received your order, and you should recieve a confirmation e-mail any minute now.</h3>
 
         <p>Please view your order details below</p>
       </div>
@@ -50,8 +50,8 @@ export default function FlowComplete(props) {
       <section className="overview_content">
         <article className="ticket_row">
           <div className="ticket_name">
-            <p>Ticket</p>
             <p id="ticket_type">{ticketBasket.ticketType}</p>
+            <p>Ticket</p>
           </div>
 
           <div className="ticket_amount">
@@ -115,7 +115,9 @@ export default function FlowComplete(props) {
           </div>
         </article>
         <article className="total_bar">
-          <p>Total ({totalItems} items)</p>
+          <p>
+            Total ({totalItems} {totalItems > 1 ? "items" : "item"})
+          </p>
           <p className="total_price">{totalPrice} kr.</p>
         </article>
       </section>
