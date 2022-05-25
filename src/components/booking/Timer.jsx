@@ -23,11 +23,11 @@ const Timer = (props) => {
           setSeconds(59);
         }
       }
-      // if (!props.toggleComponentsArr.ToggleFlowComplete) {
-      //   if (minutes === 0 && seconds === 1) {
-      //     props.setPopup(true);
-      //   }
-      // }
+      if (!props.toggleComponentsArr.ToggleFlowComplete) {
+        if (minutes === 0 && seconds === 1) {
+          props.setPopup(true);
+        }
+      }
     }, 1000);
     return () => {
       clearInterval(myInterval);
