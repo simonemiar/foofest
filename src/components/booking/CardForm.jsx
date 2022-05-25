@@ -6,6 +6,18 @@ export default function CardForm(props) {
   const formElm = useRef(null);
   const { ticketBasket } = useContext(TicketBasketContext);
   // console.log(ticketBasket);
+
+  const ticketInfo = {
+    ticketType: ticketBasket.ticketType,
+    ticketAmount: ticketBasket.ticketAmount,
+    campingArea: ticketBasket.campingArea,
+    tent2PersonAmount: ticketBasket.tent2PersonAmount,
+    tent3PersonAmount: ticketBasket.tent3PersonAmount,
+    isGreenCamping: ticketBasket.isGreenCamping,
+    personInfo: ticketBasket.personInfo,
+  };
+  console.log(ticketInfo);
+
   function submitted(e) {
     e.preventDefault();
 
@@ -39,13 +51,14 @@ export default function CardForm(props) {
       tent2PersonAmount: ticketBasket.tent2PersonAmount,
       tent3PersonAmount: ticketBasket.tent3PersonAmount,
       isGreenCamping: ticketBasket.isGreenCamping,
-      fullname: ticketBasket.personInfo.fullname,
-      email: ticketBasket.personInfo.email,
-      phone_number: ticketBasket.personInfo.phone_number,
-      zip_code: ticketBasket.personInfo.zip_code,
-      street: ticketBasket.personInfo.street,
-      city: ticketBasket.personInfo.city,
-      country: ticketBasket.personInfo.country,
+      personInfo: ticketBasket.personInfo,
+      // fullname: ticketBasket.personInfo.fullname,
+      // email: ticketBasket.personInfo.email,
+      // phone_number: ticketBasket.personInfo.phone_number,
+      // zip_code: ticketBasket.personInfo.zip_code,
+      // street: ticketBasket.personInfo.street,
+      // city: ticketBasket.personInfo.city,
+      // country: ticketBasket.personInfo.country,
     };
 
     function postData(data) {
