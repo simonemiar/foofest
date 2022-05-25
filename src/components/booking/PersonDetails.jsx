@@ -1,27 +1,21 @@
 export default function PersonForm(props) {
   return (
     <>
-      <fieldset>
-        <legend>Person {props.details.number}</legend>
-        {/* <div className={"fullname" + props.ticket}>
-          <label htmlFor={"fullname" + props.ticket} required>
-            Fullname
-          </label>
-          <input type="text" id={"fullname" + props.ticket} />
-        </div> */}
+      <fieldset data-person>
+        <legend>Person {props.details}</legend>
         <div className="fullname">
           <label htmlFor="fullname" required>
             Fullname
           </label>
-          <input type="text" id="fullname" />
+          <input type="text" id="fullname" name="fullname" />
         </div>
         <div className="email">
           <label htmlFor="email" required>
             E-mail
           </label>
-          <input type="email" id="email" inputMode="email" />
+          <input type="email" id="email" name="email" inputMode="email" />
         </div>
-        {/*<div className="full_phone">
+        <div className="full_phone">
           <div className="phone_code">
             <label htmlFor="phone_code">Code</label>
             <select name="phone_code" id="phone_code">
@@ -34,14 +28,21 @@ export default function PersonForm(props) {
             <label htmlFor="phone_num" required>
               Phone number
             </label>
-            <input type="tel" id="phone_num" inputMode="tel" pattern="[0-9]+" maxLength="8" />
+            <input
+              type="tel"
+              id="phone_num"
+              name="phone_num"
+              inputMode="tel"
+              pattern="[0-9]+"
+              maxLength="8"
+            />
           </div>
         </div>
         <div className="street">
           <label htmlFor="street" required>
             Street
           </label>
-          <input type="text" id="street" />
+          <input type="text" id="street" name="street" />
         </div>
         <div className="zip_city">
           <div className="zip_code">
@@ -49,6 +50,7 @@ export default function PersonForm(props) {
             <input
               type="text"
               id="zip_code"
+              name="zip_code"
               inputMode="numeric"
               pattern="[0-9]+"
               maxLength="4"
@@ -59,15 +61,15 @@ export default function PersonForm(props) {
             <label htmlFor="city" required>
               City
             </label>
-            <input type="text" id="city" />
+            <input type="text" id="city" name="city" />
           </div>
         </div>
         <div className="country">
           <label htmlFor="country" required>
             Country
           </label>
-          <input type="text" id="country" />
-        </div> */}
+          <input type="text" id="country" name="country" />
+        </div>
       </fieldset>
     </>
   );

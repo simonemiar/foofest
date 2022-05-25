@@ -1,77 +1,39 @@
-import { useContext, useRef, useState } from "react";
+import { useContext, useRef } from "react";
 import { TicketBasketContext } from "../../contexts/TicketBasketContext";
 import PersonDetails from "./PersonDetails";
 
 export default function TicketDetails(props) {
   const formElm = useRef(null);
-  const [personInfo, setPersonInfo] = useState([]);
   const { ticketBasket, setTicketBasket } = useContext(TicketBasketContext);
 
   let personFormArr = [];
   for (var i = 1; i < ticketBasket.ticketAmount + 1; i++) {
-    personFormArr.push({ number: i, fullname: "", email: "" });
-    // let number = i;
-    // console.log(i);
-
-    // console.log(personFormArr);
+    personFormArr.push(i);
   }
-
-  // console.log(formElm.current.elements);
 
   function submitted(e) {
     e.preventDefault();
 
-    console.log(personInfo);
-    // props.toggleComponentsArr.setTogglePersonInfo(false);
-    // props.toggleComponentsArr.setToggleBasketOverview(true);
-    // props.setIsCurrent(props.isCurrent + 1);
+    props.toggleComponentsArr.setTogglePersonInfo(false);
+    props.toggleComponentsArr.setToggleBasketOverview(true);
+    props.setIsCurrent(props.isCurrent + 1);
 
-    if (ticketBasket.ticketAmount > 1) {
-      // console.log(e.target.elements);
+    const persons = [...formElm.current.querySelectorAll("[data-person]")].map((fieldset) => {
+      const fullname = fieldset.querySelector("[name=fullname]").value;
+      const email = fieldset.querySelector("[name=email]").value;
+      const phone_code = fieldset.querySelector("[name=phone_code]").value;
+      const phone_num = fieldset.querySelector("[name=phone_num]").value;
+      const phone_number = phone_code + phone_num;
+      const street = fieldset.querySelector("[name=street]").value;
+      const zip_code = fieldset.querySelector("[name=zip_code]").value;
+      const city = fieldset.querySelector("[name=city]").value;
+      const country = fieldset.querySelector("[name=country]").value;
+      return { fullname, email, phone_number, street, zip_code, city, country };
+    });
 
-      e.target.elements.fullname.forEach((input, idx) => {
-        setTicketBasket((old) => {
-          return { ...old, personInfo: [...old.personInfo, { id: idx, fullname: input.value }] };
-        });
-      });
-
-      e.target.elements.email.forEach((input, idx) => {
-        setTicketBasket((old) => {
-          let newInfo = { ...old };
-          newInfo.personInfo = personInfo.map((current) => {
-            if (idx === current.id) {
-              current.email = input.value;
-            }
-            return current;
-          });
-          return newInfo;
-        });
-        // return { ...old, personInfo: [...old.personInfo[idx], { email: input.value }] };
-      });
-    }
-
-    if (ticketBasket.ticketAmount === 1) {
-      setTicketBasket((old) => {
-        return {
-          ...old,
-          personInfo: [
-            {
-              fullname: formElm.current.elements.fullname.value,
-              email: formElm.current.elements.email.value,
-              // phone_number: Number(
-              //   formElm.current.elements.phone_code.value + formElm.current.elements.phone_num.value
-              // ),
-              // zip_code: Number(formElm.current.elements.zip_code.value),
-              // street: formElm.current.elements.street.value,
-              // city: formElm.current.elements.city.value,
-              // country: formElm.current.elements.country.value,
-            },
-          ],
-        };
-      });
-    }
-
-    // alert("Your info is saved, press the coninue");
+    setTicketBasket((old) => {
+      return { ...old, personInfo: persons };
+    });
 
     console.log(ticketBasket.personInfo);
   }
@@ -82,12 +44,7 @@ export default function TicketDetails(props) {
 
       <form id="person_form" ref={formElm} onSubmit={submitted}>
         {personFormArr.map((details) => (
-          <PersonDetails
-            key={details.number}
-            details={details}
-            personInfo={personInfo}
-            setPersonInfo={setPersonInfo}
-          />
+          <PersonDetails key={details} details={details} />
         ))}
         <button
           className="back_btn shape"
