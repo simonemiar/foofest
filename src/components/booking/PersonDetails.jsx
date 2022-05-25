@@ -1,27 +1,64 @@
+import { useContext, useRef } from "react";
+import { TicketBasketContext } from "../../contexts/TicketBasketContext";
+
 export default function PersonForm(props) {
+  const formElm = useRef(null);
+  const { ticketBasket, setTicketBasket } = useContext(TicketBasketContext);
+
+  function submitted(e) {
+    console.log("you submitted me");
+
+    e.preventDefault();
+
+    // props.toggleComponentsArr.setTogglePersonInfo(false);
+    // props.toggleComponentsArr.setToggleBasketOverview(true);
+    // props.setIsCurrent(props.isCurrent + 1);
+
+    setTicketBasket((old) => {
+      return {
+        ...old,
+        personInfo: [
+          ...old.personInfo,
+          {
+            fullname: formElm.current.elements.fullname.value,
+            email: formElm.current.elements.email.value,
+            // phone_number: Number(
+            //   formElm.current.elements.phone_code.value + formElm.current.elements.phone_num.value
+            // ),
+            // zip_code: Number(formElm.current.elements.zip_code.value),
+            // street: formElm.current.elements.street.value,
+            // city: formElm.current.elements.city.value,
+            // country: formElm.current.elements.country.value,
+          },
+        ],
+      };
+    });
+  }
+
   return (
     <>
-      <fieldset>
-        <legend>Person {props.details.number}</legend>
-        {/* <div className={"fullname" + props.ticket}>
+      <form id="person_form" ref={formElm} onSubmit={submitted}>
+        <fieldset>
+          <legend>Person {props.details.number}</legend>
+          {/* <div className={"fullname" + props.ticket}>
           <label htmlFor={"fullname" + props.ticket} required>
             Fullname
           </label>
           <input type="text" id={"fullname" + props.ticket} />
         </div> */}
-        <div className="fullname">
-          <label htmlFor="fullname" required>
-            Fullname
-          </label>
-          <input type="text" id="fullname" />
-        </div>
-        <div className="email">
-          <label htmlFor="email" required>
-            E-mail
-          </label>
-          <input type="email" id="email" inputMode="email" />
-        </div>
-        {/*<div className="full_phone">
+          <div className="fullname">
+            <label htmlFor="fullname" required>
+              Fullname
+            </label>
+            <input type="text" id="fullname" />
+          </div>
+          <div className="email">
+            <label htmlFor="email" required>
+              E-mail
+            </label>
+            <input type="email" id="email" inputMode="email" />
+          </div>
+          {/*<div className="full_phone">
           <div className="phone_code">
             <label htmlFor="phone_code">Code</label>
             <select name="phone_code" id="phone_code">
@@ -68,7 +105,19 @@ export default function PersonForm(props) {
           </label>
           <input type="text" id="country" />
         </div> */}
-      </fieldset>
+          <button
+            className="back_btn shape"
+            onClick={() => {
+              console.log("you clicked me back");
+            }}
+          >
+            Back
+          </button>
+          <button type="submit" className="continue_btn shape">
+            Continue
+          </button>
+        </fieldset>
+      </form>
     </>
   );
 }

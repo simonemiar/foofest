@@ -9,7 +9,8 @@ export default function TicketDetails(props) {
 
   let personFormArr = [];
   for (var i = 1; i < ticketBasket.ticketAmount + 1; i++) {
-    personFormArr.push({ number: i, fullname: "", email: "" });
+    // personFormArr.push({ number: i, fullname: "", email: "" });
+    personFormArr.push(i);
     console.log(personFormArr);
   }
 
@@ -70,29 +71,29 @@ export default function TicketDetails(props) {
     <section id="person_info">
       <h2 className="heading">Your personal information</h2>
 
-      <form id="person_form" ref={formElm} onSubmit={submitted}>
-        {personFormArr.map((details) => (
-          <PersonDetails
-            key={details.number}
-            details={details}
-            personInfo={personInfo}
-            setPersonInfo={setPersonInfo}
-          />
-        ))}
-        <button
-          className="back_btn shape"
-          onClick={() => {
-            props.toggleComponentsArr.setTogglePersonInfo(false);
-            props.toggleComponentsArr.setToggleTicketDetails(true);
-            props.setIsCurrent(props.isCurrent - 1);
-          }}
-        >
-          Back
-        </button>
-        <button type="submit" className="continue_btn shape">
-          Continue
-        </button>
-      </form>
+      {/* <form id="person_form" ref={formElm} onSubmit={submitted}> */}
+      {personFormArr.map((details) => (
+        <PersonDetails
+          key={details.number}
+          details={details}
+          personInfo={personInfo}
+          setPersonInfo={setPersonInfo}
+        />
+      ))}
+      {/* <button
+        className="back_btn shape"
+        onClick={() => {
+          props.toggleComponentsArr.setTogglePersonInfo(false);
+          props.toggleComponentsArr.setToggleTicketDetails(true);
+          props.setIsCurrent(props.isCurrent - 1);
+        }}
+      >
+        Back
+      </button>
+      <button type="submit" className="continue_btn shape">
+        Continue
+      </button> */}
+      {/* </form> */}
     </section>
   );
 }
