@@ -10,7 +10,10 @@ export default function TicketDetails(props) {
   let personFormArr = [];
   for (var i = 1; i < ticketBasket.ticketAmount + 1; i++) {
     personFormArr.push({ number: i, fullname: "", email: "" });
-    console.log(personFormArr);
+    // let number = i;
+    // console.log(i);
+
+    // console.log(personFormArr);
   }
 
   // console.log(formElm.current.elements);
@@ -28,15 +31,22 @@ export default function TicketDetails(props) {
 
       e.target.elements.fullname.forEach((input, idx) => {
         setTicketBasket((old) => {
-          return { ...old, personInfo: [...old.personInfo, { fullname: input.value }] };
+          return { ...old, personInfo: [...old.personInfo, { id: idx, fullname: input.value }] };
         });
       });
 
       e.target.elements.email.forEach((input, idx) => {
         setTicketBasket((old) => {
-          return { ...old, personInfo: [...old.personInfo, { email: input.value }] };
-          // return { ...old, personInfo: [...old.personInfo[idx], { email: input.value }] };
+          let newInfo = { ...old };
+          newInfo.personInfo = personInfo.map((current) => {
+            if (idx === current.id) {
+              current.email = input.value;
+            }
+            return current;
+          });
+          return newInfo;
         });
+        // return { ...old, personInfo: [...old.personInfo[idx], { email: input.value }] };
       });
     }
 
