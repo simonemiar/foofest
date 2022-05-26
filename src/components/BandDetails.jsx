@@ -22,26 +22,25 @@ export default function BandDetails() {
 
             <article className="grid_desktop">
               <div className="band_img"></div>
-              <article className="wrapper">
-                <div className="bio_container">
-                  <p>
-                    <span className="bio">BIO: </span>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Porro unde quod harum, nihil libero blanditiis, hic, et neque earum facere qui! Quas quae delectus amet, placeat
-                    possimus vitae veritatis sapiente.
-                  </p>
+
+              <div className="bio_container">
+                <p>
+                  <span className="bio">BIO: </span>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Porro unde quod harum, nihil libero blanditiis, hic, et neque earum facere qui! Quas quae delectus amet, placeat
+                  possimus vitae veritatis sapiente.
+                </p>
+              </div>
+
+              <article className="band_members">
+                <div className="band_member">
+                  <p>Member name</p>
                 </div>
 
-                <article className="band_members">
-                  <div className="band_member">
-                    <p>Member name</p>
-                  </div>
-
-                  <div className="band_member">
-                    <p>Member name</p>
-                  </div>
-                  <div className="band_member">
-                    <p>Member name</p>
-                  </div>
-                </article>
+                <div className="band_member">
+                  <p>Member name</p>
+                </div>
+                <div className="band_member">
+                  <p>Member name</p>
+                </div>
               </article>
             </article>
           </article>
