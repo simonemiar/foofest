@@ -1,11 +1,6 @@
-// import BandInfo from "./BandInfo";
-
 export default function Act(props) {
-  // console.log(props);
-  // mAct={mAct} jAct={jAct} vAct={vAct}
   return (
     <>
-      {/* <BandInfo/> */}
       <tr className="artist">
         <th>
           {props.act.start}-{props.act.end}
@@ -13,7 +8,10 @@ export default function Act(props) {
         <td>
           {props.act.act !== "break" ? (
             <button
-            // onClick={()=>{showBandDetails(act); setStage("Jotunheim");}
+              onClick={() => {
+                props.findBandDetails(props.act);
+                props.setStage("Jotunheim");
+              }}
             >
               {props.act.act}
             </button>
@@ -28,7 +26,10 @@ export default function Act(props) {
         <td>
           {props.jAct.act !== "break" ? (
             <button
-            // onClick={()=>{showBandDetails(jAct); setStage("Jotunheim");}
+              onClick={() => {
+                props.findBandDetails(props.jAct);
+                props.setStage("Jotunheim");
+              }}
             >
               {props.jAct.act}
             </button>
@@ -43,7 +44,10 @@ export default function Act(props) {
         <td>
           {props.vAct.act !== "break" ? (
             <button
-            // onClick={()=>{showBandDetails(vAct); setStage("Vanaheim");}
+              onClick={() => {
+                props.findBandDetails(props.vAct);
+                props.setStage("Vanaheim");
+              }}
             >
               {props.vAct.act}
             </button>
