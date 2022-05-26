@@ -1,7 +1,7 @@
 // import { useParams } from "react-router-dom";
 
 export default function BandDetails(props) {
-  const band = { ...props.bandDisplay };
+  const band = { ...props.holdShowBandDetails };
   // showBandDetails, setShowBandDetails
 
   const toggleModal = () => {
@@ -33,42 +33,46 @@ export default function BandDetails(props) {
             <span onClick={toggleModal} className="close-band_details">
               &times;
             </span>
+
             <div className="content-top">
               <h2 className="popup_heading">{band.name}</h2>
               <p className="genre">{band.genre}</p>
-              <p>
-                Performing: {props.act.start}-{props.act.end} {props.stage}
-              </p>
             </div>
 
             <article className="grid_desktop">
               <div className="band_img">
                 <figure>
-                  <img src={band.logo} alt={band.name} />
+                  <img
+                    src={
+                      band.logo.indexOf("http://")
+                        ? `https://prototype-masters-foofest.herokuapp.com/logos/${band.logo}`
+                        : band.logo
+                    }
+                    alt={band.name}
+                  />
                   {band.logoCredits ? <figcaption>{band.logoCredits}</figcaption> : null}
                 </figure>
               </div>
-              <article className="wrapper">
-                <div className="bio_container">
-                  <p>
-                    <span className="bio">BIO: </span>
-                    {band.bio}
-                  </p>
-                </div>
 
-                <article className="band_members">
-                  <div className="band_member">
-                    <p>Member name</p>
-                  </div>
+              <div className="time">
+                {props.act.start}-{props.act.end}
+              </div>
+              <div className="stage">{props.stage}</div>
 
-                  <div className="band_member">
-                    <p>Member name</p>
+              <article className="band_members">
+                {band.members.map((member) => (
+                  <div key={Math.random()} className="member">
+                    <p>{member}</p>
                   </div>
-                  <div className="band_member">
-                    <p>Member name</p>
-                  </div>
-                </article>
+                ))}
               </article>
+
+              <div className="bio_container">
+                <p>
+                  <span className="bio">BIO: </span>
+                  {band.bio}
+                </p>
+              </div>
             </article>
           </article>
         </section>
