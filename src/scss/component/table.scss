@@ -5,10 +5,7 @@
     color: color.$white;
     border-collapse: collapse;
     width: 100%;
-    table-layout: fixed;
     display: block;
-    overflow-x: auto;
-    white-space: nowrap;
     text-align: left;
     position: relative;
     background-color: color.$transparentblue;
@@ -18,7 +15,7 @@
 
     thead {
       tr {
-        border: 3px solid color.$darkblue;
+        border-right: 5px solid color.$darkblue;
 
         // New
         display: flex;
@@ -45,9 +42,6 @@
           }
         }
 
-        .artist {
-          background-color: color.$purple;
-        }
       }
     }
 
@@ -63,6 +57,18 @@ td.artist {
 }
 
 tbody {
-  display: flex;
+  display: block;
+  overflow-x: auto;
+  white-space: nowrap;
+  table-layout: fixed;
   flex-direction: column;
+
+  .artist {
+    background-color: color.$purple;
+
+    td{
+    display: flex;
+    flex-direction: column;
+    }
+  }
 }

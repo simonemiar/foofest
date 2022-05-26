@@ -2,15 +2,15 @@ export default function Act(props) {
   return (
     <>
       <tr className="artist">
-        <th>
+      <td>
           {props.act.start}-{props.act.end}
-        </th>
-        <td>
+        
+       
           {props.act.act !== "break" ? (
             <button
               onClick={() => {
                 props.findBandDetails(props.act);
-                props.setStage("Jotunheim");
+                props.setStage("Midgard");
               }}
             >
               {props.act.act}
@@ -20,10 +20,10 @@ export default function Act(props) {
           )}
         </td>
 
-        <th>
-          {props.jAct.start}-{props.jAct.end}
-        </th>
         <td>
+
+          {props.jAct.start}-{props.jAct.end}
+        
           {props.jAct.act !== "break" ? (
             <button
               onClick={() => {
@@ -38,10 +38,10 @@ export default function Act(props) {
           )}
         </td>
 
-        <th>
-          {props.vAct.start}-{props.vAct.end}
-        </th>
         <td>
+          {props.vAct.start}-{props.vAct.end}
+        
+        
           {props.vAct.act !== "break" ? (
             <button
               onClick={() => {

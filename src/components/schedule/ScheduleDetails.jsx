@@ -138,6 +138,32 @@ export default function ScheduleDetails(props) {
               </tr>
             </thead>
             <tbody>
+            <tr>
+              <td className="time_border">00:00</td>
+              <td className="time_border">01:00</td>
+              <td className="time_border">02:00</td>
+              <td className="time_border">03:00</td>
+              <td className="time_border">04:00</td>
+              <td className="time_border">05:00</td>
+              <td className="time_border">06:00</td>
+              <td className="time_border">07:00</td>
+              <td className="time_border">08:00</td>
+              <td className="time_border">09:00</td>
+              <td className="time_border">10:00</td>
+              <td className="time_border">11:00</td>
+              <td className="time_border">12:00</td>
+              <td className="time_border">13:00</td>
+              <td className="time_border">14:00</td>
+              <td className="time_border">15:00</td>
+              <td className="time_border">16:00</td>
+              <td className="time_border">17:00</td>
+              <td className="time_border">18:00</td>
+              <td className="time_border">19:00</td>
+              <td className="time_border">20:00</td>
+              <td className="time_border">21:00</td>
+              <td className="time_border">22:00</td>
+              <td className="time_border">23:00</td>
+            </tr>
               {props.midgardFilter.map((act, index) => {
                 const mAct = act;
                 const jAct = props.jotunFilter[index];
