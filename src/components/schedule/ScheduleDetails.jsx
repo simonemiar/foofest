@@ -117,7 +117,7 @@ export default function ScheduleDetails(props) {
 
   return (
     <>
-      <section>
+      <section id="schedule_section">
         <button
           id="details_button"
           onClick={() => {

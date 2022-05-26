@@ -1,24 +1,27 @@
 @use "../base/color";
 
-#details_button {
-  width: 100%;
-  height: 10vh;
-  background-color: color.$transparentblue;
-  margin: 10px 0px 10px 6px;
-  transform: skewX(-10deg);
-  border: none;
-  color: color.$white;
+#schedule_section {
+  margin: 0px 50px;
 
-  summary {
-    text-align: center;
-    padding: 20px;
-    transform: skewX(10deg);
+  #details_button {
+    width: 100%;
+    height: 10vh;
+    background-color: color.$transparentblue;
+    margin: 10px 0px 10px 6px;
+    transform: skewX(-10deg);
+    border: none;
+    color: color.$white;
+  
   }
-}
 
-// New
-button#details_button:hover {
-  transform: skewX(10deg);
-  background-color: #583500;
+  // New
+  button#details_button:hover {
+    // transform: skewX(10deg);
+    background-color: #583500;
   // background-color: #ff9800;
 }
+
+}
+
+
+
