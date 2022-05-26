@@ -1,59 +1,68 @@
 @use "../base/color";
 
-#details_section{
+#details_section {
+  table {
+    color: color.$white;
+    border-collapse: collapse;
+    width: 100%;
+    table-layout: fixed;
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+    text-align: left;
+    position: relative;
+    background-color: color.$transparentblue;
 
-    table {
-        color: color.$white;
-        border-collapse: collapse;
-        width: 100%;
-        table-layout:fixed;
-        display: block;
-        overflow-x: auto;
-        white-space: nowrap;
-        text-align: left;
-        position: relative;
-        background-color: color.$transparentblue;
+    // New
+    display: flex;
 
-        thead {
-            tr{
-                border: 3px solid color.$darkblue;
-                th {
-                    position: sticky;
-                    position: -webkit-sticky; // safari
-                    top: 0; left: 0;   
-                    background-color: color.$transparentblue;
-                    padding: 8px;
+    thead {
+      tr {
+        border: 3px solid color.$darkblue;
 
-                }
-
-                td{
-                    border-bottom: 1px solid color.$darkblue;
-                    width: 100%;
-                    max-width: 90px;
-                    min-width: 90px;
-
-                }
-
-                .time_border{
-
-                    &:first-child {
-                        z-index: 3; 
-                        
-
-                    }
-                }
-
-                .artist{
-                    background-color: color.$purple;
-                }
-   
-            }
-            
+        // New
+        display: flex;
+        flex-direction: column;
+        th {
+          position: sticky;
+          position: -webkit-sticky; // safari
+          top: 0;
+          left: 0;
+          background-color: color.$transparentblue;
+          padding: 8px;
         }
 
-        .stage{
-            height: 100px;
+        td {
+          border-bottom: 1px solid color.$darkblue;
+          width: 100%;
+          max-width: 90px;
+          min-width: 90px;
         }
 
+        .time_border {
+          &:first-child {
+            z-index: 3;
+          }
+        }
+
+        .artist {
+          background-color: color.$purple;
+        }
+      }
     }
+
+    .stage {
+      height: 100px;
+    }
+  }
+}
+
+// New
+td.artist {
+  height: 100px;
+}
+
+tbody {
+  display: flex;
+  flex-direction: column;
 }

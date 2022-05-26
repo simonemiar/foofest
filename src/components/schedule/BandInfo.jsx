@@ -1,5 +1,5 @@
 export default function BandInfo({ stage }) {
-  console.log(stage);
+  // console.log(stage);
   return (
     <section>
       BandInfo
