@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import BandDetails from "../../BandDetails";
 import ScheduleDetails from "../../schedule/ScheduleDetails";
 
 export default function Schedule() {
