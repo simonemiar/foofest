@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import ScheduleDetails from "../../ScheduleDetails";
+import BandDetails from "../../BandDetails";
 
 export default function Schedule() {
   // const [bands, setBands] = useState([]);
@@ -27,15 +28,7 @@ export default function Schedule() {
     get();
   }, []);
 
-  const daysSchedule = [
-    "monday",
-    "tuesday",
-    "wednesday",
-    "thursday",
-    "friday",
-    "saturday",
-    "sunday",
-  ];
+  const daysSchedule = ["monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday"];
 
   // scheduleObj = {
   //   monday: {
@@ -72,7 +65,7 @@ export default function Schedule() {
       {/* {schedule.map((stage) => (
         <ScheduleDetails key={Math.random()} stage={stage} daysSchedule={daysSchedule} />
       ))} */}
-
+      <BandDetails />
       {daysSchedule.map((day) => (
         <ScheduleDetails key={Math.random()} schedule={schedule} day={day} />
       ))}
