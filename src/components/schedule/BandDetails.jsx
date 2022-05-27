@@ -1,6 +1,8 @@
 // import { useParams } from "react-router-dom";
+import { useState } from "react";
 
 export default function BandDetails(props) {
+  const [showMore, setShowMore] = useState(false);
   const band = { ...props.holdShowBandDetails };
   // showBandDetails, setShowBandDetails
 
@@ -68,7 +70,10 @@ export default function BandDetails(props) {
             <div className="bio_container">
               <p>
                 <span className="bold">BIO: </span>
-                {band.bio}
+                {showMore ? band.bio : `${band.bio.substring(0, 250)}`}
+                <button className="toggle_show-btn" onClick={() => setShowMore(!showMore)}>
+                  {showMore ? "Show less" : "Show more"}
+                </button>
               </p>
             </div>
           </article>

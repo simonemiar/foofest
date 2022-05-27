@@ -96,6 +96,16 @@
     word-wrap: break-word;
   }
 
+  .toggle_show-btn {
+    border: none;
+    width: 6rem;
+    padding: 0.3rem;
+    background-color: #34334d;
+    color: #f5f5f5;
+    text-align: center;
+    font-size: 1rem;
+  }
+
   .band_members {
     display: flex;
     gap: 1rem;
