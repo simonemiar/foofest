@@ -46,6 +46,7 @@ export default function CardForm(props) {
       street: ticketBasket.personInfo.street,
       city: ticketBasket.personInfo.city,
       country: ticketBasket.personInfo.country,
+      personInfo: ticketBasket.personInfo,
     };
 
     function postData(data) {
