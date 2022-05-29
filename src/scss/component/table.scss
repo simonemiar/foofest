@@ -41,7 +41,6 @@
             z-index: 3;
           }
         }
-
       }
     }
 
@@ -61,14 +60,17 @@ tbody {
   overflow-x: auto;
   white-space: nowrap;
   table-layout: fixed;
-  flex-direction: column;
+  // flex-direction: column;
+  display: flex;
 
   .artist {
     background-color: color.$purple;
-
-    td{
     display: flex;
     flex-direction: column;
+
+    td {
+      display: flex;
+      flex-direction: column;
     }
   }
 }
