@@ -39,13 +39,6 @@ export default function CardForm(props) {
       tent2PersonAmount: ticketBasket.tent2PersonAmount,
       tent3PersonAmount: ticketBasket.tent3PersonAmount,
       isGreenCamping: ticketBasket.isGreenCamping,
-      fullname: ticketBasket.personInfo.fullname,
-      email: ticketBasket.personInfo.email,
-      phone_number: ticketBasket.personInfo.phone_number,
-      zip_code: ticketBasket.personInfo.zip_code,
-      street: ticketBasket.personInfo.street,
-      city: ticketBasket.personInfo.city,
-      country: ticketBasket.personInfo.country,
       personInfo: ticketBasket.personInfo,
     };
 
