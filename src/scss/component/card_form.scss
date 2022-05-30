@@ -8,7 +8,7 @@
   display: grid;
   grid-template-columns: auto auto;
   gap: 1rem;
-  grid-template-areas: "name name" "number number" "expiration security" "button button";
+  grid-template-areas: "name name" "number number" "expiration security" "btns btns";
   margin-inline: auto;
 }
 
@@ -38,9 +38,9 @@
 #card_form .field-container:nth-of-type(4) {
   grid-area: security;
 }
-#card_form button {
-  grid-area: button;
-}
+// #card_form button {
+//   grid-area: button;
+// }
 
 .field-container {
   position: relative;

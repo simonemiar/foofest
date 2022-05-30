@@ -1,8 +1,26 @@
 @use "../base/color";
 
-.basket_overview {
-  background-color: color.$darkblue;
-  padding: 0.7rem;
+#confirmation_page {
+  h2 {
+    text-align: center;
+  }
+
+  h3 {
+    text-align: center;
+    margin-block: 1.5rem;
+    font-weight: 500;
+    line-height: 1.3em;
+  }
+
+  .illustration {
+    display: flex;
+    justify-content: center;
+    height: 7rem;
+  }
+
+  .text_info h3 {
+    margin-bottom: 3rem;
+  }
 
   .overview_content {
     button {
@@ -29,6 +47,7 @@
     grid-template-columns: 1fr 1fr 1fr;
     padding: 1rem;
     background-color: color.$transparentblue;
+    margin-top: 0.3rem;
 
     p:nth-child(1) {
       text-align: left;
@@ -101,6 +120,21 @@
       text-align: right;
       margin-right: 0.7rem;
     }
+
+    .amount_ticket {
+      margin-inline: 0.5rem;
+      color: color.$white;
+    }
+
+    .green_total {
+      grid-column: 3;
+      text-align: right;
+      margin-right: 0.7rem;
+    }
+
+    .green_name {
+      margin-left: 1rem;
+    }
   }
 
   .fee_row {
@@ -130,5 +164,11 @@
     p:nth-child(1) {
       margin-left: 0.3rem;
     }
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  #confirmation_page {
+    margin-inline: 2rem;
   }
 }

@@ -1,0 +1,76 @@
+@use "../base/color";
+
+#details_section {
+  table {
+    color: color.$white;
+    border-collapse: collapse;
+    width: 100%;
+    display: block;
+    text-align: left;
+    position: relative;
+    background-color: color.$transparentblue;
+
+    // New
+    display: flex;
+
+    thead {
+      tr {
+        border-right: 5px solid color.$darkblue;
+
+        // New
+        display: flex;
+        flex-direction: column;
+        th {
+          position: sticky;
+          position: -webkit-sticky; // safari
+          top: 0;
+          left: 0;
+          background-color: color.$transparentblue;
+          padding: 8px;
+        }
+
+        td {
+          border-bottom: 1px solid color.$darkblue;
+          width: 100%;
+          max-width: 90px;
+          min-width: 90px;
+        }
+
+        .time_border {
+          &:first-child {
+            z-index: 3;
+          }
+        }
+      }
+    }
+
+    .stage {
+      height: 100px;
+    }
+  }
+}
+
+// New
+td.artist {
+  height: 100px;
+}
+
+tbody {
+  display: block;
+  overflow-x: auto;
+  white-space: nowrap;
+  table-layout: fixed;
+  // flex-direction: column;
+  display: flex;
+
+  .artist {
+    background-color: color.$purple;
+    display: flex;
+    flex-direction: column;
+
+    td {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+}

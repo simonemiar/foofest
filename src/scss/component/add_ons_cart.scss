@@ -5,7 +5,7 @@
 
   p {
     color: color.$white;
-    }
+  }
 
   .note {
     margin-top: 0.5rem;
@@ -124,6 +124,49 @@
       height: 1.875rem;
       border: none;
       margin-top: 1rem;
+    }
+  }
+  .tent_row {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    margin-top: 2rem;
+
+    .tent_ui {
+      text-align: center;
+    }
+
+    .tent_name {
+      margin-left: 1rem;
+
+      p:nth-child(2) {
+        font-size: 0.8rem;
+        margin-top: 0.2rem;
+      }
+    }
+
+    #amount_tent {
+      margin-inline: 0.5rem;
+      color: color.$white;
+    }
+
+    .tent_total {
+      text-align: right;
+      margin-right: 0.7rem;
+    }
+
+    .amount_ticket {
+      margin-inline: 0.5rem;
+      color: color.$white;
+    }
+
+    .green_total {
+      grid-column: 3;
+      text-align: right;
+      margin-right: 0.7rem;
+    }
+
+    .green_name {
+      margin-left: 1rem;
     }
   }
 }

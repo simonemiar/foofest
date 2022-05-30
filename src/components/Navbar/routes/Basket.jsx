@@ -6,7 +6,6 @@ import CardForm from "../../booking/CardForm";
 import BasketOverview from "../../booking/BasketOverview";
 import FlowComplete from "../../booking/FlowComplete";
 import Timer from "../../booking/Timer";
-// import Header from "../components/Header";
 import ProgressBar from "../../booking/ProgressBar";
 
 export default function Basket() {
@@ -15,7 +14,9 @@ export default function Basket() {
   const [ToggleBasketOverview, setToggleBasketOverview] = useState(false);
   const [ToggleCardForm, setToggleCardForm] = useState(false);
   const [ToggleFlowComplete, setToggleFlowComplete] = useState(false);
+  const [toggleBasketHeader, setToggleBasketHeader] = useState(false);
   const [isCurrent, setIsCurrent] = useState(1);
+  const [popup, setPopup] = useState(false);
 
   const toggleComponentsArr = {
     ToggleTicketDetails: ToggleTicketDetails,
@@ -28,10 +29,12 @@ export default function Basket() {
     setToggleCardForm: setToggleCardForm,
     ToggleFlowComplete: ToggleFlowComplete,
     setToggleFlowComplete: setToggleFlowComplete,
+    toggleBasketHeader: toggleBasketHeader,
+    setToggleBasketHeader: setToggleBasketHeader,
   };
   return (
     <main>
-      <Timer />
+      <Timer toggleComponentsArr={toggleComponentsArr} popup={popup} setPopup={setPopup} />
       <ProgressBar isCurrent={isCurrent} setIsCurrent={setIsCurrent} />
       {ToggleTicketDetails ? (
         <TicketDetails
@@ -56,30 +59,13 @@ export default function Basket() {
       ) : null}
       {ToggleCardForm ? (
         <CardForm
+          setPopup={setPopup}
           isCurrent={isCurrent}
           setIsCurrent={setIsCurrent}
           toggleComponentsArr={toggleComponentsArr}
         />
       ) : null}
       {ToggleFlowComplete ? <FlowComplete toggleComponentsArr={toggleComponentsArr} /> : null}
-
-      {/* {TogglePersonInfo ? <TicketDetails /> : <PersonInfo />} */}
-
-      {/* <button onClick={() => TogglePersonInfo(true)}>Person info</button>
-
-      <button onClick={() => setTogglePersonInfo(false)}>Details</button> */}
-
-      {/* <BasketOverview />
-
-      {TogglePersonInfo ? (
-        <PersonInfo TogglePersonInfo={TogglePersonInfo} setTogglePersonInfo={setTogglePersonInfo} />
-      ) : (
-        <TicketDetails TogglePersonInfo={TogglePersonInfo} setTogglePersonInfo={setTogglePersonInfo} />
-      )}
-      <CardForm /> */}
-
-      {/* {showPersonInfo ? <PersonInfo showPersonInfo={showPersonInfo} setShowPersonInfo={setShowPersonInfo} /> : <TicketDetails showPersonInfo={showPersonInfo} setShowPersonInfo={setShowPersonInfo} />}
-      <CardForm /> */}
     </main>
   );
 }

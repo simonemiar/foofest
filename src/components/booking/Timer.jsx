@@ -1,16 +1,14 @@
-// source:
-// https://www.codegrepper.com/code-examples/javascript/react+countdown+timer+minutes+seconds
-import React from "react";
+// source: https://www.codegrepper.com/code-examples/javascript/react+countdown+timer+minutes+seconds
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import TimeExpired from "./TimeExpired";
 
 const Timer = (props) => {
-  const { initialMinute = 0, initialSeconds = 10 } = props;
+  const { initialMinute = 10, initialSeconds = 0 } = props;
   const [minutes, setMinutes] = useState(initialMinute);
   const [seconds, setSeconds] = useState(initialSeconds);
 
-  let navigate = useNavigate();
-  //https://www.youtube.com/watch?v=tiAlSpyWIDs&ab_channel=PedroTech
+  // Popup
+  // const [popup, setPopup] = useState(false);
 
   useEffect(() => {
     let myInterval = setInterval(() => {
@@ -25,22 +23,27 @@ const Timer = (props) => {
           setSeconds(59);
         }
       }
+      if (!props.toggleComponentsArr.ToggleFlowComplete) {
+        if (minutes === 0 && seconds === 1) {
+          props.setPopup(true);
+        }
+      }
     }, 1000);
     return () => {
       clearInterval(myInterval);
     };
   });
 
-  function timeExpired() {
-    console.log("Your session has expired!");
-    // navigate("/tickets");
-  }
-
   return (
-    <div className="timer_container">
-      <h2>BASKET</h2>
-      {minutes === 0 && seconds === 0 ? timeExpired() : <h3>TIME LEFT: {`${minutes}:${seconds < 10 ? `0${seconds}` : seconds} `}</h3>}
-    </div>
+    <>
+      <TimeExpired popup={props.popup} />
+      <div className="timer_container">
+        <h2>BASKET</h2>
+        {/* {minutes === 0 && seconds === 0 ? null : ( */}
+        <h3>TIME LEFT: {`${minutes}:${seconds < 10 ? `0${seconds}` : seconds} `}</h3>
+        {/* )} */}
+      </div>
+    </>
   );
 };
 
