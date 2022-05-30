@@ -2,8 +2,9 @@
 
 #ticket_container {
   display: flex;
-  flex-direction: column;
-  gap: 3rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 4rem;
 }
 
 .ticket_svg {

@@ -46,19 +46,21 @@ export default function TicketDetails(props) {
         {personFormArr.map((details) => (
           <PersonDetails key={details} details={details} />
         ))}
-        <button
-          className="back_btn shape"
-          onClick={() => {
-            props.toggleComponentsArr.setTogglePersonInfo(false);
-            props.toggleComponentsArr.setToggleTicketDetails(true);
-            props.setIsCurrent(props.isCurrent - 1);
-          }}
-        >
-          Back
-        </button>
-        <button type="submit" className="continue_btn shape">
-          Continue
-        </button>
+        <div className="booking_flow_nav">
+          <button
+            className="back_btn shape"
+            onClick={() => {
+              props.toggleComponentsArr.setTogglePersonInfo(false);
+              props.toggleComponentsArr.setToggleTicketDetails(true);
+              props.setIsCurrent(props.isCurrent - 1);
+            }}
+          >
+            Back
+          </button>
+          <button type="submit" className="continue_btn shape">
+            Continue
+          </button>
+        </div>
       </form>
     </section>
   );

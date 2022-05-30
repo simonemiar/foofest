@@ -8,8 +8,7 @@
   display: grid;
   grid-template-columns: auto auto;
   gap: 1rem;
-  grid-template-areas: "name name" "number number" "expiration security";
-  // "button button";
+  grid-template-areas: "name name" "number number" "expiration security" "btns btns";
   margin-inline: auto;
 }
 

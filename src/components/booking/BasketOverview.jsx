@@ -161,30 +161,29 @@ export default function BasketOverview(props) {
             <p className="total_price">{totalPrice} kr.</p>
           </article>
         </section>
+        <div className="booking_flow_nav">
+          <button
+            className="back_btn shape"
+            onClick={() => {
+              props.toggleComponentsArr.setToggleBasketOverview(false);
+              props.toggleComponentsArr.setTogglePersonInfo(true);
+              props.setIsCurrent(props.isCurrent - 1);
+            }}
+          >
+            Back
+          </button>
+          <button
+            className="continue_btn shape"
+            onClick={() => {
+              props.toggleComponentsArr.setToggleBasketOverview(false);
+              props.toggleComponentsArr.setToggleCardForm(true);
+              props.setIsCurrent(props.isCurrent + 1);
+            }}
+          >
+            Continue
+          </button>
+        </div>
       </section>
-
-      <div className="booking_flow_nav">
-        <button
-          className="back_btn shape"
-          onClick={() => {
-            props.toggleComponentsArr.setToggleBasketOverview(false);
-            props.toggleComponentsArr.setTogglePersonInfo(true);
-            props.setIsCurrent(props.isCurrent - 1);
-          }}
-        >
-          Back
-        </button>
-        <button
-          className="continue_btn shape"
-          onClick={() => {
-            props.toggleComponentsArr.setToggleBasketOverview(false);
-            props.toggleComponentsArr.setToggleCardForm(true);
-            props.setIsCurrent(props.isCurrent + 1);
-          }}
-        >
-          Continue
-        </button>
-      </div>
     </>
   );
 }
