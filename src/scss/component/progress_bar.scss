@@ -11,7 +11,8 @@
   display: flex;
   position: relative;
   z-index: 10;
-  min-width: 24rem;
+  min-width: 23rem;
+  padding-right: 30px;
 }
 
 .step-item {
@@ -42,8 +43,6 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  font-weight: 600;
-  font-size: 1.1rem;
   margin: 0 auto;
   position: relative;
   z-index: 10;

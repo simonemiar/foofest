@@ -60,8 +60,8 @@ export default function AreaOption(props) {
         onChange={handleOnChange}
         disabled={isTrue}
       ></input>
-      <label htmlFor={props.spot.area}>{props.spot.area}</label>
-      <p className="spots_left">Spots left: {props.spot.available}</p>
+      <label htmlFor={props.spot.area} className="bold">{props.spot.area}</label>
+      <h4 className="spots_left">Spots left: {props.spot.available}</h4>
     </div>
   );
 }

@@ -8,7 +8,7 @@ export default function BandDetails(props) {
     props.setShowBandDetails(!props.showBandDetails);
   };
 
-  function stuff() {
+  // function stuff() {
     // const params = useParams();
     // console.log(params);
     // import useEffct, fetch the product, api $param
@@ -22,7 +22,7 @@ export default function BandDetails(props) {
     //   }
     //   get();
     // }, [params.name]);
-  }
+  // }
 
   return (
     <>
@@ -69,7 +69,6 @@ export default function BandDetails(props) {
 
               <div className="bio_container">
                 <p>
-                  <span className="bio">BIO: </span>
                   {band.bio}
                 </p>
               </div>

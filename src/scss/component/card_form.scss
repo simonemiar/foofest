@@ -50,14 +50,14 @@
 // Validation:
 
 #card_form input[type="text"]:focus {
-  border: 2px solid #a08cc2;
+  border: 2px solid color.$purple;
 }
 
 #card_form input:invalid:not(:placeholder-shown, :focus) {
   background-position: right 16px center;
   background-size: 20px 20px;
   background-repeat: no-repeat;
-  color: red;
+  color: color.$red;
   background-image: var(--error);
 
   animation: shake 0.125s 2 backwards;

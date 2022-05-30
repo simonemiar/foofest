@@ -10,7 +10,6 @@
   .note {
     margin-top: 0.5rem;
     text-align: left;
-    font-size: 0.8rem;
   }
 
   #top-bar {
@@ -68,11 +67,8 @@
   .tent_name {
     text-align: left;
     margin-left: 0.7rem;
-    p:nth-child(1) {
-      font-weight: bold;
-    }
+
     p:nth-child(2) {
-      font-size: 0.8rem;
       margin-top: 0.2rem;
     }
   }
@@ -96,11 +92,8 @@
 
   .green_name {
     text-align: left;
-    p:nth-child(1) {
-      font-weight: bold;
-    }
+
     p:nth-child(2) {
-      font-size: 0.8rem;
       margin-top: 0.2rem;
     }
   }
@@ -139,7 +132,7 @@
       margin-left: 1rem;
 
       p:nth-child(2) {
-        font-size: 0.8rem;
+        // font-size: 0.8rem;
         margin-top: 0.2rem;
       }
     }
