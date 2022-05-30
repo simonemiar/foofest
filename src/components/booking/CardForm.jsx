@@ -5,7 +5,6 @@ import { TicketBasketContext } from "../../contexts/TicketBasketContext";
 export default function CardForm(props) {
   const formElm = useRef(null);
   const { ticketBasket } = useContext(TicketBasketContext);
-  // console.log(ticketBasket);
 
   // Input mask:
   const [card, setCard] = useState();
@@ -71,8 +70,14 @@ export default function CardForm(props) {
 
   // https://dev.to/juanmanuelcrego/input-mask-in-react-without-libraries-5akf
   const handleCardNumberInput = () => {
-    const cardValue = cardInput.current.value.replace(/\D/g, "").match(/(\d{0,4})(\d{0,4})(\d{0,4})(\d{0,4})/);
-    cardInput.current.value = !cardValue[2] ? cardValue[1] : `${cardValue[1]}-${cardValue[2]}${`${cardValue[3] ? `-${cardValue[3]}` : ""}`}${`${cardValue[4] ? `-${cardValue[4]}` : ""}`}`;
+    const cardValue = cardInput.current.value
+      .replace(/\D/g, "")
+      .match(/(\d{0,4})(\d{0,4})(\d{0,4})(\d{0,4})/);
+    cardInput.current.value = !cardValue[2]
+      ? cardValue[1]
+      : `${cardValue[1]}-${cardValue[2]}${`${cardValue[3] ? `-${cardValue[3]}` : ""}`}${`${
+          cardValue[4] ? `-${cardValue[4]}` : ""
+        }`}`;
     const numbers = cardInput.current.value.replace(/(\D)/g, "");
     setCard(numbers);
 
@@ -83,7 +88,6 @@ export default function CardForm(props) {
 
   function handleDateInput() {
     const dateValue = dateInput.current.value;
-    // console.log(dateValue.length);
     if (dateValue.length === 5) {
       codeInput.current.focus();
     }
@@ -103,15 +107,39 @@ export default function CardForm(props) {
         </div>
         <div className="field-container">
           <label htmlFor="cardnumber">Card Number</label>
-          <input id="cardnumber" type="text" inputMode="numeric" maxLength="19" required ref={cardInput} onChange={handleCardNumberInput} />
+          <input
+            id="cardnumber"
+            type="text"
+            inputMode="numeric"
+            maxLength="19"
+            required
+            ref={cardInput}
+            onChange={handleCardNumberInput}
+          />
         </div>
         <div className="field-container">
           <label htmlFor="expirationdate">Expiration (mm/yy)</label>
-          <input id="expirationdate" type="text" inputMode="numeric" maxLength="5" required ref={dateInput} onChange={handleDateInput} />
+          <input
+            id="expirationdate"
+            type="text"
+            inputMode="numeric"
+            maxLength="5"
+            required
+            ref={dateInput}
+            onChange={handleDateInput}
+          />
         </div>
         <div className="field-container">
           <label htmlFor="securitycode">Security Code</label>
-          <input id="securitycode" type="text" pattern="[0-9]+" inputMode="numeric" ref={codeInput} maxLength="3" required />
+          <input
+            id="securitycode"
+            type="text"
+            pattern="[0-9]+"
+            inputMode="numeric"
+            ref={codeInput}
+            maxLength="3"
+            required
+          />
         </div>
         <div className="booking_flow_nav">
           <button
@@ -129,30 +157,6 @@ export default function CardForm(props) {
           </button>
         </div>
       </form>
-      {/* <div className="booking_flow_nav">
-        <button
-          className="back_btn shape"
-          onClick={() => {
-            props.toggleComponentsArr.setToggleCardForm(false);
-            props.toggleComponentsArr.setToggleBasketOverview(true);
-            props.setIsCurrent(props.isCurrent - 1);
-          }}
-        >
-          Back
-        </button>
-        <button
-          className="continue_btn shape"
-          onClick={() => {
-            props.toggleComponentsArr.setToggleCardForm(false);
-            props.toggleComponentsArr.setToggleBasketHeader(true);
-            props.toggleComponentsArr.setToggleFlowComplete(true);
-            props.setIsCurrent(props.isCurrent + 1);
-            props.setPopup(false);
-          }}
-        >
-          Pay
-        </button>
-      </div> */}
     </>
   );
 }

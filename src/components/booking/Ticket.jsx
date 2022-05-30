@@ -6,7 +6,7 @@ import { TicketBasketContext } from "../../contexts/TicketBasketContext";
 
 export default function Ticket(props) {
   const [isFlipped, setIsFlipped] = useState(false);
-  const { ticketBasket, setTicketBasket } = useContext(TicketBasketContext);
+  const { setTicketBasket } = useContext(TicketBasketContext);
 
   function handleClick(e) {
     setIsFlipped((prevState) => !prevState);
@@ -47,7 +47,8 @@ export default function Ticket(props) {
         <div className="ticket_svg">
           <div className="ticket_content">
             <p>
-              This is a {props.ticketType} ticket to FooFest 2022 - Jazz festival. The ticket cost {props.ticketPrice} DKK, and is a big nice festival with big artist.
+              This is a {props.ticketType} ticket to FooFest 2022 - Jazz festival. The ticket cost{" "}
+              {props.ticketPrice} DKK, and is a big nice festival with big artist.
             </p>
             <div className="ticket_btn">
               <button type="primary" onClick={handleClick}>

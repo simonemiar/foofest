@@ -24,9 +24,18 @@ export default function BasketOverview(props) {
   const totalTwoTent = ticketBasket.tent2PersonPrice * ticketBasket.tent2PersonAmount;
   const totalThreeTent = ticketBasket.tent3PersonPrice * ticketBasket.tent3PersonAmount;
 
-  const totalPrice = totalTwoTent + totalThreeTent + (ticketBasket.isGreenCamping ? ticketBasket.greenCamping : 0) + ticketBasket.ticketPrice * ticketBasket.ticketAmount + ticketBasket.bookingFee;
+  const totalPrice =
+    totalTwoTent +
+    totalThreeTent +
+    (ticketBasket.isGreenCamping ? ticketBasket.greenCamping : 0) +
+    ticketBasket.ticketPrice * ticketBasket.ticketAmount +
+    ticketBasket.bookingFee;
 
-  const totalItems = ticketBasket.tent2PersonAmount + ticketBasket.tent3PersonAmount + ticketBasket.isGreenCamping + ticketBasket.ticketAmount;
+  const totalItems =
+    ticketBasket.tent2PersonAmount +
+    ticketBasket.tent3PersonAmount +
+    ticketBasket.isGreenCamping +
+    ticketBasket.ticketAmount;
 
   useEffect(() => {
     setToggleTent2Person(ticketBasket.tent2PersonAmount ? true : false);
@@ -65,28 +74,6 @@ export default function BasketOverview(props) {
         </div>
 
         <section className="overview_content">
-          {/* <section className="ticket_cart_content">
-        <div className="ticket_name">
-          <p id="ticket_type">
-            {ticketBasket.ticketType}
-          </p>
-          <p>Ticket</p>
-        </div>
-        <div className="amount_ui">
-          <button onClick={() => removeTicket(ticketBasket, setTicketBasket)} id="ticket_decre">
-            -
-          </button>
-          <span id="amount">{ticketBasket.ticketAmount}</span>
-          <button onClick={() => addTicket(ticketBasket, setTicketBasket)} id="ticket_incre">
-            +
-          </button>
-        </div>
-        <div className="ticket_price">
-          <p className="total_ticket_price">{totalTicketPrize} kr.</p>
-          <p className="fee_price">Fee: {ticketBasket.bookingFee} kr.</p>
-        </div>
-      </section> */}
-
           <article className="ticket_row">
             <div className="ticket_name">
               <p id="ticket_type">{ticketBasket.ticketType}</p>
@@ -99,7 +86,9 @@ export default function BasketOverview(props) {
               <button onClick={() => addTicket(ticketBasket, setTicketBasket)}>+</button>
             </div>
             <div className="ticket_price">
-              <p className="total_ticket_price"><span className="bold">{totalTicketPrize} kr.</span></p>
+              <p className="total_ticket_price">
+                <span className="bold">{totalTicketPrize} kr.</span>
+              </p>
             </div>
           </article>
 
@@ -136,7 +125,12 @@ export default function BasketOverview(props) {
                 <p>Option to help change the world</p>
               </div>
               <div className="green_ui">
-                <input onChange={greenOption} type="checkbox" checked={ticketBasket.isGreenCamping} className="green-option_check"></input>
+                <input
+                  onChange={greenOption}
+                  type="checkbox"
+                  checked={ticketBasket.isGreenCamping}
+                  className="green-option_check"
+                ></input>
               </div>
 
               <div className="green_total">

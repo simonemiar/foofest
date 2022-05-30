@@ -7,9 +7,6 @@ const Timer = (props) => {
   const [minutes, setMinutes] = useState(initialMinute);
   const [seconds, setSeconds] = useState(initialSeconds);
 
-  // Popup
-  // const [popup, setPopup] = useState(false);
-
   useEffect(() => {
     let myInterval = setInterval(() => {
       if (seconds > 0) {
@@ -39,9 +36,7 @@ const Timer = (props) => {
       <TimeExpired popup={props.popup} />
       <div className="timer_container">
         <h3>Basket</h3>
-        {/* {minutes === 0 && seconds === 0 ? null : ( */}
         <h4>TIME LEFT: {`${minutes}:${seconds < 10 ? `0${seconds}` : seconds} `}</h4>
-        {/* )} */}
       </div>
     </>
   );

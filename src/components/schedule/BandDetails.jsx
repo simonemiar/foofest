@@ -11,19 +11,19 @@ export default function BandDetails(props) {
   };
 
   // function stuff() {
-    // const params = useParams();
-    // console.log(params);
-    // import useEffct, fetch the product, api $param
-    // useEffect(() => {
-    //   async function get() {
-    //     const res = await fetch(
-    //       `https://prototype-masters-foofest.herokuapp.com/bands/${params.name}`
-    //     );
-    //     const data = await res.json();
-    //     setBandDetails(data);
-    //   }
-    //   get();
-    // }, [params.name]);
+  // const params = useParams();
+  // console.log(params);
+  // import useEffct, fetch the product, api $param
+  // useEffect(() => {
+  //   async function get() {
+  //     const res = await fetch(
+  //       `https://prototype-masters-foofest.herokuapp.com/bands/${params.name}`
+  //     );
+  //     const data = await res.json();
+  //     setBandDetails(data);
+  //   }
+  //   get();
+  // }, [params.name]);
   // }
 
   return (
@@ -44,7 +44,14 @@ export default function BandDetails(props) {
             {/* <article className="grid_desktop"> */}
             <div className="band_img">
               <figure>
-                <img src={band.logo.indexOf("http://") ? `https://prototype-masters-foofest.herokuapp.com/logos/${band.logo}` : band.logo} alt={band.name} />
+                <img
+                  src={
+                    band.logo.indexOf("http://")
+                      ? `https://prototype-masters-foofest.herokuapp.com/logos/${band.logo}`
+                      : band.logo
+                  }
+                  alt={band.name}
+                />
                 {band.logoCredits ? <figcaption>{band.logoCredits}</figcaption> : null}
               </figure>
             </div>

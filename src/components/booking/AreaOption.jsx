@@ -7,8 +7,7 @@ export default function AreaOption(props) {
   let isTrue = false;
 
   function handleOnChange(e) {
-    // const selectedOption = e.target.value;
-    // console.log("selected camping option is:", selectedOption);
+    // console.log("Selected camping option is:", selectedOption);
 
     const area = e.target.value,
       amount = ticketBasket.ticketAmount;
@@ -60,7 +59,9 @@ export default function AreaOption(props) {
         onChange={handleOnChange}
         disabled={isTrue}
       ></input>
-      <label htmlFor={props.spot.area} className="bold">{props.spot.area}</label>
+      <label htmlFor={props.spot.area} className="bold">
+        {props.spot.area}
+      </label>
       <h4 className="spots_left">Spots left: {props.spot.available}</h4>
     </div>
   );
