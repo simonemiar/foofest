@@ -1,10 +1,9 @@
 import { useState, useContext } from "react";
 import ReactCardFlip from "react-card-flip";
-import { Link } from "react-router-dom";
 
 import { TicketBasketContext } from "../../contexts/TicketBasketContext";
 
-export default function Ticket(props) {
+export default function TicketInBasket(props) {
   const [isFlipped, setIsFlipped] = useState(false);
   const { ticketBasket, setTicketBasket } = useContext(TicketBasketContext);
 
@@ -31,15 +30,13 @@ export default function Ticket(props) {
       <ReactCardFlip isFlipped={isFlipped} flipDirection="vertical">
         <div className="ticket_svg">
           <div className="ticket_content">
-            <h2>{props.ticketType}</h2>
+            <h2>{ticketBasket.ticketType}</h2>
             <h3>FooFest 2022</h3>
-            <h4>{props.ticketPrice} DKK</h4>
+            <h4>{ticketBasket.ticketPrice} DKK</h4>
             <div className="ticket_btn">
               <button type="primary" onClick={handleClick}>
                 Read more
-              </button>{" "}
-              OR
-              <button onClick={addTicketTypeToBasket}>{<Link to="/basket">Buy</Link>}</button>
+              </button>
             </div>
           </div>
         </div>
@@ -53,8 +50,6 @@ export default function Ticket(props) {
               <button type="primary" onClick={handleClick}>
                 Read less
               </button>
-              OR
-              <button onClick={addTicketTypeToBasket}>{<Link to="/basket">Buy</Link>}</button>
             </div>
           </div>
         </div>
