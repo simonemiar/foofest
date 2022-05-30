@@ -50,9 +50,8 @@ export default function FlowComplete(props) {
     // text(text, x, y, optionsopt, transform)
 
     // Ordernumber
-    const ranOrderNum = Math.floor(100000 + Math.random() * 900000);
     doc.setFontSize(16);
-    doc.text("Ordernumber: " + ranOrderNum.toString(), 100, 50, { align: "center" });
+    doc.text("Ordernumber: " + ordernumber.toString(), 100, 50, { align: "center" });
 
     // Line
     doc.setLineWidth(1.5);
@@ -73,38 +72,39 @@ export default function FlowComplete(props) {
     doc.text("Booking fee", 20, 85);
     doc.text("2 person tents", 20, 95);
     doc.text("3 person tents", 20, 105);
+    doc.text("Camping spot", 20, 115);
+    doc.text("Green camping", 20, 125);
 
     // Quanity
     doc.text(ticketBasket.ticketAmount.toString(), 95, 75);
     doc.text(ticketBasket.tent2PersonAmount.toString(), 95, 95);
     doc.text(ticketBasket.tent3PersonAmount.toString(), 95, 105);
+    doc.text(ticketBasket.campingArea.toString(), 95, 115);
+    doc.text(ticketBasket.isGreenCamping.toString(), 95, 125);
 
     // Price
-    const totalTicketPrice = ticketBasket.ticketPrice * ticketBasket.ticketAmount;
-    const total2PersonPrice = ticketBasket.tent2PersonPrice * ticketBasket.tent2PersonAmount;
-    const total3PersonPrice = ticketBasket.tent3PersonPrice * ticketBasket.tent3PersonAmount;
-
-    doc.text(totalTicketPrice.toString() + " DKK", 180, 75);
+    doc.text(totalTicketPrize.toString() + " DKK", 180, 75);
     doc.text(ticketBasket.bookingFee.toString() + " DKK", 180, 85);
-    doc.text(total2PersonPrice.toString() + " DKK", 180, 95);
-    doc.text(total3PersonPrice.toString() + " DKK", 180, 105);
+    doc.text(totalTwoTent.toString() + " DKK", 180, 95);
+    doc.text(totalThreeTent.toString() + " DKK", 180, 105);
+    doc.text("0 DKK", 180, 115);
+    doc.text(ticketBasket.greenCamping.toString() + " DKK", 180, 125);
 
     // Line
     doc.setLineWidth(1.5);
-    doc.line(20, 115, 200, 115);
+    doc.line(20, 135, 200, 135);
 
     // Total price
     doc.setFontSize(16);
     doc.setFont(undefined, "bold");
-    doc.text("Total", 160, 125);
+    doc.text("Total", 160, 145);
     doc.setFont(undefined, "normal");
 
-    const totalPrice = totalTicketPrice + total2PersonPrice + total3PersonPrice;
-    doc.text(totalPrice.toString() + " DKK", 180, 125);
+    doc.text(totalPrice.toString() + " DKK", 180, 145);
 
-    doc.text("Remember to see the schedule!", 100, 145, { align: "center" });
+    doc.text("Remember to see the schedule!", 100, 155, { align: "center" });
 
-    doc.save(`booking-confirmation-${ranOrderNum.toString()}.pdf`);
+    doc.save(`booking-confirmation-${ordernumber.toString()}.pdf`);
   }
 
   // { setToggleTicketDetails, setTogglePersonInfo }
