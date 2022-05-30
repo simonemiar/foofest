@@ -1,4 +1,4 @@
-export default function PersonForm(props) {
+export default function PersonDetails(props) {
   return (
     <>
       <fieldset data-person>

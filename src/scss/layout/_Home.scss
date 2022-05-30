@@ -34,7 +34,7 @@
         }
       }
       .booking-btn {
-        width: 5.5rem;
+        width: 7.5rem;
         height: 1.875rem;
         background-color: #f39b13;
         color: #202033;
@@ -43,7 +43,7 @@
       }
 
       .schedule-btn {
-        width: 5.5rem;
+        width: 7.5rem;
         height: 1.875rem;
         background-color: #202033;
         color: #f5f5f5;
@@ -54,8 +54,8 @@
   }
 
   #intro_section {
-    margin-top: 5rem;
-    margin-inline: 20px;
+    margin-top: 10rem;
+    margin-inline: 3rem;
     display: grid;
     justify-content: center;
     h2 {
@@ -69,7 +69,7 @@
     }
 
     #intro_img {
-      width: 15rem;
+      width: 25rem;
       height: 15rem;
       background-color: #34334d;
       margin-top: 2rem;
@@ -79,7 +79,7 @@
   }
 
   #stages_section {
-    margin-top: 5rem;
+    margin-top: 7rem;
 
     h2 {
       text-align: center;
@@ -97,10 +97,6 @@
       flex-wrap: wrap;
       margin-top: 2rem;
       gap: 7rem;
-
-      // display: grid;
-      // justify-items: center;
-      // gap: 2rem;
 
       .stage {
         width: 15rem;
@@ -132,8 +128,7 @@
   }
 
   #intro_section {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: auto auto;
 
     #intro_text {
       margin-top: 2rem;
