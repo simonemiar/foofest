@@ -9,7 +9,6 @@ export default function QuanityLine({
   title,
 }) {
   return (
-    // <article className="three-person_ui">
     <article className="tent_row">
       <div className="tent_name">
         <p className="bold">{title}</p>
