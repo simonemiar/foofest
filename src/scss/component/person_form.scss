@@ -33,6 +33,14 @@ fieldset {
   flex-direction: column;
   gap: 1rem;
   margin-inline: auto;
+
+  fieldset{
+    padding: 20px;
+
+    legend{
+      padding: 0px 10px;
+    }
+  }
 }
 
 #person_form input,

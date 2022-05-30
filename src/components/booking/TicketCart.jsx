@@ -19,7 +19,7 @@ export default function TicketCart(props) {
 
       <section className="ticket_cart_content">
         <div className="ticket_name">
-          <p id="ticket_type">
+          <p id="ticket_type" className="bold">
             {ticketBasket.ticketType}
             {/* {
               (ticketBasket.ticketType =
@@ -28,7 +28,7 @@ export default function TicketCart(props) {
                   : null)
             } */}
           </p>
-          <p>Ticket</p>
+          <h5>Ticket</h5>
         </div>
         <div className="amount_ui">
           <button onClick={() => removeTicket(ticketBasket, setTicketBasket)} id="ticket_decre">
@@ -40,8 +40,8 @@ export default function TicketCart(props) {
           </button>
         </div>
         <div className="ticket_price">
-          <p className="total_ticket_price">{totalTicketPrize} kr.</p>
-          <p className="fee_price">Fee: {ticketBasket.bookingFee} kr.</p>
+          <p className="total_ticket_price"><span className="bold">{totalTicketPrize} kr.</span></p>
+          <h5 className="fee_price">Fee: {ticketBasket.bookingFee} kr.</h5>
         </div>
       </section>
     </section>

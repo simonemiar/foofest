@@ -12,7 +12,7 @@ export default function QuanityLine({
     // <article className="three-person_ui">
     <article className="tent_row">
       <div className="tent_name">
-        <p>{title}</p>
+        <p className="bold">{title}</p>
         <p>Tent</p>
       </div>
       <div className="tent_ui">

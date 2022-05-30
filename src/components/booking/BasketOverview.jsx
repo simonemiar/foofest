@@ -99,7 +99,7 @@ export default function BasketOverview(props) {
               <button onClick={() => addTicket(ticketBasket, setTicketBasket)}>+</button>
             </div>
             <div className="ticket_price">
-              <p className="total_ticket_price">{totalTicketPrize} kr.</p>
+              <p className="total_ticket_price"><span className="bold">{totalTicketPrize} kr.</span></p>
             </div>
           </article>
 

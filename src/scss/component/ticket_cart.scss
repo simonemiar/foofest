@@ -38,7 +38,6 @@
     text-align: left;
 
     p:nth-child(2) {
-      font-size: 0.7rem;
       padding-top: 0.1rem;
     }
   }
@@ -47,13 +46,8 @@
     text-align: right;
 
     p:nth-child(2) {
-      font-size: 0.7rem;
       padding-top: 0.1rem;
     }
-  }
-
-  #ticket_type {
-    font-weight: bold;
   }
 
   .amount_ui {
@@ -80,9 +74,4 @@
     }
   }
 
-  .ticket_price {
-    .total_ticket_price {
-      font-weight: bold;
-    }
-  }
 }

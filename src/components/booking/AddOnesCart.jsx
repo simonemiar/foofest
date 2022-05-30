@@ -47,10 +47,10 @@ export default function AddOnesCart() {
         <p>Price</p>
       </div>
       <article className="note">
-        <p>Note: The price includes the crew setting up your tent</p>
+        <h4>Note: The price includes the crew setting up your tent</h4>
       </article>
 
-      <section className="add-ons_cart_content">
+      <section className="add-ons_cart_content" >
         <QuantityLine
           ticketBasket={ticketBasket}
           setTicketBasket={setTicketBasket}
@@ -59,7 +59,7 @@ export default function AddOnesCart() {
           totalTent={totalTwoTent}
           tentPersonAmount={ticketBasket.tent2PersonAmount}
           tentPersonPrice={ticketBasket.tent2PersonPrice}
-          title={"2 person"}
+          title={"2 person"} 
         />
         <QuantityLine
           ticketBasket={ticketBasket}
@@ -74,8 +74,8 @@ export default function AddOnesCart() {
 
         <article className="green_camping_ui">
           <div className="green_name">
-            <p>Green camping</p>
-            <p>Option to help change the world</p>
+            <p className="bold">Green camping</p>
+            <h5>Option to help change the world</h5>
           </div>
 
           <div className="green_ui">
