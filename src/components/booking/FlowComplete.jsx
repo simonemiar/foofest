@@ -1,9 +1,10 @@
 import { useState, useContext, useEffect } from "react";
 import { TicketBasketContext } from "../../contexts/TicketBasketContext";
+import { jsPDF } from "jspdf";
 import orderIllustration from "../../assets/svg/confirmation.svg";
 
 export default function FlowComplete(props) {
-  const { ticketBasket, setTicketBasket } = useContext(TicketBasketContext);
+  const { ticketBasket } = useContext(TicketBasketContext);
 
   const ordernumber = Math.floor(Math.random() * 10000000 + 1);
 
@@ -15,15 +16,96 @@ export default function FlowComplete(props) {
   const totalTwoTent = ticketBasket.tent2PersonPrice * ticketBasket.tent2PersonAmount;
   const totalThreeTent = ticketBasket.tent3PersonPrice * ticketBasket.tent3PersonAmount;
 
-  const totalPrice = totalTwoTent + totalThreeTent + (ticketBasket.isGreenCamping ? ticketBasket.greenCamping : 0) + ticketBasket.ticketPrice * ticketBasket.ticketAmount + ticketBasket.bookingFee;
+  const totalPrice =
+    totalTwoTent +
+    totalThreeTent +
+    (ticketBasket.isGreenCamping ? ticketBasket.greenCamping : 0) +
+    ticketBasket.ticketPrice * ticketBasket.ticketAmount +
+    ticketBasket.bookingFee;
 
-  const totalItems = ticketBasket.tent2PersonAmount + ticketBasket.tent3PersonAmount + ticketBasket.isGreenCamping + ticketBasket.ticketAmount;
+  const totalItems =
+    ticketBasket.tent2PersonAmount +
+    ticketBasket.tent3PersonAmount +
+    ticketBasket.isGreenCamping +
+    ticketBasket.ticketAmount;
 
   useEffect(() => {
     setToggleTent2Person(ticketBasket.tent2PersonAmount ? true : false);
     setToggleTent3Person(ticketBasket.tent3PersonAmount ? true : false);
     setToggleGreenCamping(ticketBasket.isGreenCamping ? true : false);
   }, [ticketBasket]);
+
+  function createPDF() {
+    // Default export is a4 paper, portrait, using millimeters for units
+    const doc = new jsPDF();
+
+    // Header
+    doc.setFontSize(22);
+    doc.text(20, 20, "FooFest Jazz Festival");
+    // doc.addImage(img, "PNG", 180, 10, 20, 20);
+
+    // Order confirmation
+    doc.setFontSize(22);
+    doc.text("Order confirmation", 100, 40, { align: "center" });
+    // text(text, x, y, optionsopt, transform)
+
+    // Ordernumber
+    const ranOrderNum = Math.floor(100000 + Math.random() * 900000);
+    doc.setFontSize(16);
+    doc.text("Ordernumber: " + ranOrderNum.toString(), 100, 50, { align: "center" });
+
+    // Line
+    doc.setLineWidth(1.5);
+    doc.line(20, 55, 200, 55);
+
+    // Headings
+    doc.setFontSize(16);
+    doc.setFont(undefined, "bold");
+    doc.text("Item", 20, 65);
+    doc.text("Quanity", 95, 65);
+    doc.text("Price", 180, 65);
+
+    doc.setFontSize(14);
+    doc.setFont(undefined, "normal");
+
+    // Items
+    doc.text("Ticket " + ticketBasket.ticketType, 20, 75);
+    doc.text("Booking fee", 20, 85);
+    doc.text("2 person tents", 20, 95);
+    doc.text("3 person tents", 20, 105);
+
+    // Quanity
+    doc.text(ticketBasket.ticketAmount.toString(), 95, 75);
+    doc.text(ticketBasket.tent2PersonAmount.toString(), 95, 95);
+    doc.text(ticketBasket.tent3PersonAmount.toString(), 95, 105);
+
+    // Price
+    const totalTicketPrice = ticketBasket.ticketPrice * ticketBasket.ticketAmount;
+    const total2PersonPrice = ticketBasket.tent2PersonPrice * ticketBasket.tent2PersonAmount;
+    const total3PersonPrice = ticketBasket.tent3PersonPrice * ticketBasket.tent3PersonAmount;
+
+    doc.text(totalTicketPrice.toString() + " DKK", 180, 75);
+    doc.text(ticketBasket.bookingFee.toString() + " DKK", 180, 85);
+    doc.text(total2PersonPrice.toString() + " DKK", 180, 95);
+    doc.text(total3PersonPrice.toString() + " DKK", 180, 105);
+
+    // Line
+    doc.setLineWidth(1.5);
+    doc.line(20, 115, 200, 115);
+
+    // Total price
+    doc.setFontSize(16);
+    doc.setFont(undefined, "bold");
+    doc.text("Total", 160, 125);
+    doc.setFont(undefined, "normal");
+
+    const totalPrice = totalTicketPrice + total2PersonPrice + total3PersonPrice;
+    doc.text(totalPrice.toString() + " DKK", 180, 125);
+
+    doc.text("Remember to see the schedule!", 100, 145, { align: "center" });
+
+    doc.save(`booking-confirmation-${ranOrderNum.toString()}.pdf`);
+  }
 
   // { setToggleTicketDetails, setTogglePersonInfo }
   return (
@@ -36,7 +118,9 @@ export default function FlowComplete(props) {
       </div>
 
       <div className="text_info">
-        <h3>We’ve received your order, and you should recieve a confirmation e-mail any minute now.</h3>
+        <h3>
+          We’ve received your order, and you should recieve a confirmation e-mail any minute now.
+        </h3>
 
         <p>Please view your order details below</p>
       </div>
@@ -58,7 +142,9 @@ export default function FlowComplete(props) {
             <span id="amount_ticket">{ticketBasket.ticketAmount}</span>
           </div>
           <div className="ticket_price">
-            <p className="total_ticket_price"><span className="bold">{totalTicketPrize} kr.</span></p>
+            <p className="total_ticket_price">
+              <span className="bold">{totalTicketPrize} kr.</span>
+            </p>
           </div>
         </article>
 
@@ -72,7 +158,10 @@ export default function FlowComplete(props) {
               <span className="amount_ticket">{ticketBasket.tent2PersonAmount}</span>
             </div>
             <div className="tent_total">
-              <p>{ticketBasket.tent2PersonAmount > 1 ? totalTwoTent : ticketBasket.tent2PersonPrice} kr.</p>
+              <p>
+                {ticketBasket.tent2PersonAmount > 1 ? totalTwoTent : ticketBasket.tent2PersonPrice}{" "}
+                kr.
+              </p>
             </div>
           </article>
         ) : null}
@@ -87,7 +176,12 @@ export default function FlowComplete(props) {
               <span className="amount_ticket">{ticketBasket.tent3PersonAmount}</span>
             </div>
             <div className="tent_total">
-              <p>{ticketBasket.tent3PersonAmount > 1 ? totalThreeTent : ticketBasket.tent3PersonPrice} kr.</p>
+              <p>
+                {ticketBasket.tent3PersonAmount > 1
+                  ? totalThreeTent
+                  : ticketBasket.tent3PersonPrice}{" "}
+                kr.
+              </p>
             </div>
           </article>
         ) : null}
@@ -119,6 +213,9 @@ export default function FlowComplete(props) {
             Total ({totalItems} {totalItems > 1 ? "items" : "item"})
           </p>
           <p className="total_price">{totalPrice} kr.</p>
+        </article>
+        <article className="total_bar">
+          <button onClick={createPDF}>Download your ticket</button>
         </article>
       </section>
     </section>
