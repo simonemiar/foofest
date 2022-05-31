@@ -2,6 +2,7 @@ import { useState, useContext, useEffect } from "react";
 import { TicketBasketContext } from "../../contexts/TicketBasketContext";
 import { jsPDF } from "jspdf";
 import orderIllustration from "../../assets/svg/confirmation.svg";
+import fooFestLogo from "../../assets/img/foofest_logo_orange.png";
 
 export default function FlowComplete(props) {
   const { ticketBasket } = useContext(TicketBasketContext);
@@ -16,9 +17,18 @@ export default function FlowComplete(props) {
   const totalTwoTent = ticketBasket.tent2PersonPrice * ticketBasket.tent2PersonAmount;
   const totalThreeTent = ticketBasket.tent3PersonPrice * ticketBasket.tent3PersonAmount;
 
-  const totalPrice = totalTwoTent + totalThreeTent + (ticketBasket.isGreenCamping ? ticketBasket.greenCamping : 0) + ticketBasket.ticketPrice * ticketBasket.ticketAmount + ticketBasket.bookingFee;
+  const totalPrice =
+    totalTwoTent +
+    totalThreeTent +
+    (ticketBasket.isGreenCamping ? ticketBasket.greenCamping : 0) +
+    ticketBasket.ticketPrice * ticketBasket.ticketAmount +
+    ticketBasket.bookingFee;
 
-  const totalItems = ticketBasket.tent2PersonAmount + ticketBasket.tent3PersonAmount + ticketBasket.isGreenCamping + ticketBasket.ticketAmount;
+  const totalItems =
+    ticketBasket.tent2PersonAmount +
+    ticketBasket.tent3PersonAmount +
+    ticketBasket.isGreenCamping +
+    ticketBasket.ticketAmount;
 
   useEffect(() => {
     setToggleTent2Person(ticketBasket.tent2PersonAmount ? true : false);
@@ -33,7 +43,7 @@ export default function FlowComplete(props) {
     // Header
     doc.setFontSize(22);
     doc.text(20, 20, "FooFest Jazz Festival");
-    // doc.addImage(img, "PNG", 180, 10, 20, 20);
+    doc.addImage(fooFestLogo, "PNG", 180, 10, 20, 20);
 
     // Order confirmation
     doc.setFontSize(22);
@@ -109,7 +119,9 @@ export default function FlowComplete(props) {
       </div>
 
       <div className="text_info">
-        <h3>We’ve received your order, and you should recieve a confirmation e-mail any minute now.</h3>
+        <h3>
+          We’ve received your order, and you should recieve a confirmation e-mail any minute now.
+        </h3>
 
         <p>Please view your order details below</p>
       </div>
@@ -147,7 +159,10 @@ export default function FlowComplete(props) {
               <span className="amount_ticket">{ticketBasket.tent2PersonAmount}</span>
             </div>
             <div className="tent_total">
-              <p>{ticketBasket.tent2PersonAmount > 1 ? totalTwoTent : ticketBasket.tent2PersonPrice} kr.</p>
+              <p>
+                {ticketBasket.tent2PersonAmount > 1 ? totalTwoTent : ticketBasket.tent2PersonPrice}{" "}
+                kr.
+              </p>
             </div>
           </article>
         ) : null}
@@ -162,7 +177,12 @@ export default function FlowComplete(props) {
               <span className="amount_ticket">{ticketBasket.tent3PersonAmount}</span>
             </div>
             <div className="tent_total">
-              <p>{ticketBasket.tent3PersonAmount > 1 ? totalThreeTent : ticketBasket.tent3PersonPrice} kr.</p>
+              <p>
+                {ticketBasket.tent3PersonAmount > 1
+                  ? totalThreeTent
+                  : ticketBasket.tent3PersonPrice}{" "}
+                kr.
+              </p>
             </div>
           </article>
         ) : null}
