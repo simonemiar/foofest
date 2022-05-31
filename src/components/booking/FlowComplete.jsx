@@ -16,18 +16,9 @@ export default function FlowComplete(props) {
   const totalTwoTent = ticketBasket.tent2PersonPrice * ticketBasket.tent2PersonAmount;
   const totalThreeTent = ticketBasket.tent3PersonPrice * ticketBasket.tent3PersonAmount;
 
-  const totalPrice =
-    totalTwoTent +
-    totalThreeTent +
-    (ticketBasket.isGreenCamping ? ticketBasket.greenCamping : 0) +
-    ticketBasket.ticketPrice * ticketBasket.ticketAmount +
-    ticketBasket.bookingFee;
+  const totalPrice = totalTwoTent + totalThreeTent + (ticketBasket.isGreenCamping ? ticketBasket.greenCamping : 0) + ticketBasket.ticketPrice * ticketBasket.ticketAmount + ticketBasket.bookingFee;
 
-  const totalItems =
-    ticketBasket.tent2PersonAmount +
-    ticketBasket.tent3PersonAmount +
-    ticketBasket.isGreenCamping +
-    ticketBasket.ticketAmount;
+  const totalItems = ticketBasket.tent2PersonAmount + ticketBasket.tent3PersonAmount + ticketBasket.isGreenCamping + ticketBasket.ticketAmount;
 
   useEffect(() => {
     setToggleTent2Person(ticketBasket.tent2PersonAmount ? true : false);
@@ -118,9 +109,7 @@ export default function FlowComplete(props) {
       </div>
 
       <div className="text_info">
-        <h3>
-          We’ve received your order, and you should recieve a confirmation e-mail any minute now.
-        </h3>
+        <h3>We’ve received your order, and you should recieve a confirmation e-mail any minute now.</h3>
 
         <p>Please view your order details below</p>
       </div>
@@ -158,10 +147,7 @@ export default function FlowComplete(props) {
               <span className="amount_ticket">{ticketBasket.tent2PersonAmount}</span>
             </div>
             <div className="tent_total">
-              <p>
-                {ticketBasket.tent2PersonAmount > 1 ? totalTwoTent : ticketBasket.tent2PersonPrice}{" "}
-                kr.
-              </p>
+              <p>{ticketBasket.tent2PersonAmount > 1 ? totalTwoTent : ticketBasket.tent2PersonPrice} kr.</p>
             </div>
           </article>
         ) : null}
@@ -176,12 +162,7 @@ export default function FlowComplete(props) {
               <span className="amount_ticket">{ticketBasket.tent3PersonAmount}</span>
             </div>
             <div className="tent_total">
-              <p>
-                {ticketBasket.tent3PersonAmount > 1
-                  ? totalThreeTent
-                  : ticketBasket.tent3PersonPrice}{" "}
-                kr.
-              </p>
+              <p>{ticketBasket.tent3PersonAmount > 1 ? totalThreeTent : ticketBasket.tent3PersonPrice} kr.</p>
             </div>
           </article>
         ) : null}
@@ -214,9 +195,10 @@ export default function FlowComplete(props) {
           </p>
           <p className="total_price">{totalPrice} kr.</p>
         </article>
-        <article className="total_bar">
-          <button onClick={createPDF}>Download your ticket</button>
-        </article>
+
+        <button id="pdf_btn" onClick={createPDF}>
+          Download your receipt
+        </button>
       </section>
     </section>
   );

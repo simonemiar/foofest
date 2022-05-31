@@ -1,4 +1,5 @@
 @use "../base/color";
+@use "../base/fonts";
 
 #confirmation_page {
   h2 {
@@ -162,6 +163,19 @@
     p:nth-child(1) {
       margin-left: 0.3rem;
     }
+  }
+
+  #pdf_btn {
+    background-color: color.$orange;
+    text-align: center;
+    width: 100%;
+    color: color.$transparentblue;
+    height: 2rem;
+    margin-top: 1rem;
+  }
+
+  #pdf_btn:hover {
+    cursor: pointer;
   }
 }
 
