@@ -1,6 +1,13 @@
 @use "../base/color";
 
 %body-text-font {
+  font-family: 'Unna', serif;
+  font-weight: 400;
+  font-size: calc(0.8rem + (10 - 2.5) * ((100vw - 300px) / (1600 - 300)));
+  color: color.$white;
+}
+
+%table-text-font {
   font-family: 'Lato', sans-serif;
   font-weight: 400;
   font-size: calc(0.8rem + (10 - 2.5) * ((100vw - 300px) / (1600 - 300)));
@@ -47,9 +54,14 @@
 }
 
 
-p, a,
+p, a, th,
 details {
   @extend %body-text-font;
+}
+
+td,
+table {
+  @extend %table-text-font;
 }
 
 h1 {

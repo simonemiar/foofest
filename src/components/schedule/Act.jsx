@@ -6,51 +6,57 @@ export default function Act(props) {
           {props.act.start}-{props.act.end}
         </th>
         <td className="artist">
-          {props.act.start}-{props.act.end}
-          {props.act.act !== "break" ? (
+        <div className="artist_name">{props.act.act}</div>
+        <div className="artist_time">{props.act.start}-{props.act.end}</div>
+          <div className="artist_readmore">{props.act.act !== "break" ? (
             <button
               onClick={() => {
                 props.findBandDetails(props.act);
                 props.setStage("Midgard");
               }}
-            >
-              {props.act.act}
+            > 
+              read more
             </button>
           ) : (
-            "Break"
-          )}
+            ""
+          )}</div>
+          
         </td>
 
         <td className="artist">
-          {props.jAct.start}-{props.jAct.end}
-          {props.jAct.act !== "break" ? (
+        <div className="artist_name">{props.jAct.act}</div>
+        <div className="artist_time">{props.jAct.start}-{props.jAct.end}</div>
+        <div className="artist_readmore">{props.jAct.act !== "break" ? (
             <button
               onClick={() => {
                 props.findBandDetails(props.jAct);
                 props.setStage("Jotunheim");
               }}
             >
-              {props.jAct.act}
+              read more
             </button>
           ) : (
-            "Break"
-          )}
+            ""
+          )}</div>
+          
         </td>
 
         <td className="artist">
-          {props.vAct.start}-{props.vAct.end}
-          {props.vAct.act !== "break" ? (
+        <div className="artist_name">{props.vAct.act}</div>
+        <div className="artist_time">{props.vAct.start}-{props.vAct.end}</div>
+        <div className="artist_readmore">{props.vAct.act !== "break" ? (
             <button
               onClick={() => {
                 props.findBandDetails(props.vAct);
                 props.setStage("Vanaheim");
               }}
             >
-              {props.vAct.act}
+              read more
             </button>
           ) : (
-            "Break"
-          )}
+            ""
+          )}</div>
+          
         </td>
       </tr>
     </>
