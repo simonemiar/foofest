@@ -37,9 +37,11 @@ export default function Ticket(props) {
             <div className="ticket_btn">
               <button type="primary" onClick={handleClick}>
                 Read more
-              </button>{" "}
+              </button>
               OR
-              <button onClick={addTicketTypeToBasket}>{<Link to="/basket">Buy</Link>}</button>
+              <Link onClick={addTicketTypeToBasket} to="/basket">
+                Buy
+              </Link>
             </div>
           </div>
         </div>
@@ -47,7 +49,7 @@ export default function Ticket(props) {
         <div className="ticket_svg">
           <div className="ticket_content">
             <p>
-              This is a {props.ticketType} ticket to FooFest 2022 - Jazz festival. The ticket cost{" "}
+              This is a {props.ticketType} ticket to FooFest 2022 - Jazz festival. The ticket cost
               {props.ticketPrice} DKK, and is a big nice festival with big artist.
             </p>
             <div className="ticket_btn">
@@ -55,7 +57,9 @@ export default function Ticket(props) {
                 Read less
               </button>
               OR
-              <button onClick={addTicketTypeToBasket}>{<Link to="/basket">Buy</Link>}</button>
+              <Link onClick={addTicketTypeToBasket} to="/basket">
+                Buy
+              </Link>
             </div>
           </div>
         </div>

@@ -38,11 +38,11 @@ export default function BandDetails(props) {
 
             <div className="content-top">
               <h2 className="popup_heading">{band.name}</h2>
-              <p className="genre">{band.genre}</p>
+              <p className="genre"></p>
             </div>
 
             {/* <article className="grid_desktop"> */}
-            <div className="band_img">
+            <div className="band_img box">
               <figure>
                 <img
                   src={
@@ -53,6 +53,10 @@ export default function BandDetails(props) {
                   alt={band.name}
                 />
                 {band.logoCredits ? <figcaption>{band.logoCredits}</figcaption> : null}
+
+                <div className="ribbon">
+                  <span>{band.genre}</span>
+                </div>
               </figure>
             </div>
 

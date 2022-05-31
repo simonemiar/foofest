@@ -40,7 +40,7 @@
   background: #202033;
   padding: 2rem;
   border-radius: 3px;
-  max-width: 40px;
+  // max-width: 40px;
   min-width: 20em;
   //   max-height: 7000px;
   //   min-height: 300px;
@@ -71,6 +71,40 @@
     display: block;
     margin-left: auto;
     margin-right: auto;
+  }
+
+  .box {
+    width: 15rem;
+    height: 15rem;
+    position: relative;
+  }
+  .ribbon {
+    position: absolute;
+    right: -5px;
+    top: -5px;
+    z-index: 1;
+    overflow: hidden;
+    width: 75px;
+    height: 75px;
+    text-align: right;
+  }
+  .ribbon span {
+    font-size: 13px;
+    color: #fff;
+    text-transform: uppercase;
+    text-align: center;
+    font-weight: bold;
+    line-height: 24px;
+    transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+    width: 110px;
+    display: block;
+    background: #79a70a;
+    background: #a08cc2;
+    box-shadow: 0 3px 10px -5px rgb(0, 0, 0);
+    position: absolute;
+    top: 19px;
+    right: -21px;
   }
 
   .top_info {
@@ -121,7 +155,7 @@
 
 }
 
-@media only screen and (min-width: 1150px) {
+@media only screen and (min-width: 900px) {
   .popup_band-content {
     display: grid;
     grid-template-columns: 1fr 1fr;

@@ -1,13 +1,4 @@
-export default function QuanityLine({
-  addTent,
-  removeTent,
-  ticketBasket,
-  setTicketBasket,
-  totalTent,
-  tentPersonAmount,
-  tentPersonPrice,
-  title,
-}) {
+export default function QuanityLine({ addTent, removeTent, ticketBasket, setTicketBasket, totalTent, tentPersonAmount, tentPersonPrice, title }) {
   return (
     <article className="tent_row">
       <div className="tent_name">
@@ -16,7 +7,7 @@ export default function QuanityLine({
       </div>
       <div className="tent_ui">
         <button onClick={() => removeTent(ticketBasket, setTicketBasket)}>-</button>
-        <span className="amount amount_ticket">{tentPersonAmount}</span>
+        <span className="amount_ticket">{tentPersonAmount}</span>
         <button onClick={() => addTent(ticketBasket, setTicketBasket)}>+</button>
       </div>
 

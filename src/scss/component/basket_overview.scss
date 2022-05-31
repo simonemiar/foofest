@@ -85,6 +85,10 @@
     .tent_name {
       margin-left: 1rem;
 
+      p:nth-child(1) {
+        font-weight: bold;
+      }
+
       p:nth-child(2) {
         margin-top: 0.2rem;
       }
@@ -99,34 +103,61 @@
       text-align: right;
       margin-right: 0.7rem;
     }
-  }
 
-  .fee_row {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    margin-top: 2rem;
-
-    .fee_name {
-      margin-left: 1rem;
-      margin-right: 0.7rem;
+    .amount_ticket {
+      margin-inline: 0.5rem;
+      color: color.$white;
     }
 
-    .fee_total {
-      grid-column: 3;
+    .green_name {
+      margin-left: 1rem;
+
+      p:nth-child(2) {
+        font-size: 0.8rem;
+        margin-top: 0.2rem;
+      }
+    }
+
+    .green_ui {
+      text-align: center;
+    }
+
+    .green_total {
       text-align: right;
       margin-right: 0.7rem;
     }
   }
+}
 
-  .total_bar {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 1rem;
-    padding: 0.7rem;
-    background-color: color.$transparentblue;
+.fee_row {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  margin-top: 2rem;
 
-    p:nth-child(1) {
-      margin-left: 0.3rem;
+  .fee_name {
+    margin-left: 1rem;
+    margin-right: 0.7rem;
+
+    p {
+      font-weight: bold;
     }
+  }
+
+  .fee_total {
+    grid-column: 3;
+    text-align: right;
+    margin-right: 0.7rem;
+  }
+}
+
+.total_bar {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1rem;
+  padding: 0.7rem;
+  background-color: color.$transparentblue;
+
+  p:nth-child(1) {
+    margin-left: 0.3rem;
   }
 }

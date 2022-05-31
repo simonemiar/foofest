@@ -1,6 +1,15 @@
 @use "../base/color";
 
-body{
-    background-color: color.$darkblue;
-    margin: 20px;
+body {
+  background-color: color.$darkblue;
+  margin: 20px;
+}
+
+main {
+  display: grid;
+  grid-template-columns: 1fr minmax(0, 1000px) 1fr;
+}
+
+main > section {
+  grid-column: 2/3;
 }
