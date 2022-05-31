@@ -1,6 +1,6 @@
 @use "../base/color";
 
-#ticket_container {
+#tickets {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
@@ -67,17 +67,14 @@
       color: #000000;
     }
   }
-  button:nth-child(2) {
+  a:nth-child(2) {
     background-color: #a08cc2;
     border: none;
-    padding: 0.2rem;
     margin-left: 0.5rem;
-    width: 5rem;
     transform: skewX(-15deg);
-
-    a {
-      color: #000000;
-    }
+    padding-inline: 1.5rem;
+    padding-block: 0.3rem;
+    color: #000000;
   }
 
   button:hover {

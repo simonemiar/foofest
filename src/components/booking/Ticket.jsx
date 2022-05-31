@@ -37,9 +37,11 @@ export default function Ticket(props) {
             <div className="ticket_btn">
               <button type="primary" onClick={handleClick}>
                 Read more
-              </button>{" "}
+              </button>
               OR
-              <button onClick={addTicketTypeToBasket}>{<Link to="/basket">Buy</Link>}</button>
+              <Link onClick={addTicketTypeToBasket} to="/basket">
+                Buy
+              </Link>
             </div>
           </div>
         </div>
@@ -54,7 +56,9 @@ export default function Ticket(props) {
                 Read less
               </button>
               OR
-              <button onClick={addTicketTypeToBasket}>{<Link to="/basket">Buy</Link>}</button>
+              <Link onClick={addTicketTypeToBasket} to="/basket">
+                Buy
+              </Link>
             </div>
           </div>
         </div>

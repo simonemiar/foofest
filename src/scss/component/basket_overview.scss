@@ -86,6 +86,10 @@
     .tent_name {
       margin-left: 1rem;
 
+      p:nth-child(1) {
+        font-weight: bold;
+      }
+
       p:nth-child(2) {
         font-size: 0.8rem;
         margin-top: 0.2rem;
@@ -106,6 +110,24 @@
       margin-inline: 0.5rem;
       color: color.$white;
     }
+
+    .green_name {
+      margin-left: 1rem;
+
+      p:nth-child(2) {
+        font-size: 0.8rem;
+        margin-top: 0.2rem;
+      }
+    }
+
+    .green_ui {
+      text-align: center;
+    }
+
+    .green_total {
+      text-align: right;
+      margin-right: 0.7rem;
+    }
   }
 }
 
@@ -117,6 +139,10 @@
   .fee_name {
     margin-left: 1rem;
     margin-right: 0.7rem;
+
+    p {
+      font-weight: bold;
+    }
   }
 
   .fee_total {
