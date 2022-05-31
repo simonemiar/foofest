@@ -49,7 +49,8 @@ export default function Ticket(props) {
         <div className="ticket_svg">
           <div className="ticket_content">
             <p>
-              This is a {props.ticketType} ticket to FooFest 2022 - Jazz festival. The ticket cost {props.ticketPrice} DKK, and is a big nice festival with big artist.
+              This is a {props.ticketType} ticket to FooFest 2022 - Jazz festival. The ticket cost
+              {props.ticketPrice} DKK, and is a big nice festival with big artist.
             </p>
             <div className="ticket_btn">
               <button type="primary" onClick={handleClick}>
