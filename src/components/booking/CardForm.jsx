@@ -94,7 +94,7 @@ export default function CardForm(props) {
   }, [card]);
 
   return (
-    <>
+    <section id="payment_info">
       <h2 className="heading">Payment information</h2>
       <form id="card_form" ref={formElm} onSubmit={submitted}>
         <div className="field-container">
@@ -129,30 +129,6 @@ export default function CardForm(props) {
           </button>
         </div>
       </form>
-      {/* <div className="booking_flow_nav">
-        <button
-          className="back_btn shape"
-          onClick={() => {
-            props.toggleComponentsArr.setToggleCardForm(false);
-            props.toggleComponentsArr.setToggleBasketOverview(true);
-            props.setIsCurrent(props.isCurrent - 1);
-          }}
-        >
-          Back
-        </button>
-        <button
-          className="continue_btn shape"
-          onClick={() => {
-            props.toggleComponentsArr.setToggleCardForm(false);
-            props.toggleComponentsArr.setToggleBasketHeader(true);
-            props.toggleComponentsArr.setToggleFlowComplete(true);
-            props.setIsCurrent(props.isCurrent + 1);
-            props.setPopup(false);
-          }}
-        >
-          Pay
-        </button>
-      </div> */}
-    </>
+    </section>
   );
 }

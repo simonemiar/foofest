@@ -101,34 +101,39 @@
       text-align: right;
       margin-right: 0.7rem;
     }
-  }
 
-  .fee_row {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    margin-top: 2rem;
-
-    .fee_name {
-      margin-left: 1rem;
-      margin-right: 0.7rem;
-    }
-
-    .fee_total {
-      grid-column: 3;
-      text-align: right;
-      margin-right: 0.7rem;
+    .amount_ticket {
+      margin-inline: 0.5rem;
+      color: color.$white;
     }
   }
+}
 
-  .total_bar {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 1rem;
-    padding: 0.7rem;
-    background-color: color.$transparentblue;
+.fee_row {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  margin-top: 2rem;
 
-    p:nth-child(1) {
-      margin-left: 0.3rem;
-    }
+  .fee_name {
+    margin-left: 1rem;
+    margin-right: 0.7rem;
+  }
+
+  .fee_total {
+    grid-column: 3;
+    text-align: right;
+    margin-right: 0.7rem;
+  }
+}
+
+.total_bar {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1rem;
+  padding: 0.7rem;
+  background-color: color.$transparentblue;
+
+  p:nth-child(1) {
+    margin-left: 0.3rem;
   }
 }

@@ -37,12 +37,12 @@ const Timer = (props) => {
   return (
     <>
       <TimeExpired popup={props.popup} />
-      <div className="timer_container">
+      <section className="timer_container">
         <h2>BASKET</h2>
         {/* {minutes === 0 && seconds === 0 ? null : ( */}
         <h3>TIME LEFT: {`${minutes}:${seconds < 10 ? `0${seconds}` : seconds} `}</h3>
         {/* )} */}
-      </div>
+      </section>
     </>
   );
 };
