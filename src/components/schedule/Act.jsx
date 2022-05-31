@@ -6,9 +6,9 @@ export default function Act(props) {
           {props.act.start}-{props.act.end}
         </th>
         <td className="artist">
-        <span>{props.act.act}</span>
-        <span>{props.act.start}-{props.act.end}</span>
-          {props.act.act !== "break" ? (
+        <div className="artist_name">{props.act.act}</div>
+        <div className="artist_time">{props.act.start}-{props.act.end}</div>
+          <div className="artist_readmore">{props.act.act !== "break" ? (
             <button
               onClick={() => {
                 props.findBandDetails(props.act);
@@ -19,14 +19,14 @@ export default function Act(props) {
             </button>
           ) : (
             ""
-          )}
+          )}</div>
           
         </td>
 
         <td className="artist">
-        <span>{props.jAct.act}</span>
-        <span>{props.jAct.start}-{props.jAct.end}</span>
-        {props.jAct.act !== "break" ? (
+        <div className="artist_name">{props.jAct.act}</div>
+        <div className="artist_time">{props.jAct.start}-{props.jAct.end}</div>
+        <div className="artist_readmore">{props.jAct.act !== "break" ? (
             <button
               onClick={() => {
                 props.findBandDetails(props.jAct);
@@ -37,14 +37,14 @@ export default function Act(props) {
             </button>
           ) : (
             ""
-          )}
+          )}</div>
           
         </td>
 
         <td className="artist">
-        <span>{props.vAct.act}</span>
-        <span>{props.vAct.start}-{props.vAct.end}</span>
-        {props.vAct.act !== "break" ? (
+        <div className="artist_name">{props.vAct.act}</div>
+        <div className="artist_time">{props.vAct.start}-{props.vAct.end}</div>
+        <div className="artist_readmore">{props.vAct.act !== "break" ? (
             <button
               onClick={() => {
                 props.findBandDetails(props.vAct);
@@ -55,7 +55,7 @@ export default function Act(props) {
             </button>
           ) : (
             ""
-          )}
+          )}</div>
           
         </td>
       </tr>

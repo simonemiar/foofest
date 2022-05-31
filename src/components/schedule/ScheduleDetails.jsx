@@ -118,15 +118,15 @@ export default function ScheduleDetails(props) {
   return (
     <>
       <section id="schedule_section">
-        <button
-          id="details_button"
+        <h2
+          id="schedule_date"
           onClick={() => {
             setScheduleMore((old) => !old);
             filterByDay(props.daySchedule);
           }}
         >
           {props.daySchedule}
-        </button>
+        </h2>
         <article id="details_section" style={{ display: showSchedule ? "block" : "none" }}>
           <table>
             <thead>

@@ -54,14 +54,14 @@
 }
 
 
-p, a,
+p, a, th,
 details {
   @extend %body-text-font;
 }
 
-th, td,
+td,
 table {
-  @extend %body-text-font;
+  @extend %table-text-font;
 }
 
 h1 {
