@@ -69,7 +69,8 @@
     }
 
     #intro_img {
-      width: 25rem;
+      // width: 25rem;
+      width: 100%;
       height: 15rem;
       background-color: #34334d;
       margin-top: 2rem;
@@ -115,6 +116,12 @@
         }
       }
     }
+  }
+}
+
+@media only screen and (max-width: 375px) {
+  #home #header_section .section_wrapper .nav_btn {
+    flex-direction: column-reverse;
   }
 }
 

@@ -2,14 +2,20 @@
 
 body {
   background-color: color.$darkblue;
-  margin: 20px;
 }
 
 main {
   display: grid;
   grid-template-columns: 1fr minmax(0, 1000px) 1fr;
+  margin: 20px;
 }
 
 main > section {
   grid-column: 2/3;
+}
+
+img {
+  display: block;
+  width: 100%;
+  height: auto;
 }

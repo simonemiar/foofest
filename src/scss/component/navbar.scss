@@ -1,111 +1,115 @@
 @use "../base/color";
 
 .navbar {
-    background-color: color.$darkblue;
-    height: 80px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: sticky;
-    top: 0;
-    z-index: 20;
-  }
-  
-  .nav-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    height: 80px;
-    max-width: 1500px;
-  }
-  
-  .nav-logo {
-    color: color.$white;
-    align-items: center;
-    margin-left: 20px;
-    cursor: pointer;
-    text-decoration: none;
-    flex-grow: 1;
-  }
-  
+  background-color: color.$darkblue;
+  // height: 80px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  padding: 0.5rem;
+  box-shadow: 0px 15px 20px color.$darkblue;
+}
+
+.nav-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  // width: 100%;
+  height: 80px;
+  max-width: 1500px;
+}
+
+.nav-logo {
+  color: color.$white;
+  align-items: center;
+  // margin-left: 20px;
+  cursor: pointer;
+  text-decoration: none;
+  // flex-grow: 1;
+  width: 80px;
+}
+
+.nav-menu {
+  display: flex;
+  list-style: none;
+  text-align: center;
+  margin-right: 2rem;
+}
+
+.nav-links {
+  color: color.$white;
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  height: 100%;
+  border-bottom: 3px solid transparent;
+}
+.fa-code {
+  margin-left: 1rem;
+}
+
+.nav-item {
+  line-height: 40px;
+}
+
+.nav-item:after {
+  content: "";
+  display: block;
+  height: 3px;
+  width: 0;
+  background: transparent;
+  transition: width 0.7s ease, background-color 0.5s ease;
+}
+
+.nav-item:hover:after {
+  width: 100%;
+  background: color.$white;
+}
+
+.nav-icon {
+  display: none;
+}
+
+@media screen and (max-width: 960px) {
   .nav-menu {
     display: flex;
-    list-style: none;
-    text-align: center;
-    margin-right: 2rem;
-  }
-  
-  .nav-links {
-    color: color.$white;
-    text-decoration: none;
-    padding: 0.5rem 1rem;
-    height: 100%;
-    border-bottom: 3px solid transparent;
-  }
-  .fa-code {
-    margin-left: 1rem;
-  }
-  
-  .nav-item {
-    line-height: 40px;
-  }
-  
-  .nav-item:after {
-    content: "";
-    display: block;
-    height: 3px;
-    width: 0;
-    background: transparent;
-    transition: width 0.7s ease, background-color 0.5s ease;
-  }
-  
-  .nav-item:hover:after {
+    flex-direction: column;
     width: 100%;
-    background: color.$white;
+    border-top: 1px solid color.$white;
+    position: absolute;
+    top: 90px;
+    left: -110%;
+    opacity: 1;
+    transition: all 0.5s ease;
   }
-  
+
+  .nav-menu.active {
+    background: color.$transparentblue;
+    left: 0px;
+    opacity: 1;
+    transition: all 0.5s ease;
+    z-index: 1;
+  }
+  .nav-item .active {
+    color: color.$orange;
+    border: none;
+  }
+  .nav-links {
+    padding: 1.5rem;
+    width: 100%;
+    display: table;
+  }
+
   .nav-icon {
-    display: none;
+    display: block;
+    // position: absolute;
+    // top: 25px;
+    // right: 25px;
+    transform: translate(-100%, 60%);
+    cursor: pointer;
+    color: color.$white;
+    margin-bottom: 20px;
   }
-  
-  @media screen and (max-width: 960px) {
-    .nav-menu {
-      display: flex;
-      flex-direction: column;
-      width: 100%;
-      border-top: 1px solid color.$white;
-      position: absolute;
-      top: 80px;
-      left: -110%;
-      opacity: 1;
-      transition: all 0.5s ease;
-    }
-  
-    .nav-menu.active {
-      background: color.$transparentblue;
-      left: 0px;
-      opacity: 1;
-      transition: all 0.5s ease;
-      z-index: 1;
-    }
-    .nav-item .active {
-      color: color.$orange;
-      border: none;
-    }
-    .nav-links {
-      padding: 1.5rem;
-      width: 100%;
-      display: table;
-    }
-  
-    .nav-icon {
-      display: block;
-      position: absolute;
-      top: 0;
-      right: 0;
-      transform: translate(-100%, 60%);
-      cursor: pointer;
-      color: color.$white;
-    }
-  }
+}
