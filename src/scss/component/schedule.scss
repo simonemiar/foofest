@@ -1,8 +1,8 @@
 @use "../base/color";
-h1{
+h1 {
   text-align: center;
   padding: 20px;
-  }
+}
 
 #schedule_section {
   margin: 0px 20px;
@@ -17,12 +17,9 @@ h1{
     text-align: center;
     padding: 20px;
   }
-
-  // New
-  button#schedule_date:hover {
-    // transform: skewX(10deg);
-    background-color: #583500;
-  // background-color: #ff9800;
+  #schedule_date:hover {
+    background-color: color.$orange;
+    cursor: pointer;
   }
 
   #details_section {
@@ -34,17 +31,27 @@ h1{
       text-align: left;
       position: relative;
       background-color: color.$transparentblue;
-  
-      // New
       display: flex;
-  
+
       thead {
         tr {
           border-right: 5px solid color.$darkblue;
-  
-          // New
           display: flex;
           flex-direction: column;
+          border-bottom: 5px solid color.$darkblue;
+
+          tr:nth-child(2) {
+            border-right: 5px solid color.$darkblue;
+            display: flex;
+            flex-direction: column;
+            /* height: 88%; */
+            justify-content: space-around;
+          }
+
+          tr:last-child {
+            border-bottom: 5px solid #202033;
+          }
+
           th {
             position: sticky;
             position: -webkit-sticky; // safari
@@ -53,14 +60,14 @@ h1{
             background-color: color.$transparentblue;
             padding: 8px;
           }
-  
+
           td {
             border-bottom: 1px solid color.$darkblue;
             width: 100%;
             max-width: 90px;
             min-width: 90px;
           }
-  
+
           .time_border {
             &:first-child {
               z-index: 3;
@@ -68,14 +75,20 @@ h1{
           }
         }
       }
-  
+
       .stage {
-        height: 100px;
+        padding-block: 4vh;
+        border-bottom: 5px solid color.$darkblue;
+        // height: 100px;
         // border-top: 5px solid color.$darkblue;
+      }
+
+      .stage:last-child {
+        border-bottom: 0px;
       }
     }
   }
-  
+
   tbody {
     display: block;
     overflow-x: auto;
@@ -83,34 +96,41 @@ h1{
     table-layout: fixed;
     display: flex;
 
-    .artists:nth-child(2n) .artist{
+    .artists:nth-child(2n) .artist {
       opacity: 0;
     }
 
-    .artists{
-
-      th{
+    .artists {
+      th {
         display: grid;
         justify-content: center;
-        padding: 5px;
-      
+        padding: 8px;
       }
-  
+      th:first-child {
+        border-bottom: 5px solid color.$darkblue;
+      }
+
+      .artist:last-child {
+        border-bottom: none;
+      }
+
       .artist {
         background-color: color.$purple;
         display: flex;
         flex-direction: column;
-        margin: 0px 3px 3px 3px;
-        padding: 10px;
+        // margin: 0px 5px 5px 0px;
+        // padding: 10px;
+        padding: 12px;
+        // padding: 0.8rem;
         width: 45vh;
-        height: 29%;
-        
-        #text{
+        // height: 29%;
+        border-bottom: 5px solid color.$transparentblue;
+
+        #text {
           display: block;
         }
-        .artist_readmore{
-
-          button{
+        .artist_readmore {
+          button {
             color: inherit;
             border: none;
             background: none;
@@ -119,28 +139,23 @@ h1{
             float: right;
             font-size: 0.9rem;
             padding: 5px;
-            
           }
-          button:hover{
-            color: color.$orange;
+          button:hover {
+            background-color: #f39b13;
+            // color: color.$orange;
             border: 1px solid color.$orange;
           }
         }
 
-        .artist_name{
-          font-family: 'Unna', serif;
+        .artist_name {
+          font-family: "Unna", serif;
           font-size: 1.2rem;
         }
 
-        .artist_time{
+        .artist_time {
           font-size: 0.8rem;
         }
       }
     }
   }
-
-  
 }
-
-
-

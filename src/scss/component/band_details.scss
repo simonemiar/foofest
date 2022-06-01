@@ -152,7 +152,6 @@
     align-items: center;
     justify-content: center;
   }
-
 }
 
 @media only screen and (min-width: 900px) {
@@ -164,6 +163,7 @@
     margin-bottom: 2.5rem;
     max-width: 50em;
     top: 50%;
+    position: fixed;
   }
 
   .popup_band .popup_heading {

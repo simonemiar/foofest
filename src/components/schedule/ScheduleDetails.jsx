@@ -4,7 +4,7 @@ import Act from "./Act";
 import BandDetails from "./BandDetails";
 
 export default function ScheduleDetails(props) {
-  const [showSchedule, setScheduleMore] = useState(false);
+  const [showScheduleMore, setShowScheduleMore] = useState(false);
   const [day, setDay] = useState("monday");
 
   const [showBandDetails, setShowBandDetails] = useState(false);
@@ -121,17 +121,23 @@ export default function ScheduleDetails(props) {
         <h2
           id="schedule_date"
           onClick={() => {
-            setScheduleMore((old) => !old);
+            console.log("You Clicked");
+            if (showScheduleMore === false) {
+            }
+
+            setShowScheduleMore((old) => !old);
             filterByDay(props.daySchedule);
           }}
         >
           {props.daySchedule}
         </h2>
-        <article id="details_section" style={{ display: showSchedule ? "block" : "none" }}>
+        <article id="details_section" style={{ display: showScheduleMore ? "block" : "none" }}>
           <table>
             <thead>
               <tr>
                 <th>TIME KL: </th>
+              </tr>
+              <tr>
                 <th className="stage">MIDGARD</th>
                 <th className="stage">JOTUNHEIM</th>
                 <th className="stage">VANEHEIM</th>

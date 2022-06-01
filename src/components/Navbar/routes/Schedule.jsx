@@ -24,20 +24,24 @@ export default function Schedule() {
 
   return (
     <>
-      <h1>Schedule</h1>
-      {days.map((daySchedule) => (
-        <ScheduleDetails
-          key={Math.random()}
-          schedule={schedule}
-          daySchedule={daySchedule}
-          midgardFilter={midgardFilter}
-          jotunFilter={jotunFilter}
-          vanaFilter={vanaFilter}
-          setMidgardFilter={setMidgardFilter}
-          setJotunFilter={setJotunFilter}
-          setVanaFilter={setVanaFilter}
-        />
-      ))}
+      <main>
+        <section>
+          <h1>Schedule</h1>
+        </section>
+        {days.map((daySchedule) => (
+          <ScheduleDetails
+            key={Math.random()}
+            schedule={schedule}
+            daySchedule={daySchedule}
+            midgardFilter={midgardFilter}
+            jotunFilter={jotunFilter}
+            vanaFilter={vanaFilter}
+            setMidgardFilter={setMidgardFilter}
+            setJotunFilter={setJotunFilter}
+            setVanaFilter={setVanaFilter}
+          />
+        ))}
+      </main>
     </>
   );
 }
