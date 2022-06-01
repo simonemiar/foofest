@@ -1,10 +1,9 @@
 import { useState, useEffect } from "react";
 
 import Map from "../../assets/svg/map.svg";
-
 import AreaOption from "./AreaOption";
 
-export default function CampingArea() {
+export default function CampingArea({ setReserveSpotObj }) {
   const [availableSpots, setAvailableSpots] = useState([]);
 
   useEffect(() => {
@@ -15,13 +14,6 @@ export default function CampingArea() {
     }
     get();
   }, []);
-
-  // setAvailableSpots((old) => {
-  //   return {
-  //     ...old,
-  //     lowerCaseArea: old.area.substring(0, 1).toLowerCase(),
-  //   };
-  // });
 
   return (
     <section id="camping-area_section">
@@ -36,11 +28,10 @@ export default function CampingArea() {
       <section id="camping-area_main-content">
         <article className="area_options">
           {availableSpots.map((spot) => (
-            <AreaOption key={spot.area} spot={spot} />
+            <AreaOption key={spot.area} spot={spot} setReserveSpotObj={setReserveSpotObj} />
           ))}
         </article>
 
-        {/* Link to dk map svg: https://www.amcharts.com/svg-maps/?map=denmark */}
         <article className="illustration">
           <div className="svg_img">
             <img className="area_map" src={Map} alt={Map} />

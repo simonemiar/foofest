@@ -4,8 +4,6 @@ import { TicketBasketContext } from "../../contexts/TicketBasketContext";
 export default function AreaOption(props) {
   const { ticketBasket, setTicketBasket } = useContext(TicketBasketContext);
 
-  let isTrue = false;
-
   function handleOnChange(e) {
     // console.log("Selected camping option is:", selectedOption);
 
@@ -13,56 +11,32 @@ export default function AreaOption(props) {
       amount = ticketBasket.ticketAmount;
     const reserveSpotRequset = { area, amount };
     const putSpotRequset = JSON.stringify(reserveSpotRequset);
+    props.setReserveSpotObj((old) => putSpotRequset);
 
-    fetch("https://prototype-masters-foofest.herokuapp.com/reserve-spot", {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: putSpotRequset,
-    })
-      .then((res) => {
-        res.json().then((data) => {
-          data.error ? alert("There is not spots enough") : alert("Spots is reserved");
-          console.log(data);
-          setTicketBasket((old) => {
-            return {
-              ...old,
-              reserveSpotId: data.id,
-            };
-          });
-        });
-      })
-      .then((data) => console.log(data))
-      .catch((err) => console.error(err));
-
-    if (props.spot.available === 0) {
-      isTrue = true;
-      alert(`There are no more spots available on ${props.spot.area}`);
-    } else {
-      setTicketBasket((old) => {
-        return {
-          ...old,
-          campingArea: e.target.value,
-        };
-      });
-    }
+    setTicketBasket((old) => {
+      return {
+        ...old,
+        campingArea: e.target.value,
+      };
+    });
   }
 
   return (
-    <div className="option">
-      <input
-        type="radio"
-        id={props.spot.area}
-        name="area"
-        value={props.spot.area}
-        onChange={handleOnChange}
-        disabled={isTrue}
-      ></input>
-      <label htmlFor={props.spot.area} className="bold">
-        {props.spot.area}
-      </label>
-      <h4 className="spots_left">Spots left: {props.spot.available}</h4>
-    </div>
+    <>
+      <div className="option">
+        <input
+          type="radio"
+          id={props.spot.area}
+          name="area"
+          value={props.spot.area}
+          onChange={handleOnChange}
+          disabled={props.spot.available < ticketBasket.ticketAmount ? true : false}
+        ></input>
+        <label htmlFor={props.spot.area} className="bold">
+          {props.spot.area}
+        </label>
+        <h4 className="spots_left">Spots left: {props.spot.available}</h4>
+      </div>
+    </>
   );
 }

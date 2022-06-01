@@ -34,7 +34,10 @@ export function removeTicket(ticketBasket, setTicketBasket) {
 
 // Functions for 2-person tent
 export function addTwoTent(ticketBasket, setTicketBasket) {
-  if (ticketBasket.tent2PersonAmount === ticketBasket.ticketAmount) {
+  if (
+    ticketBasket.tent2PersonAmount + ticketBasket.tent3PersonAmount ===
+    ticketBasket.ticketAmount
+  ) {
     alert("You can only have as many tent as tickets");
   } else {
     setTicketBasket((old) => {
@@ -63,7 +66,10 @@ export function removeTwoTent(ticketBasket, setTicketBasket) {
 
 // Functions for 3-person tent
 export function addThreeTent(ticketBasket, setTicketBasket) {
-  if (ticketBasket.tent3PersonAmount === ticketBasket.ticketAmount) {
+  if (
+    ticketBasket.tent2PersonAmount + ticketBasket.tent3PersonAmount ===
+    ticketBasket.ticketAmount
+  ) {
     alert("You can only have as many tent as tickets");
   } else {
     setTicketBasket((old) => {
