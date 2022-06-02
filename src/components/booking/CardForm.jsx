@@ -16,7 +16,7 @@ export default function CardForm(props) {
     e.preventDefault();
 
     props.toggleComponentsArr.setToggleCardForm(false);
-    props.toggleComponentsArr.setToggleBasketHeader(true);
+    props.toggleComponentsArr.setToggleBasketHeader(false);
     props.toggleComponentsArr.setToggleFlowComplete(true);
     props.setIsCurrent(props.isCurrent + 1);
     props.setPopup(false);

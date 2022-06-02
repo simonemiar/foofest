@@ -15,7 +15,7 @@ export default function Basket() {
   const [toggleBasketOverview, setToggleBasketOverview] = useState(false);
   const [toggleCardForm, setToggleCardForm] = useState(false);
   const [toggleFlowComplete, setToggleFlowComplete] = useState(false);
-  const [toggleBasketHeader, setToggleBasketHeader] = useState(false);
+  const [toggleBasketHeader, setToggleBasketHeader] = useState(true);
   // This state is used to show the progress bar
   const [isCurrent, setIsCurrent] = useState(1);
   const [popup, setPopup] = useState(false);
@@ -37,8 +37,13 @@ export default function Basket() {
   };
   return (
     <main>
-      <Timer toggleComponentsArr={toggleComponentsArr} popup={popup} setPopup={setPopup} />
-      <ProgressBar isCurrent={isCurrent} setIsCurrent={setIsCurrent} />
+      {toggleBasketHeader ? (
+        <section className="basket_header">
+          <Timer toggleComponentsArr={toggleComponentsArr} popup={popup} setPopup={setPopup} />
+          <ProgressBar isCurrent={isCurrent} setIsCurrent={setIsCurrent} />
+        </section>
+      ) : null}
+
       {/* Here are we checking if the toogleTicketDetails if true, and if it´s then we are shown a step
       in the booking flow. And we are doing that for each step until we get to flow complete */}
       {toggleTicketDetails ? (
