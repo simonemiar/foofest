@@ -38,7 +38,7 @@ function NavBar() {
           <i className={click ? "fas fa-times" : "fas fa-bars"}></i>
         </div> */}
         <input className="nav-icon" onClick={handleClick} id="menu__toggle" type="checkbox" />
-        <label class="menu__btn" for="menu__toggle">
+        <label className="menu__btn" htmlFor="menu__toggle">
           <span></span>
         </label>
 
