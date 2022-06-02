@@ -5,9 +5,16 @@
   width: 5.5rem;
   height: 1.875rem;
   background-color: color.$darkblue;
-  color: color.$white;
+  color: color.$orange;
   border: 1px solid color.$orange;
   cursor: pointer;
+}
+
+.back_btn:hover {
+  background-color: color.$orange;
+  color: color.$darkblue;
+  border: 1px solid color.$orange;
+
 }
 
 .continue_btn {
@@ -19,7 +26,15 @@
   cursor: pointer;
 }
 
+.continue_btn:hover {
+  background-color: color.$orange;
+  color: color.$darkblue;
+}
+
 //Width:  88px
 //
 // Height :  30.71px
 //
+
+
+
