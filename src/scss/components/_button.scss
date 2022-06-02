@@ -5,16 +5,9 @@
   width: 5.5rem;
   height: 1.875rem;
   background-color: color.$darkblue;
-  color: color.$orange;
+  color: color.$white;
   border: 1px solid color.$orange;
   cursor: pointer;
-}
-
-.back_btn:hover {
-  background-color: color.$orange;
-  color: color.$darkblue;
-  border: 1px solid color.$orange;
-
 }
 
 .continue_btn {
@@ -26,15 +19,21 @@
   cursor: pointer;
 }
 
-.continue_btn:hover {
-  background-color: color.$orange;
-  color: color.$darkblue;
+button {
+  transition: 0.5s;
 }
 
-//Width:  88px
-//
-// Height :  30.71px
-//
+button:hover {
+  color: color.$white;
+  background-color: color.$darkblue;
+  border: 1px solid color.$orange;
+  transform: scale(1.1);
+}
 
-
-
+#home #header_section .section_wrapper .schedule-btn:hover,
+.back_btn:hover {
+  color: color.$darkblue;
+  background-color: color.$orange;
+  transform: scale(1.1);
+  // border: 1px solid color.$orange;
+}

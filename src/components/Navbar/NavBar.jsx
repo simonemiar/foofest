@@ -34,9 +34,14 @@ function NavBar() {
           </li>
         </ul>
         {/* BURGER MENU ICON  */}
-        <div className="nav-icon" onClick={handleClick}>
+        {/* <div className="nav-icon" onClick={handleClick}>
           <i className={click ? "fas fa-times" : "fas fa-bars"}></i>
-        </div>
+        </div> */}
+        <input className="nav-icon" onClick={handleClick} id="menu__toggle" type="checkbox" />
+        <label className="menu__btn" htmlFor="menu__toggle">
+          <span></span>
+        </label>
+
         {/* </div> */}
       </nav>
     </>
