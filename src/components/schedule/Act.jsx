@@ -11,6 +11,9 @@ export default function Act(props) {
             {props.act.start}-{props.act.end}
           </div>
           <div className="artist_readmore">
+            {/* Here are we taking the string form the act and say it´s not containing break, then do nothing.
+            If the act does not contain break, and it will make a button there set 2 states, there will open the
+            band details popup.*/}
             {props.act.act !== "break" ? (
               <button
                 onClick={() => {

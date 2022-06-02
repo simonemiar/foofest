@@ -10,6 +10,7 @@ export default function BandDetails(props) {
     props.setShowBandDetails(!props.showBandDetails);
   };
 
+  // This is save for later, beacuse we dont need it right now.
   // function stuff() {
   // const params = useParams();
   // console.log(params);
@@ -28,6 +29,7 @@ export default function BandDetails(props) {
 
   return (
     <>
+      {/* Here are we checking if the showBandDetails if true, and if it is then it return the band details popup */}
       {props.showBandDetails ? (
         <section className="popup_band">
           <div onClick={toggleModal} className="overlay"></div>
@@ -81,9 +83,9 @@ export default function BandDetails(props) {
             <div className="bio_container">
               <p>
                 <span className="bold">BIO: </span>
+
+                {/* Here are we shorting the bio, and if the user click the btn, the hole bio will be shown */}
                 {showMore ? band.bio : `${band.bio.substring(0, 250)}`}
-                {/* <br></br>
-                <br></br> */}
 
                 <button className="toggle_show-btn" onClick={() => setShowMore(!showMore)}>
                   {showMore ? "Show less" : "Show more"}

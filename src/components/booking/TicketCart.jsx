@@ -6,6 +6,7 @@ import { addTicket, removeTicket } from "./ticketFunction";
 export default function TicketCart(props) {
   const { ticketBasket, setTicketBasket } = useContext(TicketBasketContext);
 
+  // Here are we calculating the total price of the tickets in the basket
   const totalTicketPrize =
     ticketBasket.ticketPrice * ticketBasket.ticketAmount + ticketBasket.bookingFee;
 
@@ -40,7 +41,9 @@ export default function TicketCart(props) {
           </button>
         </div>
         <div className="ticket_price">
-          <p className="total_ticket_price"><span className="bold">{totalTicketPrize} kr.</span></p>
+          <p className="total_ticket_price">
+            <span className="bold">{totalTicketPrize} kr.</span>
+          </p>
           <h5 className="fee_price">Fee: {ticketBasket.bookingFee} kr.</h5>
         </div>
       </section>

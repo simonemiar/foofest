@@ -12,13 +12,18 @@ export default function TicketDetails(props) {
 
   function reserveSpot() {
     console.log();
+    // Here we are checking if the user has picked a camping area
     if (reserveSpotObj.length === 0) {
       alert("You need to pick a camping area");
     } else {
+      // Here are we unsetting the toggleTicketDetails state
+      // And we are setting the togglePersonInfo state to true
+      // And adding the isCurrent state to plus one, so the progress bar will show the next step
       props.toggleComponentsArr.setToggleTicketDetails(false);
       props.toggleComponentsArr.setTogglePersonInfo(true);
       props.setIsCurrent(props.isCurrent + 1);
 
+      // Here we are reserving the spot in the database for 10 minutes, and getting the id of the reservation.
       fetch("https://prototype-masters-foofest.herokuapp.com/reserve-spot", {
         method: "PUT",
         headers: {
@@ -47,6 +52,7 @@ export default function TicketDetails(props) {
     <section id="ticket_details">
       <h2 className="heading">Ticket details</h2>
       <section className="img_cart_container">
+        {/* Here do have have all the components there make the ticketDetails */}
         <div className="ticket_img">
           <TicketInBasket />
         </div>

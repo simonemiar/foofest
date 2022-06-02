@@ -13,13 +13,22 @@ export default function AddOnesCart() {
   const { ticketBasket, setTicketBasket } = useContext(TicketBasketContext);
 
   // Cart UI varibles:
+  // Here are calcting the total tents, total price, and the total number of items in the cart
   const totalTwoTent = ticketBasket.tent2PersonPrice * ticketBasket.tent2PersonAmount;
   const totalThreeTent = ticketBasket.tent3PersonPrice * ticketBasket.tent3PersonAmount;
-
-  const totalPrice = totalTwoTent + totalThreeTent + (ticketBasket.isGreenCamping ? ticketBasket.greenCamping : 0) + ticketBasket.ticketPrice * ticketBasket.ticketAmount;
-  const totalItems = ticketBasket.tent2PersonAmount + ticketBasket.tent3PersonAmount + ticketBasket.isGreenCamping + ticketBasket.ticketAmount;
+  const totalPrice =
+    totalTwoTent +
+    totalThreeTent +
+    (ticketBasket.isGreenCamping ? ticketBasket.greenCamping : 0) +
+    ticketBasket.ticketPrice * ticketBasket.ticketAmount;
+  const totalItems =
+    ticketBasket.tent2PersonAmount +
+    ticketBasket.tent3PersonAmount +
+    ticketBasket.isGreenCamping +
+    ticketBasket.ticketAmount;
 
   // Function for green option add-on
+  // Here are we updating the ticketBasket object with the green camping option
   function greenOption(e) {
     const checked = e.target.checked;
     if (checked) {
@@ -50,7 +59,8 @@ export default function AddOnesCart() {
         <h4>Note: The price includes the crew setting up your tent</h4>
       </article>
 
-      <section className="add-ons_cart_content" >
+      <section className="add-ons_cart_content">
+        {/* Here are we prop drilling all the different states and variable there is need */}
         <QuantityLine
           ticketBasket={ticketBasket}
           setTicketBasket={setTicketBasket}
@@ -59,7 +69,7 @@ export default function AddOnesCart() {
           totalTent={totalTwoTent}
           tentPersonAmount={ticketBasket.tent2PersonAmount}
           tentPersonPrice={ticketBasket.tent2PersonPrice}
-          title={"2 person"} 
+          title={"2 person"}
         />
         <QuantityLine
           ticketBasket={ticketBasket}
@@ -79,7 +89,12 @@ export default function AddOnesCart() {
           </div>
 
           <div className="green_ui">
-            <input onChange={greenOption} type="checkbox" checked={ticketBasket.isGreenCamping} className="green-option_check"></input>
+            <input
+              onChange={greenOption}
+              type="checkbox"
+              checked={ticketBasket.isGreenCamping}
+              className="green-option_check"
+            ></input>
           </div>
 
           <div className="green_total">

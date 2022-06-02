@@ -9,11 +9,8 @@ function NavBar() {
   return (
     <>
       <nav className="navbar">
-        {/* <div className="nav-container"> */}
         <NavLink to="/" className="nav-logo">
           <img src={logoOrange} alt="FooFest logo" />
-          {/* FooFest
-            <i className="fas fa-code"></i> */}
         </NavLink>
 
         <ul className={click ? "nav-menu active" : "nav-menu"}>
@@ -33,16 +30,11 @@ function NavBar() {
             </NavLink>
           </li>
         </ul>
-        {/* BURGER MENU ICON  */}
-        {/* <div className="nav-icon" onClick={handleClick}>
-          <i className={click ? "fas fa-times" : "fas fa-bars"}></i>
-        </div> */}
+        {/* The onClick here set if the nav list should be shown */}
         <input className="nav-icon" onClick={handleClick} id="menu__toggle" type="checkbox" />
         <label className="menu__btn" htmlFor="menu__toggle">
           <span></span>
         </label>
-
-        {/* </div> */}
       </nav>
     </>
   );

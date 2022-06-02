@@ -9,25 +9,28 @@ import Timer from "../../booking/Timer";
 import ProgressBar from "../../booking/ProgressBar";
 
 export default function Basket() {
-  const [ToggleTicketDetails, setToggleTicketDetails] = useState(true);
-  const [TogglePersonInfo, setTogglePersonInfo] = useState(false);
-  const [ToggleBasketOverview, setToggleBasketOverview] = useState(false);
-  const [ToggleCardForm, setToggleCardForm] = useState(false);
-  const [ToggleFlowComplete, setToggleFlowComplete] = useState(false);
+  // Here are we creating a lot of states so we can hide and show the different steps
+  const [toggleTicketDetails, setToggleTicketDetails] = useState(true);
+  const [togglePersonInfo, setTogglePersonInfo] = useState(false);
+  const [toggleBasketOverview, setToggleBasketOverview] = useState(false);
+  const [toggleCardForm, setToggleCardForm] = useState(false);
+  const [toggleFlowComplete, setToggleFlowComplete] = useState(false);
   const [toggleBasketHeader, setToggleBasketHeader] = useState(false);
+  // This state is used to show the progress bar
   const [isCurrent, setIsCurrent] = useState(1);
   const [popup, setPopup] = useState(false);
 
+  // Here are we creating a object so we easily access the different states
   const toggleComponentsArr = {
-    ToggleTicketDetails: ToggleTicketDetails,
+    toggleTicketDetails: toggleTicketDetails,
     setToggleTicketDetails: setToggleTicketDetails,
-    TogglePersonInfo: TogglePersonInfo,
+    togglePersonInfo: togglePersonInfo,
     setTogglePersonInfo: setTogglePersonInfo,
-    ToggleBasketOverview: ToggleBasketOverview,
+    toggleBasketOverview: toggleBasketOverview,
     setToggleBasketOverview: setToggleBasketOverview,
-    ToggleCardForm: ToggleCardForm,
+    toggleCardForm: toggleCardForm,
     setToggleCardForm: setToggleCardForm,
-    ToggleFlowComplete: ToggleFlowComplete,
+    toggleFlowComplete: toggleFlowComplete,
     setToggleFlowComplete: setToggleFlowComplete,
     toggleBasketHeader: toggleBasketHeader,
     setToggleBasketHeader: setToggleBasketHeader,
@@ -36,28 +39,30 @@ export default function Basket() {
     <main>
       <Timer toggleComponentsArr={toggleComponentsArr} popup={popup} setPopup={setPopup} />
       <ProgressBar isCurrent={isCurrent} setIsCurrent={setIsCurrent} />
-      {ToggleTicketDetails ? (
+      {/* Here are we checking if the toogleTicketDetails if true, and if it´s then we are shown a step
+      in the booking flow. And we are doing that for each step until we get to flow complete */}
+      {toggleTicketDetails ? (
         <TicketDetails
           isCurrent={isCurrent}
           setIsCurrent={setIsCurrent}
           toggleComponentsArr={toggleComponentsArr}
         />
       ) : null}
-      {TogglePersonInfo ? (
+      {togglePersonInfo ? (
         <PersonInfo
           isCurrent={isCurrent}
           setIsCurrent={setIsCurrent}
           toggleComponentsArr={toggleComponentsArr}
         />
       ) : null}
-      {ToggleBasketOverview ? (
+      {toggleBasketOverview ? (
         <BasketOverview
           isCurrent={isCurrent}
           setIsCurrent={setIsCurrent}
           toggleComponentsArr={toggleComponentsArr}
         />
       ) : null}
-      {ToggleCardForm ? (
+      {toggleCardForm ? (
         <CardForm
           setPopup={setPopup}
           isCurrent={isCurrent}
@@ -65,7 +70,7 @@ export default function Basket() {
           toggleComponentsArr={toggleComponentsArr}
         />
       ) : null}
-      {ToggleFlowComplete ? <FlowComplete toggleComponentsArr={toggleComponentsArr} /> : null}
+      {toggleFlowComplete ? <FlowComplete toggleComponentsArr={toggleComponentsArr} /> : null}
     </main>
   );
 }

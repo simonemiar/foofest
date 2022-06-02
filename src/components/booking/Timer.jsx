@@ -2,11 +2,13 @@
 import { useState, useEffect } from "react";
 import TimeExpired from "./TimeExpired";
 
+// Here are we creating a custom hook that will be used to manage the state of the timer
 const Timer = (props) => {
   const { initialMinute = 10, initialSeconds = 0 } = props;
   const [minutes, setMinutes] = useState(initialMinute);
   const [seconds, setSeconds] = useState(initialSeconds);
 
+  // Here are we cheking what the current time is and if it´s less than the time we set, we are setting the time
   useEffect(() => {
     let myInterval = setInterval(() => {
       if (seconds > 0) {
@@ -20,6 +22,7 @@ const Timer = (props) => {
           setSeconds(59);
         }
       }
+      // Here we are checking if the timer is expired and if it´s then we will shown the time expired component
       if (!props.toggleComponentsArr.ToggleFlowComplete) {
         if (minutes === 0 && seconds === 1) {
           props.setPopup(true);

@@ -13,6 +13,7 @@ export default function ScheduleDetails(props) {
   const [stage, setStage] = useState("Midgard");
   const [act, setAct] = useState([]);
 
+  // Here we are fetcting the band data form the API, and setting the states of the band array.
   useEffect(() => {
     async function get() {
       const res = await fetch("https://prototype-masters-foofest.herokuapp.com/bands");
@@ -22,6 +23,8 @@ export default function ScheduleDetails(props) {
     get();
   }, []);
 
+  // Here we are taking the band data and comparing the band name vs the act, to find the right index in the array.
+  // Then we are setting the HoldShowBandDetails state to the correct band by the index.
   function findBandDetails(act) {
     const idx = band.findIndex((band) => band.name === act.act);
     setHoldShowBandDetails(band[idx]);
@@ -29,6 +32,7 @@ export default function ScheduleDetails(props) {
     setShowBandDetails(true);
   }
 
+  // Here we are setting the filter by the day clicked
   function filterByDay() {
     switch (props.daySchedule) {
       case "monday":
@@ -124,7 +128,6 @@ export default function ScheduleDetails(props) {
             console.log("You Clicked");
             if (showScheduleMore === false) {
             }
-
             setShowScheduleMore((old) => !old);
             filterByDay(props.daySchedule);
           }}
@@ -144,12 +147,16 @@ export default function ScheduleDetails(props) {
               </tr>
             </thead>
             <tbody>
+              {/* Here we are taking the midgardFilter and mapping it and taking the parameters act and index
+              Then we are making 3 variables, there is holding the filter by each scene and the index of the scene.
+              */}
               {props.midgardFilter.map((act, index) => {
                 const mAct = act;
                 const jAct = props.jotunFilter[index];
                 const vAct = props.vanaFilter[index];
 
                 return (
+                  // There are we are making a table row with the time and the 3 scenes
                   <Act
                     key={Math.random()}
                     act={act}
@@ -165,6 +172,7 @@ export default function ScheduleDetails(props) {
             </tbody>
           </table>
         </article>
+        {/* Here are the BandDetails, and if the showBandDetails value it ture, it will be shown */}
         <BandDetails
           bandDisplay={props.bandDisplay}
           setBandDisplayed={props.setBandDisplayed}

@@ -7,7 +7,8 @@ export default function Schedule() {
   const [jotunFilter, setJotunFilter] = useState([]);
   const [vanaFilter, setVanaFilter] = useState([]);
 
-  // Fetching schedule:
+  // Here are we fetching the schedule data form the API, and setting the states of the schedule array.
+  // We also filter the schedule array to only show the events that are in the current day.
   useEffect(() => {
     async function getSchedule() {
       const resSchedule = await fetch("https://prototype-masters-foofest.herokuapp.com/schedule");
@@ -20,6 +21,7 @@ export default function Schedule() {
     getSchedule();
   }, []);
 
+  // Here are making a array so we can map over them.
   const days = ["monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday"];
 
   return (
@@ -28,6 +30,7 @@ export default function Schedule() {
         <section>
           <h1>Schedule</h1>
         </section>
+        {/* Now to days are being mapped, and we are prop drilling all the states, the day and schedule data */}
         {days.map((daySchedule) => (
           <ScheduleDetails
             key={Math.random()}

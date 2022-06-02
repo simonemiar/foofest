@@ -1,5 +1,6 @@
 //TicketAmount
 
+// Here are we updating the ticket amount and checking if the amount is valid
 export function addTicket(ticketBasket, setTicketBasket) {
   if (ticketBasket.ticketAmount === 5) {
     alert("You can max buy 5 tickets a the time");
@@ -13,6 +14,7 @@ export function addTicket(ticketBasket, setTicketBasket) {
   }
 }
 
+// Here are we updating the ticket amount and checking if the amount is valid
 export function removeTicket(ticketBasket, setTicketBasket) {
   if (ticketBasket.ticketAmount === 1) {
     setTicketBasket((old) => {
@@ -33,6 +35,7 @@ export function removeTicket(ticketBasket, setTicketBasket) {
 }
 
 // Functions for 2-person tent
+// Here are we updating the tent amount and checking if the amount is valid
 export function addTwoTent(ticketBasket, setTicketBasket) {
   if (
     ticketBasket.tent2PersonAmount + ticketBasket.tent3PersonAmount ===
@@ -49,6 +52,7 @@ export function addTwoTent(ticketBasket, setTicketBasket) {
   }
 }
 
+// Here are we updating the tent amount and checking if the amount is valid
 export function removeTwoTent(ticketBasket, setTicketBasket) {
   if (ticketBasket.tent2PersonAmount === 0) {
     setTicketBasket((old) => {
@@ -65,6 +69,7 @@ export function removeTwoTent(ticketBasket, setTicketBasket) {
 }
 
 // Functions for 3-person tent
+// Here are we updating the tent amount and checking if the amount is valid
 export function addThreeTent(ticketBasket, setTicketBasket) {
   if (
     ticketBasket.tent2PersonAmount + ticketBasket.tent3PersonAmount ===
@@ -81,6 +86,7 @@ export function addThreeTent(ticketBasket, setTicketBasket) {
   }
 }
 
+// Here are we updating the tent amount and checking if the amount is valid
 export function removeThreeTent(ticketBasket, setTicketBasket) {
   if (ticketBasket.tent3PersonAmount === 0) {
     setTicketBasket((old) => {

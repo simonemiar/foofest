@@ -9,10 +9,12 @@ export default function FlowComplete(props) {
 
   const ordernumber = Math.floor(Math.random() * 10000000 + 1);
 
+  // Here are we setting if the tent is selected or not
   const [toggleTent2Person, setToggleTent2Person] = useState(false);
   const [toggleTent3Person, setToggleTent3Person] = useState(false);
   const [toggleGreenCamping, setToggleGreenCamping] = useState(false);
 
+  // Here are we calculating the total tents, price and amount.
   const totalTicketPrize = ticketBasket.ticketPrice * ticketBasket.ticketAmount;
   const totalTwoTent = ticketBasket.tent2PersonPrice * ticketBasket.tent2PersonAmount;
   const totalThreeTent = ticketBasket.tent3PersonPrice * ticketBasket.tent3PersonAmount;
@@ -36,6 +38,7 @@ export default function FlowComplete(props) {
     setToggleGreenCamping(ticketBasket.isGreenCamping ? true : false);
   }, [ticketBasket]);
 
+  // Here are we creating the PDF with the data from the ticketBasket.
   function createPDF() {
     // Default export is a4 paper, portrait, using millimeters for units
     const doc = new jsPDF();

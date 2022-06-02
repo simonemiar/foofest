@@ -16,10 +16,12 @@ import QuantityLine from "./QuantityLine";
 export default function BasketOverview(props) {
   const { ticketBasket, setTicketBasket } = useContext(TicketBasketContext);
 
+  // Here are we setting if the tent is selected or not
   const [toggleTent2Person, setToggleTent2Person] = useState(false);
   const [toggleTent3Person, setToggleTent3Person] = useState(false);
   const [toggleGreenCamping, setToggleGreenCamping] = useState(false);
 
+  // Here are we calculating the total tents, price and amount.
   const totalTicketPrize = ticketBasket.ticketPrice * ticketBasket.ticketAmount;
   const totalTwoTent = ticketBasket.tent2PersonPrice * ticketBasket.tent2PersonAmount;
   const totalThreeTent = ticketBasket.tent3PersonPrice * ticketBasket.tent3PersonAmount;
@@ -92,6 +94,7 @@ export default function BasketOverview(props) {
             </div>
           </article>
 
+          {/* Here are we prop drilling all the different states and variable there is need */}
           {toggleTent2Person ? (
             <QuantityLine
               ticketBasket={ticketBasket}
@@ -166,6 +169,7 @@ export default function BasketOverview(props) {
           >
             Back
           </button>
+          {/* Here are we updating with components that is shown */}
           <button
             className="continue_btn shape"
             onClick={() => {

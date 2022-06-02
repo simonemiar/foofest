@@ -12,6 +12,8 @@ export default function Ticket(props) {
     setIsFlipped((prevState) => !prevState);
   }
 
+  // Here are we updating the ticketBasket state in the context
+  // With the ticketType, ticketPrice and reseting the tent amount
   function addTicketTypeToBasket() {
     setTicketBasket((old) => {
       return {
@@ -28,6 +30,7 @@ export default function Ticket(props) {
 
   return (
     <article className="ticket">
+      {/* We are using React-card-flip and it only works if there is two boxing inside it. */}
       <ReactCardFlip isFlipped={isFlipped} flipDirection="vertical">
         <div className="ticket_svg">
           <div className="ticket_content">
@@ -35,10 +38,12 @@ export default function Ticket(props) {
             <h3>FooFest 2022</h3>
             <h4>{props.ticketPrice} DKK</h4>
             <div className="ticket_btn">
+              {/* If the btn is clicked, the card will turn to the other side */}
               <button type="primary" onClick={handleClick}>
                 Read more
               </button>
               OR
+              {/* Here are we adding the selected ticket to the ticketBasket, and going the the basket page. */}
               <Link onClick={addTicketTypeToBasket} to="/basket">
                 Buy
               </Link>

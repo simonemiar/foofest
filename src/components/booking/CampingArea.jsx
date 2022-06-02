@@ -6,6 +6,7 @@ import AreaOption from "./AreaOption";
 export default function CampingArea({ setReserveSpotObj }) {
   const [availableSpots, setAvailableSpots] = useState([]);
 
+  // Here we are getting the available spots from the backend
   useEffect(() => {
     async function get() {
       const res = await fetch(`https://prototype-masters-foofest.herokuapp.com/available-spots`);
@@ -27,6 +28,7 @@ export default function CampingArea({ setReserveSpotObj }) {
 
       <section id="camping-area_main-content">
         <article className="area_options">
+          {/* Here are er mapping all the diffent camping spots */}
           {availableSpots.map((spot) => (
             <AreaOption key={spot.area} spot={spot} setReserveSpotObj={setReserveSpotObj} />
           ))}

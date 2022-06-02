@@ -21,6 +21,7 @@ export default function CardForm(props) {
     props.setIsCurrent(props.isCurrent + 1);
     props.setPopup(false);
 
+    // Here are we taking the reserveSpotId and fullfilling spot.
     function fullfillSpot() {
       const reserveSpotId = { id: ticketBasket.reserveSpotId };
       const postFullfillSpot = JSON.stringify(reserveSpotId);
@@ -38,6 +39,7 @@ export default function CardForm(props) {
 
     fullfillSpot();
 
+    // Here we creating an new object with the data from the ticketBasket
     const ticketInfo = {
       ticketType: ticketBasket.ticketType,
       ticketAmount: ticketBasket.ticketAmount,
@@ -48,6 +50,7 @@ export default function CardForm(props) {
       personInfo: ticketBasket.personInfo,
     };
 
+    // Here we are sending the ticketInfo to the database
     function postData(data) {
       const LINK = "https://frontend-54ac.restdb.io/rest/booking-info";
       const APIKEY = "6245613d67937c128d7c9394";
@@ -70,16 +73,29 @@ export default function CardForm(props) {
 
   // https://dev.to/juanmanuelcrego/input-mask-in-react-without-libraries-5akf
   const handleCardNumberInput = () => {
-    const cardValue = cardInput.current.value.replace(/\D/g, "").match(/(\d{0,4})(\d{0,4})(\d{0,4})(\d{0,4})/);
-    cardInput.current.value = !cardValue[2] ? cardValue[1] : `${cardValue[1]}-${cardValue[2]}${`${cardValue[3] ? `-${cardValue[3]}` : ""}`}${`${cardValue[4] ? `-${cardValue[4]}` : ""}`}`;
+    // Here are loooking for at the charater and replainting all charater with empty string
+    // So you can't type any character.
+    // In match it group the number in four.
+    const cardValue = cardInput.current.value
+      .replace(/\D/g, "")
+      .match(/(\d{0,4})(\d{0,4})(\d{0,4})(\d{0,4})/);
+    // With a ternaire operator we setting - in the card input.
+    cardInput.current.value = !cardValue[2]
+      ? cardValue[1]
+      : `${cardValue[1]}-${cardValue[2]}${`${cardValue[3] ? `-${cardValue[3]}` : ""}`}${`${
+          cardValue[4] ? `-${cardValue[4]}` : ""
+        }`}`;
+    // The total input, and storing the input in the state.
     const numbers = cardInput.current.value.replace(/(\D)/g, "");
     setCard(numbers);
 
+    // Check if the card length is 16, and if ture then focus on the next input.
     if (cardValue[0].length === 16) {
       dateInput.current.focus();
     }
   };
 
+  // Check if the date length is 5, and if ture then focus on the next input.
   function handleDateInput() {
     const dateValue = dateInput.current.value;
     if (dateValue.length === 5) {
@@ -109,15 +125,42 @@ export default function CardForm(props) {
         </div>
         <div className="field-container">
           <label htmlFor="cardnumber">Card Number</label>
-          <input id="cardnumber" type="text" inputMode="numeric" minLength="19" maxLength="19" required ref={cardInput} onChange={handleCardNumberInput} />
+          <input
+            id="cardnumber"
+            type="text"
+            inputMode="numeric"
+            minLength="19"
+            maxLength="19"
+            required
+            ref={cardInput}
+            onChange={handleCardNumberInput}
+          />
         </div>
         <div className="field-container">
           <label htmlFor="expirationdate">Expiration (mm/yy)</label>
-          <input id="expirationdate" type="text" inputMode="numeric" minLength="5" maxLength="5" required ref={dateInput} onChange={handleDateInput} />
+          <input
+            id="expirationdate"
+            type="text"
+            inputMode="numeric"
+            minLength="5"
+            maxLength="5"
+            required
+            ref={dateInput}
+            onChange={handleDateInput}
+          />
         </div>
         <div className="field-container">
           <label htmlFor="securitycode">Security Code</label>
-          <input id="securitycode" type="text" pattern="[0-9]+" inputMode="numeric" ref={codeInput} minLength="3" maxLength="3" required />
+          <input
+            id="securitycode"
+            type="text"
+            pattern="[0-9]+"
+            inputMode="numeric"
+            ref={codeInput}
+            minLength="3"
+            maxLength="3"
+            required
+          />
         </div>
         <div className="booking_flow_nav">
           <button
