@@ -16,6 +16,7 @@ h1 {
     color: color.$white;
     text-align: center;
     padding: 20px;
+    transition: 1s;
   }
   #schedule_date:hover {
     background-color: color.$orange;
