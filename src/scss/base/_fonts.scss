@@ -69,6 +69,15 @@ table {
 h1 {
   @extend %headline-font;
 }
+#header_section {
+  h1 {
+    font-size: calc(4rem + 47.5 * (100vw - 300px) / 1300);
+  }
+
+  h2 {
+    font-size: calc(3.8rem + 28 * (100vw - 300px) / 1300);
+  }
+}
 
 h2 {
   @extend %headline2-font;
