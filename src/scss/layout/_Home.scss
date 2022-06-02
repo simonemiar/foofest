@@ -1,3 +1,5 @@
+@use "../base/color";
+
 #home {
   #header_section {
     margin-top: 2rem;
@@ -25,7 +27,7 @@
           grid-row: 2;
           grid-column: 2;
           font-style: italic;
-          color: #f39b13;
+          color: color.$orange;
         }
         h2:nth-child(3) {
           grid-column: 1 / span 2;
@@ -36,8 +38,8 @@
       .booking-btn {
         width: 7.5rem;
         height: 1.875rem;
-        background-color: #f39b13;
-        color: #202033;
+        background-color: color.$orange;
+        color: color.$darkblue;
         border: none;
         cursor: pointer;
       }
@@ -45,9 +47,9 @@
       .schedule-btn {
         width: 7.5rem;
         height: 1.875rem;
-        background-color: #202033;
-        color: #f5f5f5;
-        border: 1px solid #f39b13;
+        background-color: color.$darkblue;
+        color: color.$white;
+        border: 1px solid color.$orange;
         cursor: pointer;
       }
     }
@@ -71,7 +73,7 @@
     #intro_img {
       width: 25rem;
       height: 15rem;
-      background-color: #34334d;
+      background-color: color.$transparentblue;
       margin-top: 2rem;
       margin-left: auto;
       margin-right: auto;
@@ -101,9 +103,9 @@
       .stage {
         width: 15rem;
         height: 25rem;
-        background-color: #34334d;
+        background-color: color.$transparentblue;
         text-align: center;
-        color: #f5f5f5;
+        color: color.$white;
         padding: 1rem;
 
         h3 {
