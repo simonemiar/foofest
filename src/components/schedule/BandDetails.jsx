@@ -52,7 +52,7 @@ export default function BandDetails(props) {
                   }
                   alt={band.name}
                 />
-                {band.logoCredits ? <figcaption>{band.logoCredits}</figcaption> : null}
+                {/* {band.logoCredits ? <figcaption>{band.logoCredits}</figcaption> : null} */}
 
                 <div className="ribbon">
                   <span>{band.genre}</span>
@@ -82,10 +82,18 @@ export default function BandDetails(props) {
               <p>
                 <span className="bold">BIO: </span>
                 {showMore ? band.bio : `${band.bio.substring(0, 250)}`}
+                {/* <br></br>
+                <br></br> */}
+
                 <button className="toggle_show-btn" onClick={() => setShowMore(!showMore)}>
                   {showMore ? "Show less" : "Show more"}
                 </button>
               </p>
+              <i>
+                {band.logoCredits ? (
+                  <figcaption>Image credits: {band.logoCredits}</figcaption>
+                ) : null}
+              </i>
             </div>
           </article>
         </section>

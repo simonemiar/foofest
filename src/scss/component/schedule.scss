@@ -77,7 +77,8 @@ h1 {
       }
 
       .stage {
-        padding-block: 4vh;
+        // padding-block: 4vh;
+        padding-block: 36.5px;
         border-bottom: 5px solid color.$darkblue;
         // height: 100px;
         // border-top: 5px solid color.$darkblue;
@@ -120,9 +121,13 @@ h1 {
         flex-direction: column;
         // margin: 0px 5px 5px 0px;
         // padding: 10px;
-        padding: 12px;
+        // padding: 12px;
+        padding: 15px;
         // padding: 0.8rem;
-        width: 45vh;
+
+        width: 40vh;
+        // width: 45vh;
+
         // height: 29%;
         border-bottom: 5px solid color.$transparentblue;
 
@@ -141,7 +146,7 @@ h1 {
             padding: 5px;
           }
           button:hover {
-            background-color: #f39b13;
+            background-color: color.$orange;
             // color: color.$orange;
             border: 1px solid color.$orange;
           }
@@ -157,5 +162,11 @@ h1 {
         }
       }
     }
+  }
+}
+
+@media screen and (max-width: 600px) {
+  #schedule_section tbody .artists .artist .artist_readmore button {
+    float: none;
   }
 }
