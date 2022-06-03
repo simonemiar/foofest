@@ -55,7 +55,7 @@
     #ticket_decre {
       background-color: #34334d;
       padding: 7px;
-      border: none;
+      // border: none;
       text-align: center;
       color: color.$white;
     }
@@ -68,10 +68,9 @@
     #ticket_incre {
       background-color: color.$transparentblue;
       padding: 7px;
-      border: none;
+      // border: none;
       text-align: center;
       color: color.$white;
     }
   }
-
 }

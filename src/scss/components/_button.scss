@@ -31,7 +31,9 @@
 }
 
 button {
-  transition: 0.5s;
+  transition: 0.3s;
+  cursor: pointer;
+  border: none;
 }
 
 button:hover {

@@ -32,7 +32,7 @@
   button {
     padding: 3px;
     background-color: color.$transparentblue;
-    border: none;
+    // border: none;
     text-align: center;
     color: color.$white;
     width: 1.5rem;
@@ -76,6 +76,10 @@
   .green_ui {
     text-align: center;
     margin-right: 0.7rem;
+  }
+
+  .green-option_check {
+    cursor: pointer;
   }
 
   .green_camping_ui {

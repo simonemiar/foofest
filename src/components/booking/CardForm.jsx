@@ -97,18 +97,15 @@ export default function CardForm(props) {
 
   // Check if the date length is 5, and if ture then focus on the next input.
   function handleDateInput() {
-    const dateValue = dateInput.current.value;
-    if (dateValue.length === 5) {
+    const dateValue = dateInput.current.value.replace(/\D/g, "").match(/(\d{0,2})(\d{0,2})/);
+    // With a ternaire operator we setting - in the card input.
+    dateInput.current.value = !dateValue[2] ? dateValue[1] : `${dateValue[1]}/${dateValue[2]}`;
+    // The total input, and storing the input in the state.
+    const numbers = dateInput.current.value.replace(/(\D)/g, "");
+
+    if (numbers.length === 4) {
       codeInput.current.focus();
-      // checkCardNumber();
     }
-
-    if (dateValue.length === 3) {
-      dateInput.value += "/";
-      console.log("date /");
-    }
-
-    console.log(dateValue);
   }
 
   useEffect(() => {
@@ -143,8 +140,8 @@ export default function CardForm(props) {
             id="expirationdate"
             type="text"
             inputMode="numeric"
-            minLength="5"
-            maxLength="5"
+            minLength="4"
+            maxLength="4"
             placeholder="&nbsp;"
             required
             ref={dateInput}
