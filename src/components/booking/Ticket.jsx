@@ -47,9 +47,15 @@ export default function Ticket(props) {
             {/* Here are we adding the selected ticket to the ticketBasket, and going the the basket page. */}
             <Link
               onClick={(e) => {
-                party.confetti(e.target, { count: party.variation.range(100, 200) });
+                party.confetti(e.target, {
+                  shapes: ["star"],
+                  count: party.variation.range(50, 200),
+                  size: party.variation.range(1, 2),
+                  speed: party.variation.range(100, 1000),
+                });
                 addTicketTypeToBasket();
               }}
+              className="btn"
               to="/basket"
             >
               Buy

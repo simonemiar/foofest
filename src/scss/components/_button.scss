@@ -10,13 +10,24 @@
   cursor: pointer;
 }
 
-.continue_btn {
+.continue_btn,
+.ticket a {
   width: 5.5rem;
   height: 1.875rem;
   background-color: color.$orange;
   color: color.$darkblue;
   border: none;
   cursor: pointer;
+}
+
+.ticket a {
+  padding: 0.3rem 0.8rem;
+  transition: 0.5s;
+}
+
+.ticket a:hover {
+  background-color: color.$purple;
+  color: color.$white;
 }
 
 button {
