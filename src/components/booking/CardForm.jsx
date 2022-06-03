@@ -77,7 +77,7 @@ export default function CardForm(props) {
     // So you can't type any character.
     // In match it group the number in four.
     const cardValue = cardInput.current.value
-      .replace(/\D/g, "")
+      // .replace(/\D/g, "")
       .match(/(\d{0,4})(\d{0,4})(\d{0,4})(\d{0,4})/);
     // With a ternaire operator we setting - in the card input.
     cardInput.current.value = !cardValue[2]
@@ -87,7 +87,7 @@ export default function CardForm(props) {
         }`}`;
     // The total input, and storing the input in the state.
     const numbers = cardInput.current.value.replace(/(\D)/g, "");
-    setCard(numbers);
+    // setCard(numbers);
 
     // Check if the card length is 16, and if ture then focus on the next input.
     if (cardValue[0].length === 16) {
@@ -140,8 +140,9 @@ export default function CardForm(props) {
             id="expirationdate"
             type="text"
             inputMode="numeric"
-            minLength="4"
-            maxLength="4"
+            pattern="/\d{2}$\w{1}$\d{2}$/"
+            minLength="5"
+            maxLength="5"
             placeholder="&nbsp;"
             required
             ref={dateInput}
