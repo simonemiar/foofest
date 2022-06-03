@@ -121,7 +121,7 @@ export default function CardForm(props) {
       <form id="card_form" ref={formElm} onSubmit={submitted}>
         <div className="field-container">
           <label htmlFor="name">Name on card</label>
-          <input id="name" type="text" required />
+          <input id="name" type="text" placeholder="&nbsp;" required />
         </div>
         <div className="field-container">
           <label htmlFor="cardnumber">Card Number</label>
@@ -131,6 +131,7 @@ export default function CardForm(props) {
             inputMode="numeric"
             minLength="19"
             maxLength="19"
+            placeholder="&nbsp;"
             required
             ref={cardInput}
             onChange={handleCardNumberInput}
@@ -144,6 +145,7 @@ export default function CardForm(props) {
             inputMode="numeric"
             minLength="5"
             maxLength="5"
+            placeholder="&nbsp;"
             required
             ref={dateInput}
             onChange={handleDateInput}
@@ -159,6 +161,7 @@ export default function CardForm(props) {
             ref={codeInput}
             minLength="3"
             maxLength="3"
+            placeholder="&nbsp;"
             required
           />
         </div>

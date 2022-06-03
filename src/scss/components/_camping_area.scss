@@ -44,8 +44,17 @@
   }
 
   .area_map {
-    width: 14rem;
+    // width: 14rem;
     height: 14rem;
-    background-color: color.$white;
+    // background-color: color.$white;
+  }
+}
+
+@media screen and (max-width: 425px) {
+  #camping-area_section {
+    #camping-area_main-content {
+      flex-direction: column;
+      margin-bottom: 1rem;
+    }
   }
 }

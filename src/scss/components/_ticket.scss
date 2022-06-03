@@ -20,6 +20,12 @@
   height: 12rem;
 }
 
+@media screen and (max-width: 425px) {
+  .ticket_svg {
+    width: 100%;
+  }
+}
+
 .ticket_content {
   padding: 1rem;
   padding-block: auto;
