@@ -119,13 +119,31 @@ export default function ScheduleDetails(props) {
     // }
   }
 
+  const stageNames = {
+    midgard: "Mid",
+    jotunheim: "Jot",
+    vanaheim: "Van",
+    // midgard: "Midgard",
+    // jotunheim: "Jotunheim",
+    // vanaheim: "Vanaheim",
+  };
+
+  // function shortTitle(title) {
+  //   console.log(title);
+
+  //   const stageNames = {
+  //     midgard: "Mid",
+  //     jotunheim: "Jot",
+  //     vanaheim: "Van",
+  //   };
+  // }
+
   return (
     <>
       <section id="schedule_section">
         <h2
           id="schedule_date"
           onClick={() => {
-            console.log("You Clicked");
             if (showScheduleMore === false) {
             }
             setShowScheduleMore((old) => !old);
@@ -138,12 +156,10 @@ export default function ScheduleDetails(props) {
           <table>
             <thead>
               <tr>
-                <th>TIME KL: </th>
-              </tr>
-              <tr>
-                <th className="stage">MIDGARD</th>
-                <th className="stage">JOTUNHEIM</th>
-                <th className="stage">VANEHEIM</th>
+                <th className="time">TIME</th>
+                <th className="stage">{stageNames.midgard}</th>
+                <th className="stage">{stageNames.jotunheim}</th>
+                <th className="stage">{stageNames.vanaheim}</th>
               </tr>
             </thead>
             <tbody>
