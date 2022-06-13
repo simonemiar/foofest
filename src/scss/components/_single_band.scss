@@ -1,0 +1,80 @@
+@use "../base/color";
+@use "../base/fonts";
+
+#single_band {
+  section {
+    margin-block: 0.5rem;
+  }
+
+  .genre_members {
+    display: flex;
+    flex-direction: column-reverse;
+    gap: 1rem;
+    margin-bottom: 1rem;
+
+    .members {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+
+      ul {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+      }
+
+      .member {
+        align-items: center;
+        background-color: color.$transparentblue;
+        color: color.$white;
+        display: flex;
+        height: 2rem;
+        justify-content: center;
+        -webkit-transform: skewX(-15deg);
+        transform: skewX(-15deg);
+        width: 9rem;
+
+        p {
+          transform: skewX(15deg);
+        }
+      }
+    }
+    .genre {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+
+      span {
+        align-items: center;
+        background-color: color.$transparentblue;
+        color: color.$white;
+        display: flex;
+        height: 2rem;
+        justify-content: center;
+        -webkit-transform: skewX(-15deg);
+        transform: skewX(-15deg);
+        width: 9rem;
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 565px) {
+  #single_band {
+    .genre_members {
+      flex-direction: row;
+    }
+    // .genre_members .members {
+    //   flex-direction: row;
+    // }
+    // .genre_members .members .member {
+    //   height: auto;
+    //   width: auto;
+    // }
+  }
+  .more_info {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+}
