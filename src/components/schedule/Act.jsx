@@ -1,76 +1,47 @@
+import { useContext, useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+
+import { BandDataContext } from "../../contexts/BandDataContext";
+
 export default function Act(props) {
+  const { bandData, setBandData } = useContext(BandDataContext);
+  const [bandId, setBandId] = useState("");
+
+  useEffect(() => {
+    // Find the acts that matches with a band name
+    const result = bandData.filter((band) => band.name === props.act.act);
+
+    // If that act not is undefined, set the id
+    if (result.length !== 0) {
+      setBandId(result[0].id);
+    }
+  }, [bandData, props.act.act]);
+
+  function addAct(act) {
+    const addActToBand = bandData.map((old) => {
+      return { ...old, act: props.act, stage: props.stage, day: props.day };
+    });
+
+    setBandData(addActToBand);
+  }
+
   return (
     <>
-      <tr className="artists">
-        <th>
-          {props.act.start}-{props.act.end}
-        </th>
-        <td className="artist">
-          <div className="artist_name">{props.act.act}</div>
-          <div className="artist_time">
-            {props.act.start}-{props.act.end}
-          </div>
-          <div className="artist_readmore">
-            {/* Here are we taking the string form the act and say it´s not containing break, then do nothing.
-            If the act does not contain break, and it will make a button there set 2 states, there will open the
-            band details popup.*/}
-            {props.act.act !== "break" ? (
-              <button
-                onClick={() => {
-                  props.findBandDetails(props.act);
-                  props.setStage("Midgard");
-                }}
-              >
+      <td className="artist">
+        {props.act.act !== "break" ? (
+          <>
+            <div className="artist_name">{props.sceneAct.act}</div>
+            <div className="artist_time">
+              {props.act.start}-{props.act.end}
+            </div>
+            <div className="artist_readmore">
+              <Link to={`/artist/${bandId}`} onClick={addAct}>
                 Read more
-              </button>
-            ) : (
-              ""
-            )}
-          </div>
-        </td>
-
-        <td className="artist">
-          <div className="artist_name">{props.jAct.act}</div>
-          <div className="artist_time">
-            {props.jAct.start}-{props.jAct.end}
-          </div>
-          <div className="artist_readmore">
-            {props.jAct.act !== "break" ? (
-              <button
-                onClick={() => {
-                  props.findBandDetails(props.jAct);
-                  props.setStage("Jotunheim");
-                }}
-              >
-                Read more
-              </button>
-            ) : (
-              ""
-            )}
-          </div>
-        </td>
-
-        <td className="artist">
-          <div className="artist_name">{props.vAct.act}</div>
-          <div className="artist_time">
-            {props.vAct.start}-{props.vAct.end}
-          </div>
-          <div className="artist_readmore">
-            {props.vAct.act !== "break" ? (
-              <button
-                onClick={() => {
-                  props.findBandDetails(props.vAct);
-                  props.setStage("Vanaheim");
-                }}
-              >
-                Read more
-              </button>
-            ) : (
-              ""
-            )}
-          </div>
-        </td>
-      </tr>
+              </Link>
+            </div>
+          </>
+        ) : null}
+      </td>
     </>
   );
 }
