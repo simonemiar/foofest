@@ -1,8 +1,10 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import ScheduleDetails from "../../schedule/ScheduleDetails";
+import { ScheduleContext } from "../../../contexts/ScheduleContext";
 
 export default function Schedule() {
-  const [schedule, setSchedule] = useState([]);
+  const { setSchedule } = useContext(ScheduleContext);
+  // const [schedule, setSchedule] = useState([]);
   const [midgardFilter, setMidgardFilter] = useState([]);
   const [jotunFilter, setJotunFilter] = useState([]);
   const [vanaFilter, setVanaFilter] = useState([]);
@@ -34,7 +36,6 @@ export default function Schedule() {
         {days.map((daySchedule) => (
           <ScheduleDetails
             key={Math.random()}
-            schedule={schedule}
             daySchedule={daySchedule}
             midgardFilter={midgardFilter}
             jotunFilter={jotunFilter}
