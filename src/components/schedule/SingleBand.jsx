@@ -1,11 +1,12 @@
-import { useState, useEffect, useContext } from "react";
+// import { useState, useEffect } from "react";
+import { useContext } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 
 import { BandDataContext } from "../../contexts/BandDataContext";
 
 export default function SingleBand(props) {
   const { bandData } = useContext(BandDataContext);
-  const [singleBandS, setSingleBandS] = useState([]);
+  // const [singleBandS, setSingleBandS] = useState([]);
   const params = useParams();
   const navigate = useNavigate();
   // console.log(params);
@@ -22,10 +23,10 @@ export default function SingleBand(props) {
     return band.id === params.artistid;
   })[0];
 
-  useEffect(() => {
-    setSingleBandS(singleBand);
-    console.log("singleBandS", singleBandS);
-  });
+  // useEffect(() => {
+  //   setSingleBandS(singleBand);
+  //   console.log("singleBandS", singleBandS);
+  // }, [singleBand]);
 
   // console.log(singleBand);
 
