@@ -29,8 +29,12 @@ export default function Schedule() {
   return (
     <>
       <main>
-        <section>
+        <section className="schedule_header">
           <h1>Schedule</h1>
+          <p>
+            Get a overview over the bands, and which stages there are playing on.<br></br>
+            Our 3 stages is Midgard, Jotunheim and Vanaheim
+          </p>
         </section>
         {/* Now to days are being mapped, and we are prop drilling all the states, the day and schedule data */}
         {days.map((daySchedule) => (

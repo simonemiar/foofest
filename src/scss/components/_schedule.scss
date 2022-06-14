@@ -1,7 +1,15 @@
 @use "../base/color";
-h1 {
-  text-align: center;
-  padding: 20px;
+
+.schedule_header {
+  h1 {
+    text-align: center;
+    padding: 20px;
+  }
+
+  p {
+    text-align: center;
+    margin-block-end: 1rem;
+  }
 }
 
 #schedule_section {
@@ -127,17 +135,18 @@ h1 {
           display: block;
         }
         .artist_readmore {
-          button {
+          align-self: flex-end;
+          a {
             color: inherit;
             border: none;
             background: none;
             font: inherit;
-            cursor: pointer;
-            float: right;
             font-size: 0.9rem;
             padding: 5px;
+            border: 1px solid color.$darkblue;
           }
-          button:hover {
+
+          a:hover {
             background-color: color.$orange;
             border: 1px solid color.$orange;
           }
