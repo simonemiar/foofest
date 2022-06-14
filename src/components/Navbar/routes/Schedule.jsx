@@ -21,7 +21,7 @@ export default function Schedule() {
       setVanaFilter(scheduleData.Vanaheim.mon);
     }
     getSchedule();
-  }, []);
+  }, [setSchedule]);
 
   // Here are making a array so we can map over them.
   const days = ["monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday"];
