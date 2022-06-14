@@ -32,18 +32,18 @@ export default function SingleBand(props) {
 
   return (
     <main id="single_band">
-      <section className="btn_name_time">
-        <button className="back_btn" onClick={() => navigate(-1)}>
-          Back
-        </button>
-        <h2>{singleBand.name}</h2>
-        <p className="import_info">
-          {singleBand.stage} / {singleBand.act.start}-{singleBand.act.end} / {singleBand.day}
-        </p>
-      </section>
+      <section>
+        <header>
+          <button className="back_btn" onClick={() => navigate(-1)}>
+            Back
+          </button>
+          <h2>{singleBand.name}</h2>
+          <p className="import_info">
+            {singleBand.stage} / {singleBand.act.start}-{singleBand.act.end} / {singleBand.day}
+          </p>
+        </header>
 
-      <section className="single_band_img">
-        <figure>
+        <figure className="single_band_img">
           <img
             src={
               singleBand.logo.indexOf("http://")
@@ -52,16 +52,17 @@ export default function SingleBand(props) {
             }
             alt={singleBand.name}
           />
-          {singleBand.logoCredits ? <figcaption>{singleBand.logoCredits}</figcaption> : null}
+          {singleBand.logoCredits ? (
+            <figcaption>
+              <strong>Credits: </strong>
+              {singleBand.logoCredits}
+            </figcaption>
+          ) : null}
         </figure>
-      </section>
 
-      <section className="more_info">
         <article className="genre_members">
           <div className="members">
-            <p>
-              <strong>Band members:</strong>
-            </p>
+            <h3>Band members</h3>
             <ul>
               {singleBand.members.map((member) => (
                 <li key={Math.random()} className="member">
@@ -71,13 +72,18 @@ export default function SingleBand(props) {
             </ul>
           </div>
 
-          <p className="genre">
-            <strong>Genre: </strong>
-            <span>{singleBand.genre}</span>
-          </p>
+          <div className="genre">
+            <h3>Genre </h3>
+            <p>
+              <span>{singleBand.genre}</span>
+            </p>
+          </div>
         </article>
 
-        <p className="desciption">{singleBand.bio}</p>
+        <article className="description">
+          <h3>Description</h3>
+          <p className="desciption">{singleBand.bio}</p>
+        </article>
       </section>
     </main>
   );
