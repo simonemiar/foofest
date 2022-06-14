@@ -4,6 +4,17 @@ h1 {
   padding: 20px;
 }
 
+.block {
+  display: block;
+}
+.hide {
+  display: none;
+}
+
+.selected {
+  color: color.$orange;
+}
+
 #schedule_section {
   margin: 0px 20px;
 

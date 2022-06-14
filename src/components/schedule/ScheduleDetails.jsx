@@ -1,11 +1,14 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 
 import Act from "./Act";
 import BandDetails from "./BandDetails";
 
 export default function ScheduleDetails(props) {
   const [showScheduleMore, setShowScheduleMore] = useState(false);
+  const [expanded, setExpanded] = useState(false);
+
   const [day, setDay] = useState("monday");
+  const ref = useRef(null);
 
   const [showBandDetails, setShowBandDetails] = useState(false);
   const [holdShowBandDetails, setHoldShowBandDetails] = useState([]);
@@ -119,22 +122,33 @@ export default function ScheduleDetails(props) {
     // }
   }
 
+  // useEffect(() => {
+  //   if (ref.current.classList.contains("selected")) {
+  //     console.log("Element contains class");
+  //   } else {
+  //     console.log("Element does NOT contain class");
+  //   }
+  // }, []);
+
+  //https://bobbyhadz.com/blog/react-check-if-element-has-class
+
+  const toggleScheduleDetails = () => {
+    if (showScheduleMore) {
+      setShowScheduleMore((old) => !old);
+      filterByDay(props.daySchedule);
+    } else {
+      setShowScheduleMore((old) => !old);
+    }
+  };
+
   return (
     <>
       <section id="schedule_section">
-        <h2
-          id="schedule_date"
-          onClick={() => {
-            console.log("You Clicked");
-            if (showScheduleMore === false) {
-            }
-            setShowScheduleMore((old) => !old);
-            filterByDay(props.daySchedule);
-          }}
-        >
+        <h2 id="schedule_date" onClick={toggleScheduleDetails} ref={ref} className={showScheduleMore ? "selected" : null}>
           {props.daySchedule}
         </h2>
-        <article id="details_section" style={{ display: showScheduleMore ? "block" : "none" }}>
+
+        <article id="details_section" className={showScheduleMore ? "block" : "hide"}>
           <table>
             <thead>
               <tr>
@@ -157,16 +171,7 @@ export default function ScheduleDetails(props) {
 
                 return (
                   // There are we are making a table row with the time and the 3 scenes
-                  <Act
-                    key={Math.random()}
-                    act={act}
-                    mAct={mAct}
-                    jAct={jAct}
-                    vAct={vAct}
-                    day={day}
-                    setStage={setStage}
-                    findBandDetails={findBandDetails}
-                  />
+                  <Act key={Math.random()} act={act} mAct={mAct} jAct={jAct} vAct={vAct} day={day} setStage={setStage} findBandDetails={findBandDetails} />
                 );
               })}
             </tbody>
