@@ -4,21 +4,46 @@ h1 {
   padding: 20px;
 }
 
-.block {
-  display: block;
-}
-.hide {
-  display: none;
+.active {
+  background-color: color.$orange !important;
 }
 
-.selected {
-  color: color.$orange;
+.open {
+  animation: flipdown 0.8s ease both;
 }
 
-#schedule_section {
+.close {
+  animation: flipdown reverse 0.5s both ease;
+}
+
+@keyframes flipdown {
+  0% {
+    opacity: 0;
+    transform-origin: top center;
+    transform: rotateX(-90deg);
+  }
+  5% {
+    opacity: 1;
+  }
+  80% {
+    transform: rotateX(8deg);
+  }
+  83% {
+    transform: rotateX(6deg);
+  }
+  92% {
+    transform: rotateX(-3deg);
+  }
+  100% {
+    transform-origin: top center;
+    transform: rotateX(0deg);
+  }
+}
+
+.schedule_section {
   margin: 0px 20px;
 
-  #schedule_date {
+  .schedule_date {
     width: 100%;
     background-color: color.$transparentblue;
     margin: 10px 0px 10px 6px;
@@ -29,12 +54,12 @@ h1 {
     padding: 20px;
     transition: 1s;
   }
-  #schedule_date:hover {
+  .schedule_date:hover {
     background-color: color.$orange;
     cursor: pointer;
   }
 
-  #details_section {
+  .details_section {
     table {
       color: color.$white;
       border-collapse: collapse;
@@ -178,7 +203,7 @@ h1 {
 }
 
 @media screen and (max-width: 600px) {
-  #schedule_section tbody .artists .artist .artist_readmore button {
+  .schedule_section tbody .artists .artist .artist_readmore button {
     float: none;
   }
 }

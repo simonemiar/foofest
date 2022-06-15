@@ -7,6 +7,17 @@ export default function Schedule() {
   const [jotunFilter, setJotunFilter] = useState([]);
   const [vanaFilter, setVanaFilter] = useState([]);
 
+  const [clicked, setClicked] = useState(false);
+
+  const toggle = (index) => {
+    if (clicked === index) {
+      //if clicked question is already active, then close it
+      return setClicked(null);
+    }
+
+    setClicked(index);
+  };
+
   // Here are we fetching the schedule data form the API, and setting the states of the schedule array.
   // We also filter the schedule array to only show the events that are in the current day.
   useEffect(() => {
@@ -22,7 +33,7 @@ export default function Schedule() {
   }, []);
 
   // Here are making a array so we can map over them.
-  const days = ["monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday"];
+  const days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
 
   return (
     <>
@@ -31,7 +42,7 @@ export default function Schedule() {
           <h1>Schedule</h1>
         </section>
         {/* Now to days are being mapped, and we are prop drilling all the states, the day and schedule data */}
-        {days.map((daySchedule) => (
+        {days.map((daySchedule, index) => (
           <ScheduleDetails
             key={Math.random()}
             schedule={schedule}
@@ -42,6 +53,10 @@ export default function Schedule() {
             setMidgardFilter={setMidgardFilter}
             setJotunFilter={setJotunFilter}
             setVanaFilter={setVanaFilter}
+            toggle={toggle}
+            clicked={clicked}
+            setClicked={setClicked}
+            index={index}
           />
         ))}
       </main>
