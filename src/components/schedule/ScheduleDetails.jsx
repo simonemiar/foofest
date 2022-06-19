@@ -86,13 +86,8 @@ export default function ScheduleDetails(props) {
   return (
     <>
       <section className="schedule_section">
-        {/* <Wrap onClick={() => toggle(props.index)} key={props.index}>
-        <h1>{item.question}</h1>
-        <span>{clicked === props.index ? <FiMinus /> : <FiPlus />}</span>
-      </Wrap> */}
-
         <h2
-          className={`schedule_date ${props.clicked === props.index ? "active" : ""}`}
+          className={`schedule_date ${props.clicked === props.index ? "selected" : ""}`}
           onClick={() => {
             props.toggle(props.index);
             filterByDay(props.daySchedule);
@@ -100,11 +95,7 @@ export default function ScheduleDetails(props) {
         >
           {props.daySchedule}
         </h2>
-        {/* {clicked === props.index ? (
-        <Dropdown>
-          <p>{item.answer}</p>
-        </Dropdown>
-      ) : null} */}
+
         {props.clicked === props.index ? (
           <article className={`details_section ${props.clicked === props.index ? "open" : "close"}`}>
             <table>

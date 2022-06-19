@@ -11,14 +11,7 @@ export default function PersonDetails(props) {
         </div>
         <div className="email">
           <label htmlFor="email">E-mail</label>
-          <input
-            type="email"
-            id="email"
-            name="email"
-            inputMode="email"
-            placeholder="&nbsp;"
-            required
-          />
+          <input type="email" id="email" name="email" inputMode="email" placeholder="&nbsp;" required />
         </div>
         <div className="full_phone">
           <div className="phone_code">
@@ -31,16 +24,7 @@ export default function PersonDetails(props) {
           </div>
           <div className="phone_num">
             <label htmlFor="phone_num">Phone number</label>
-            <input
-              type="tel"
-              id="phone_num"
-              name="phone_num"
-              inputMode="tel"
-              pattern="[0-9]+"
-              maxLength="8"
-              placeholder="&nbsp;"
-              required
-            />
+            <input type="tel" id="phone_num" name="phone_num" inputMode="tel" pattern="[0-9]+" maxLength="10" minLength="8" placeholder="&nbsp;" required />
           </div>
         </div>
         <div className="street">
@@ -50,25 +34,16 @@ export default function PersonDetails(props) {
         <div className="zip_city">
           <div className="zip_code">
             <label htmlFor="zip_code">Code</label>
-            <input
-              type="text"
-              id="zip_code"
-              name="zip_code"
-              inputMode="numeric"
-              pattern="[0-9]+"
-              maxLength="4"
-              placeholder="&nbsp;"
-              required
-            />
+            <input type="text" id="zip_code" name="zip_code" inputMode="numeric" pattern="[0-9]+" maxLength="4" placeholder="&nbsp;" required />
           </div>
           <div className="city">
             <label htmlFor="city">City</label>
-            <input type="text" id="city" name="city" placeholder="&nbsp;" required />
+            <input type="text" id="city" name="city" placeholder="&nbsp;" required pattern="^[A-Za-z\s_-]+$" />
           </div>
         </div>
         <div className="country">
           <label htmlFor="country">Country</label>
-          <input type="text" id="country" name="country" placeholder="&nbsp;" required />
+          <input type="text" id="country" name="country" placeholder="&nbsp;" required pattern="^[A-Za-z\s_-]+$" />
         </div>
       </fieldset>
     </>

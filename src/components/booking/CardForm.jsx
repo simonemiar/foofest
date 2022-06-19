@@ -8,9 +8,11 @@ export default function CardForm(props) {
 
   // Input mask:
   const [card, setCard] = useState();
+  const [dateval, setDateVal] = useState(false);
   const cardInput = useRef(null);
   const dateInput = useRef(null);
   const codeInput = useRef(null);
+  const payButton = useRef(null);
 
   function submitted(e) {
     e.preventDefault();
@@ -76,15 +78,9 @@ export default function CardForm(props) {
     // Here are loooking for at the charater and replainting all charater with empty string
     // So you can't type any character.
     // In match it group the number in four.
-    const cardValue = cardInput.current.value
-      .replace(/\D/g, "")
-      .match(/(\d{0,4})(\d{0,4})(\d{0,4})(\d{0,4})/);
+    const cardValue = cardInput.current.value.replace(/\D/g, "").match(/(\d{0,4})(\d{0,4})(\d{0,4})(\d{0,4})/);
     // With a ternaire operator we setting - in the card input.
-    cardInput.current.value = !cardValue[2]
-      ? cardValue[1]
-      : `${cardValue[1]}-${cardValue[2]}${`${cardValue[3] ? `-${cardValue[3]}` : ""}`}${`${
-          cardValue[4] ? `-${cardValue[4]}` : ""
-        }`}`;
+    cardInput.current.value = !cardValue[2] ? cardValue[1] : `${cardValue[1]}-${cardValue[2]}${`${cardValue[3] ? `-${cardValue[3]}` : ""}`}${`${cardValue[4] ? `-${cardValue[4]}` : ""}`}`;
     // The total input, and storing the input in the state.
     const numbers = cardInput.current.value.replace(/(\D)/g, "");
     setCard(numbers);
@@ -96,15 +92,35 @@ export default function CardForm(props) {
   };
 
   // Check if the date length is 5, and if ture then focus on the next input.
-  function handleDateInput() {
+  function handleDateInput(e) {
     const dateValue = dateInput.current.value.replace(/\D/g, "").match(/(\d{0,2})(\d{0,2})/);
+    const inputCheck = dateInput.current.value;
+
     // With a ternaire operator we setting - in the card input.
     dateInput.current.value = !dateValue[2] ? dateValue[1] : `${dateValue[1]}/${dateValue[2]}`;
-    // The total input, and storing the input in the state.
+    // // The total input, and storing the input in the state.
     const numbers = dateInput.current.value.replace(/(\D)/g, "");
+
+    if (document.activeElement === dateInput.current) {
+      setDateVal(false);
+    }
 
     if (numbers.length === 4) {
       codeInput.current.focus();
+      let pattern = /^(0[1-9]|1[012])\/\d{2}$/;
+
+      const result = pattern.test(inputCheck);
+      if (!result) {
+        setDateVal(true);
+      }
+    }
+  }
+
+  function handleCodeInput() {
+    const codeValue = codeInput.current.value;
+
+    if (codeValue.length === 3) {
+      payButton.current.focus();
     }
   }
 
@@ -122,46 +138,16 @@ export default function CardForm(props) {
         </div>
         <div className="field-container">
           <label htmlFor="cardnumber">Card Number</label>
-          <input
-            id="cardnumber"
-            type="text"
-            inputMode="numeric"
-            minLength="19"
-            maxLength="19"
-            placeholder="&nbsp;"
-            required
-            ref={cardInput}
-            onChange={handleCardNumberInput}
-          />
+          <input id="cardnumber" type="text" inputMode="numeric" minLength="19" maxLength="19" placeholder="&nbsp;" required ref={cardInput} onChange={handleCardNumberInput} />
         </div>
         <div className="field-container">
           <label htmlFor="expirationdate">Expiration (mm/yy)</label>
-          <input
-            id="expirationdate"
-            type="text"
-            inputMode="numeric"
-            // pattern="/\d{2}$\w{}$\d{2}$/"
-            minLength="5"
-            maxLength="5"
-            placeholder="&nbsp;"
-            required
-            ref={dateInput}
-            onChange={handleDateInput}
-          />
+          <input id="expirationdate" type="text" inputMode="numeric" minLength="5" maxLength="5" placeholder="&nbsp;" required ref={dateInput} onChange={handleDateInput} />
+          {dateval ? <span className="error_message">Incorrect date format</span> : null}
         </div>
         <div className="field-container">
           <label htmlFor="securitycode">Security Code</label>
-          <input
-            id="securitycode"
-            type="text"
-            pattern="[0-9]+"
-            inputMode="numeric"
-            ref={codeInput}
-            minLength="3"
-            maxLength="3"
-            placeholder="&nbsp;"
-            required
-          />
+          <input id="securitycode" type="text" inputMode="numeric" pattern="[0-9]+" ref={codeInput} minLength="3" maxLength="3" placeholder="&nbsp;" required onChange={handleCodeInput} />
         </div>
         <div className="booking_flow_nav">
           <button
@@ -174,7 +160,7 @@ export default function CardForm(props) {
           >
             Back
           </button>
-          <button className="continue_btn shape" type="sumbit">
+          <button className="continue_btn shape" type="sumbit" ref={payButton}>
             Pay
           </button>
         </div>

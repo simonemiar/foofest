@@ -4,16 +4,12 @@ h1 {
   padding: 20px;
 }
 
-.active {
+.selected {
   background-color: color.$orange !important;
 }
 
 .open {
-  animation: flipdown 0.8s ease both;
-}
-
-.close {
-  animation: flipdown reverse 0.5s both ease;
+  animation: flipdown 0.6s ease both;
 }
 
 @keyframes flipdown {
@@ -37,6 +33,21 @@ h1 {
   100% {
     transform-origin: top center;
     transform: rotateX(0deg);
+  }
+}
+
+.close {
+  animation: flipup 0.8s ease both;
+}
+
+@keyframes flipup {
+  0% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0.8);
   }
 }
 
@@ -162,10 +173,8 @@ h1 {
         padding: 15px;
         // padding: 0.8rem;
 
-        width: 40vh;
-        // width: 45vh;
-
-        // height: 29%;
+        max-width: 40vh;
+        min-width: 25vh;
         border-bottom: 5px solid color.$transparentblue;
 
         #text {

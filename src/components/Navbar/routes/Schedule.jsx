@@ -11,7 +11,7 @@ export default function Schedule() {
 
   const toggle = (index) => {
     if (clicked === index) {
-      //if clicked question is already active, then close it
+      //if clicked day is already open, then close it
       return setClicked(null);
     }
 
