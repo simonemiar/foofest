@@ -30,6 +30,10 @@
   text-decoration: none;
   // flex-grow: 1;
   width: 80px;
+  transition: 1s;
+  &:hover {
+    transform: rotate(35deg);
+  }
 }
 
 .nav-menu {

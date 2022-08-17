@@ -1,8 +1,10 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import ScheduleDetails from "../../schedule/ScheduleDetails";
+import { ScheduleContext } from "../../../contexts/ScheduleContext";
 
 export default function Schedule() {
-  const [schedule, setSchedule] = useState([]);
+  const { setSchedule } = useContext(ScheduleContext);
+  // const [schedule, setSchedule] = useState([]);
   const [midgardFilter, setMidgardFilter] = useState([]);
   const [jotunFilter, setJotunFilter] = useState([]);
   const [vanaFilter, setVanaFilter] = useState([]);
@@ -30,7 +32,7 @@ export default function Schedule() {
       setVanaFilter(scheduleData.Vanaheim.mon);
     }
     getSchedule();
-  }, []);
+  }, [setSchedule]);
 
   // Here are making a array so we can map over them.
   const days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
@@ -38,14 +40,17 @@ export default function Schedule() {
   return (
     <>
       <main>
-        <section>
+        <section className="schedule_header">
           <h1>Schedule</h1>
+          <p>
+            Get a overview over the bands, and which stages there are playing on.<br></br>
+            Our 3 stages is Midgard, Jotunheim and Vanaheim
+          </p>
         </section>
         {/* Now to days are being mapped, and we are prop drilling all the states, the day and schedule data */}
         {days.map((daySchedule, index) => (
           <ScheduleDetails
             key={Math.random()}
-            schedule={schedule}
             daySchedule={daySchedule}
             midgardFilter={midgardFilter}
             jotunFilter={jotunFilter}

@@ -1,37 +1,32 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 
 import Act from "./Act";
-import BandDetails from "./BandDetails";
+import { BandDataContext } from "../../contexts/BandDataContext";
+import { ScheduleContext } from "../../contexts/ScheduleContext";
 
 export default function ScheduleDetails(props) {
-  // const [showScheduleMore, setShowScheduleMore] = useState(false);
 
+  const { setBandData } = useContext(BandDataContext);
+  const { schedule } = useContext(ScheduleContext);
+
+  const [showScheduleMore, setShowScheduleMore] = useState(false);
   const [day, setDay] = useState("monday");
-
-  const [showBandDetails, setShowBandDetails] = useState(false);
-  const [holdShowBandDetails, setHoldShowBandDetails] = useState([]);
-  const [band, setBand] = useState([]);
-  const [stage, setStage] = useState("Midgard");
-  const [act, setAct] = useState([]);
 
   // Here we are fetcting the band data form the API, and setting the states of the band array.
   useEffect(() => {
     async function get() {
       const res = await fetch("https://prototype-masters-foofest.herokuapp.com/bands");
       const data = await res.json();
-      setBand(data);
+
+      // Adding a id to each band, so we can use it to find the band details.
+      const addIdToBand = data.map((old) => {
+        return { ...old, id: old.name.trim().replace(/\s/g, "-").toLowerCase() };
+      });
+
+      setBandData(addIdToBand);
     }
     get();
-  }, []);
-
-  // Here we are taking the band data and comparing the band name vs the act, to find the right index in the array.
-  // Then we are setting the HoldShowBandDetails state to the correct band by the index.
-  function findBandDetails(act) {
-    const idx = band.findIndex((band) => band.name === act.act);
-    setHoldShowBandDetails(band[idx]);
-    setAct(act);
-    setShowBandDetails(true);
-  }
+  }, [setBandData]);
 
   // Here we are setting the filter by the day clicked
   function filterByDay() {
@@ -77,11 +72,21 @@ export default function ScheduleDetails(props) {
         props.setJotunFilter(props.schedule.Jotunheim.sun);
         props.setVanaFilter(props.schedule.Vanaheim.sun);
         setDay("Sunday");
+        
         break;
       default:
         console.log("no match");
     }
   }
+
+  const stageNames = {
+    midgard: "Mid",
+    jotunheim: "Jot",
+    vanaheim: "Van",
+    // midgard: "Midgard",
+    // jotunheim: "Jotunheim",
+    // vanaheim: "Vanaheim",
+  };
 
   return (
     <>
@@ -90,6 +95,7 @@ export default function ScheduleDetails(props) {
           className={`schedule_date ${props.clicked === props.index ? "selected" : ""}`}
           onClick={() => {
             props.toggle(props.index);
+
             filterByDay(props.daySchedule);
           }}
         >
@@ -101,16 +107,15 @@ export default function ScheduleDetails(props) {
             <table>
               <thead>
                 <tr>
-                  <th>TIME KL: </th>
-                </tr>
-                <tr>
-                  <th className="stage">MIDGARD</th>
-                  <th className="stage">JOTUNHEIM</th>
-                  <th className="stage">VANEHEIM</th>
+                  <th className="time">TIME</th>
+                <th className="stage">{stageNames.midgard}</th>
+                <th className="stage">{stageNames.jotunheim}</th>
+                <th className="stage">{stageNames.vanaheim}</th>
                 </tr>
               </thead>
               <tbody>
                 {/* Here we are taking the midgardFilter and mapping it and taking the parameters act and index
+
               Then we are making 3 variables, there is holding the filter by each scene and the index of the scene.
               */}
                 {props.midgardFilter.map((act, index) => {
@@ -118,26 +123,24 @@ export default function ScheduleDetails(props) {
                   const jAct = props.jotunFilter[index];
                   const vAct = props.vanaFilter[index];
 
-                  return (
-                    // There are we are making a table row with the time and the 3 scenes
-                    <Act key={Math.random()} act={act} mAct={mAct} jAct={jAct} vAct={vAct} day={day} setStage={setStage} findBandDetails={findBandDetails} />
-                  );
-                })}
-              </tbody>
-            </table>
-          </article>
-        ) : null}
-        {/* Here are the BandDetails, and if the showBandDetails value it ture, it will be shown */}
-        <BandDetails
-          bandDisplay={props.bandDisplay}
-          setBandDisplayed={props.setBandDisplayed}
-          act={act}
-          stage={stage}
-          setHoldShowBandDetails={setHoldShowBandDetails}
-          holdShowBandDetails={holdShowBandDetails}
-          showBandDetails={showBandDetails}
-          setShowBandDetails={setShowBandDetails}
-        ></BandDetails>
+
+                return (
+                  // There are we are making a table row with the time and the 3 scenes
+                  <tr key={Math.random()} className="artists">
+                    <th>
+                      {act.start}-{act.end}
+                    </th>
+                    <Act act={act} sceneAct={mAct} day={day} stage="Midgard" />
+
+                    <Act act={act} sceneAct={jAct} day={day} stage="Jotunheim" />
+
+                    <Act act={act} sceneAct={vAct} day={day} stage="Vanaheim" />
+                  </tr>
+                );
+              })}
+            </tbody>
+          </table>
+        </article>
       </section>
     </>
   );
