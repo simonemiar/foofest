@@ -1,13 +1,68 @@
 @use "../base/color";
-h1 {
-  text-align: center;
-  padding: 20px;
+
+.schedule_header {
+  h1 {
+    text-align: center;
+    padding: 20px;
+  }
+
+  p {
+    text-align: center;
+    margin-block-end: 1rem;
+  }
 }
 
-#schedule_section {
+.selected {
+  background-color: color.$orange !important;
+}
+
+.open {
+  animation: flipdown 0.6s ease both;
+}
+
+@keyframes flipdown {
+  0% {
+    opacity: 0;
+    transform-origin: top center;
+    transform: rotateX(-90deg);
+  }
+  5% {
+    opacity: 1;
+  }
+  80% {
+    transform: rotateX(8deg);
+  }
+  83% {
+    transform: rotateX(6deg);
+  }
+  92% {
+    transform: rotateX(-3deg);
+  }
+  100% {
+    transform-origin: top center;
+    transform: rotateX(0deg);
+  }
+}
+
+.close {
+  animation: flipup 0.8s ease both;
+}
+
+@keyframes flipup {
+  0% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+}
+
+.schedule_section {
   margin: 0px 20px;
 
-  #schedule_date {
+  .schedule_date {
     width: 100%;
     background-color: color.$transparentblue;
     margin: 10px 0px 10px 6px;
@@ -18,12 +73,12 @@ h1 {
     padding: 20px;
     transition: 1s;
   }
-  #schedule_date:hover {
+  .schedule_date:hover {
     background-color: color.$orange;
     cursor: pointer;
   }
 
-  #details_section {
+  .details_section {
     table {
       color: color.$white;
       border-collapse: collapse;
@@ -35,31 +90,26 @@ h1 {
       display: flex;
 
       thead {
+        border-right: 5px solid color.$darkblue;
+
         tr {
-          border-right: 5px solid color.$darkblue;
           display: flex;
           flex-direction: column;
-          border-bottom: 5px solid color.$darkblue;
 
           tr:nth-child(2) {
-            border-right: 5px solid color.$darkblue;
             display: flex;
             flex-direction: column;
-            /* height: 88%; */
             justify-content: space-around;
           }
 
-          tr:last-child {
-            border-bottom: 5px solid #202033;
-          }
-
           th {
-            position: sticky;
-            position: -webkit-sticky; // safari
-            top: 0;
-            left: 0;
+            // position: sticky;
+            // position: -webkit-sticky; // safari
+            // top: 0;
+            // left: 0;
             background-color: color.$transparentblue;
-            padding: 8px;
+            padding: 0.5rem;
+            border-bottom: 5px solid #202033;
           }
 
           td {
@@ -78,11 +128,10 @@ h1 {
       }
 
       .stage {
-        // padding-block: 4vh;
-        padding-block: 36.5px;
+        padding-block: 2.5rem;
         border-bottom: 5px solid color.$darkblue;
-        // height: 100px;
-        // border-top: 5px solid color.$darkblue;
+        text-align: center;
+        height: 100%;
       }
 
       .stage:last-child {
@@ -103,10 +152,14 @@ h1 {
     }
 
     .artists {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+
       th {
         display: grid;
         justify-content: center;
-        padding: 8px;
+        padding: 0.5rem;
       }
       th:first-child {
         border-bottom: 5px solid color.$darkblue;
@@ -120,35 +173,35 @@ h1 {
         background-color: color.$purple;
         display: flex;
         flex-direction: column;
-        // margin: 0px 5px 5px 0px;
-        // padding: 10px;
-        // padding: 12px;
+        height: 100%;
+        width: 165px;
         padding: 15px;
         // padding: 0.8rem;
 
-        width: 40vh;
-        // width: 45vh;
+        // max-width: 40vh;
+        // min-width: 25vh;
 
-        // height: 29%;
         border-bottom: 5px solid color.$transparentblue;
 
         #text {
           display: block;
         }
         .artist_readmore {
-          button {
+          align-self: flex-end;
+          margin-top: auto;
+
+          a {
             color: inherit;
             border: none;
             background: none;
             font: inherit;
-            cursor: pointer;
-            float: right;
             font-size: 0.9rem;
             padding: 5px;
+            border: 1px solid color.$darkblue;
           }
-          button:hover {
+
+          a:hover {
             background-color: color.$orange;
-            // color: color.$orange;
             border: 1px solid color.$orange;
           }
         }
@@ -156,6 +209,9 @@ h1 {
         .artist_name {
           font-family: "Unna", serif;
           font-size: 1.2rem;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
         }
 
         .artist_time {
@@ -167,7 +223,13 @@ h1 {
 }
 
 @media screen and (max-width: 600px) {
-  #schedule_section tbody .artists .artist .artist_readmore button {
+  .schedule_section tbody .artists .artist .artist_readmore button {
     float: none;
+  }
+}
+
+@media screen and (min-width: 800px) {
+  #schedule_section tbody .artists .artist {
+    width: 235px;
   }
 }

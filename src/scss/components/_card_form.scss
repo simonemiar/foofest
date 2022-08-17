@@ -1,5 +1,11 @@
 @use "../base/color";
 
+.error_message {
+  font-size: 0.9rem;
+  color: rgb(236, 10, 10);
+  animation: shake 0.125s 2 backwards;
+}
+
 #card_form {
   max-width: 420px;
   background-color: color.$darkblue;

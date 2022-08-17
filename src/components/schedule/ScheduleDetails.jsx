@@ -1,188 +1,144 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 
 import Act from "./Act";
-import BandDetails from "./BandDetails";
+import { BandDataContext } from "../../contexts/BandDataContext";
 
 export default function ScheduleDetails(props) {
-  const [showScheduleMore, setShowScheduleMore] = useState(false);
-  const [day, setDay] = useState("monday");
+  const { setBandData } = useContext(BandDataContext);
 
-  const [showBandDetails, setShowBandDetails] = useState(false);
-  const [holdShowBandDetails, setHoldShowBandDetails] = useState([]);
-  const [band, setBand] = useState([]);
-  const [stage, setStage] = useState("Midgard");
-  const [act, setAct] = useState([]);
+  const [day, setDay] = useState("monday");
 
   // Here we are fetcting the band data form the API, and setting the states of the band array.
   useEffect(() => {
     async function get() {
       const res = await fetch("https://prototype-masters-foofest.herokuapp.com/bands");
       const data = await res.json();
-      setBand(data);
+
+      // Adding a id to each band, so we can use it to find the band details.
+      const addIdToBand = data.map((old) => {
+        return { ...old, id: old.name.trim().replace(/\s/g, "-").toLowerCase() };
+      });
+
+      setBandData(addIdToBand);
     }
     get();
-  }, []);
-
-  // Here we are taking the band data and comparing the band name vs the act, to find the right index in the array.
-  // Then we are setting the HoldShowBandDetails state to the correct band by the index.
-  function findBandDetails(act) {
-    const idx = band.findIndex((band) => band.name === act.act);
-    setHoldShowBandDetails(band[idx]);
-    setAct(act);
-    setShowBandDetails(true);
-  }
+  }, [setBandData]);
 
   // Here we are setting the filter by the day clicked
   function filterByDay() {
     switch (props.daySchedule) {
-      case "monday":
+      case "Monday":
         props.setMidgardFilter(props.schedule.Midgard.mon);
         props.setJotunFilter(props.schedule.Jotunheim.mon);
         props.setVanaFilter(props.schedule.Vanaheim.mon);
-        setDay("monday");
+        setDay("Monday");
         break;
-      case "tuesday":
+      case "Tuesday":
         props.setMidgardFilter(props.schedule.Midgard.tue);
         props.setJotunFilter(props.schedule.Jotunheim.tue);
         props.setVanaFilter(props.schedule.Vanaheim.tue);
-        setDay("tuesday");
+        setDay("Tuesday");
         break;
-      case "wednesday":
+      case "Wednesday":
         props.setMidgardFilter(props.schedule.Midgard.wed);
         props.setJotunFilter(props.schedule.Jotunheim.wed);
         props.setVanaFilter(props.schedule.Vanaheim.wed);
-        setDay("wednesday");
+        setDay("Wednesday");
         break;
-      case "thursday":
+      case "Thursday":
         props.setMidgardFilter(props.schedule.Midgard.thu);
         props.setJotunFilter(props.schedule.Jotunheim.thu);
         props.setVanaFilter(props.schedule.Vanaheim.thu);
-        setDay("thursday");
+        setDay("Thursday");
         break;
-      case "friday":
+      case "Friday":
         props.setMidgardFilter(props.schedule.Midgard.fri);
         props.setJotunFilter(props.schedule.Jotunheim.fri);
         props.setVanaFilter(props.schedule.Vanaheim.fri);
-        setDay("friday");
+        setDay("Friday");
         break;
-      case "saturday":
+      case "Saturday":
         props.setMidgardFilter(props.schedule.Midgard.sat);
         props.setJotunFilter(props.schedule.Jotunheim.sat);
         props.setVanaFilter(props.schedule.Vanaheim.sat);
-        setDay("saturday");
+        setDay("Saturday");
         break;
-      case "sunday":
+      case "Sunday":
         props.setMidgardFilter(props.schedule.Midgard.sun);
         props.setJotunFilter(props.schedule.Jotunheim.sun);
         props.setVanaFilter(props.schedule.Vanaheim.sun);
-        setDay("sunday");
+        setDay("Sunday");
+
         break;
       default:
         console.log("no match");
     }
-
-    // if (props.daySchedule === "monday") {
-    //   props.setMidgardFilter(props.schedule.Midgard.mon);
-    //   props.setJotunFilter(props.schedule.Jotunheim.mon);
-    //   props.setVanaFilter(props.schedule.Vanaheim.mon);
-    //   setDay("monday");
-    // } else if (props.daySchedule === "tuesday") {
-    //   props.setMidgardFilter(props.schedule.Midgard.tue);
-    //   props.setJotunFilter(props.schedule.Jotunheim.tue);
-    //   props.setVanaFilter(props.schedule.Vanaheim.tue);
-    //   setDay("tuesday");
-    // } else if (props.daySchedule === "wednesday") {
-    //   props.setMidgardFilter(props.schedule.Midgard.wed);
-    //   props.setJotunFilter(props.schedule.Jotunheim.wed);
-    //   props.setVanaFilter(props.schedule.Vanaheim.wed);
-    //   setDay("wednesday");
-    // } else if (props.daySchedule === "thursday") {
-    //   props.setMidgardFilter(props.schedule.Midgard.thu);
-    //   props.setJotunFilter(props.schedule.Jotunheim.thu);
-    //   props.setVanaFilter(props.schedule.Vanaheim.thu);
-    //   setDay("thursday");
-    // } else if (props.daySchedule === "friday") {
-    //   props.setMidgardFilter(props.schedule.Midgard.fri);
-    //   props.setJotunFilter(props.schedule.Jotunheim.fri);
-    //   props.setVanaFilter(props.schedule.Vanaheim.fri);
-    //   setDay("friday");
-    // } else if (props.daySchedule === "saturday") {
-    //   props.setMidgardFilter(props.schedule.Midgard.sat);
-    //   props.setJotunFilter(props.schedule.Jotunheim.sat);
-    //   props.setVanaFilter(props.schedule.Vanaheim.sat);
-    //   setDay("saturday");
-    // } else if (props.daySchedule === "sunday") {
-    //   props.setMidgardFilter(props.schedule.Midgard.sun);
-    //   props.setJotunFilter(props.schedule.Jotunheim.sun);
-    //   props.setVanaFilter(props.schedule.Vanaheim.sun);
-    //   setDay("sunday");
-    // }
   }
+
+  const stageNames = {
+    midgard: "Mid",
+    jotunheim: "Jot",
+    vanaheim: "Van",
+    // midgard: "Midgard",
+    // jotunheim: "Jotunheim",
+    // vanaheim: "Vanaheim",
+  };
 
   return (
     <>
-      <section id="schedule_section">
+      <section className="schedule_section">
         <h2
-          id="schedule_date"
+          className={`schedule_date ${props.clicked === props.index ? "selected" : ""}`}
           onClick={() => {
-            console.log("You Clicked");
-            if (showScheduleMore === false) {
-            }
-            setShowScheduleMore((old) => !old);
+            props.toggle(props.index);
+
             filterByDay(props.daySchedule);
           }}
         >
           {props.daySchedule}
         </h2>
-        <article id="details_section" style={{ display: showScheduleMore ? "block" : "none" }}>
-          <table>
-            <thead>
-              <tr>
-                <th>TIME KL: </th>
-              </tr>
-              <tr>
-                <th className="stage">MIDGARD</th>
-                <th className="stage">JOTUNHEIM</th>
-                <th className="stage">VANEHEIM</th>
-              </tr>
-            </thead>
-            <tbody>
-              {/* Here we are taking the midgardFilter and mapping it and taking the parameters act and index
+
+        {props.clicked === props.index ? (
+          <article
+            className={`details_section ${props.clicked === props.index ? "open" : "close"}`}
+          >
+            <table>
+              <thead>
+                <tr>
+                  <th className="time">TIME</th>
+                  <th className="stage">{stageNames.midgard}</th>
+                  <th className="stage">{stageNames.jotunheim}</th>
+                  <th className="stage">{stageNames.vanaheim}</th>
+                </tr>
+              </thead>
+              <tbody>
+                {/* Here we are taking the midgardFilter and mapping it and taking the parameters act and index
+
               Then we are making 3 variables, there is holding the filter by each scene and the index of the scene.
               */}
-              {props.midgardFilter.map((act, index) => {
-                const mAct = act;
-                const jAct = props.jotunFilter[index];
-                const vAct = props.vanaFilter[index];
+                {props.midgardFilter.map((act, index) => {
+                  const mAct = act;
+                  const jAct = props.jotunFilter[index];
+                  const vAct = props.vanaFilter[index];
 
-                return (
-                  // There are we are making a table row with the time and the 3 scenes
-                  <Act
-                    key={Math.random()}
-                    act={act}
-                    mAct={mAct}
-                    jAct={jAct}
-                    vAct={vAct}
-                    day={day}
-                    setStage={setStage}
-                    findBandDetails={findBandDetails}
-                  />
-                );
-              })}
-            </tbody>
-          </table>
-        </article>
-        {/* Here are the BandDetails, and if the showBandDetails value it ture, it will be shown */}
-        <BandDetails
-          bandDisplay={props.bandDisplay}
-          setBandDisplayed={props.setBandDisplayed}
-          act={act}
-          stage={stage}
-          setHoldShowBandDetails={setHoldShowBandDetails}
-          holdShowBandDetails={holdShowBandDetails}
-          showBandDetails={showBandDetails}
-          setShowBandDetails={setShowBandDetails}
-        ></BandDetails>
+                  return (
+                    // There are we are making a table row with the time and the 3 scenes
+                    <tr key={Math.random()} className="artists">
+                      <th>
+                        {act.start}-{act.end}
+                      </th>
+                      <Act act={act} sceneAct={mAct} day={day} stage="Midgard" />
+
+                      <Act act={act} sceneAct={jAct} day={day} stage="Jotunheim" />
+
+                      <Act act={act} sceneAct={vAct} day={day} stage="Vanaheim" />
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </table>
+          </article>
+        ) : null}
       </section>
     </>
   );
