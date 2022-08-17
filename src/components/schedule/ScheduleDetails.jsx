@@ -5,7 +5,6 @@ import { BandDataContext } from "../../contexts/BandDataContext";
 import { ScheduleContext } from "../../contexts/ScheduleContext";
 
 export default function ScheduleDetails(props) {
-
   const { setBandData } = useContext(BandDataContext);
   const { schedule } = useContext(ScheduleContext);
 
@@ -72,7 +71,7 @@ export default function ScheduleDetails(props) {
         props.setJotunFilter(props.schedule.Jotunheim.sun);
         props.setVanaFilter(props.schedule.Vanaheim.sun);
         setDay("Sunday");
-        
+
         break;
       default:
         console.log("no match");
@@ -103,14 +102,16 @@ export default function ScheduleDetails(props) {
         </h2>
 
         {props.clicked === props.index ? (
-          <article className={`details_section ${props.clicked === props.index ? "open" : "close"}`}>
+          <article
+            className={`details_section ${props.clicked === props.index ? "open" : "close"}`}
+          >
             <table>
               <thead>
                 <tr>
                   <th className="time">TIME</th>
-                <th className="stage">{stageNames.midgard}</th>
-                <th className="stage">{stageNames.jotunheim}</th>
-                <th className="stage">{stageNames.vanaheim}</th>
+                  <th className="stage">{stageNames.midgard}</th>
+                  <th className="stage">{stageNames.jotunheim}</th>
+                  <th className="stage">{stageNames.vanaheim}</th>
                 </tr>
               </thead>
               <tbody>
@@ -123,24 +124,24 @@ export default function ScheduleDetails(props) {
                   const jAct = props.jotunFilter[index];
                   const vAct = props.vanaFilter[index];
 
+                  return (
+                    // There are we are making a table row with the time and the 3 scenes
+                    <tr key={Math.random()} className="artists">
+                      <th>
+                        {act.start}-{act.end}
+                      </th>
+                      <Act act={act} sceneAct={mAct} day={day} stage="Midgard" />
 
-                return (
-                  // There are we are making a table row with the time and the 3 scenes
-                  <tr key={Math.random()} className="artists">
-                    <th>
-                      {act.start}-{act.end}
-                    </th>
-                    <Act act={act} sceneAct={mAct} day={day} stage="Midgard" />
+                      <Act act={act} sceneAct={jAct} day={day} stage="Jotunheim" />
 
-                    <Act act={act} sceneAct={jAct} day={day} stage="Jotunheim" />
-
-                    <Act act={act} sceneAct={vAct} day={day} stage="Vanaheim" />
-                  </tr>
-                );
-              })}
-            </tbody>
-          </table>
-        </article>
+                      <Act act={act} sceneAct={vAct} day={day} stage="Vanaheim" />
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </table>
+          </article>
+        ) : null}
       </section>
     </>
   );
