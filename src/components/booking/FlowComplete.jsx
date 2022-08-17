@@ -16,8 +16,10 @@ export default function FlowComplete(props) {
 
   // Here are we calculating the total tents, price and amount.
   const totalTicketPrize = ticketBasket.ticketPrice * ticketBasket.ticketAmount;
-  const totalTwoTent = ticketBasket.tent2PersonPrice * ticketBasket.tent2PersonAmount;
-  const totalThreeTent = ticketBasket.tent3PersonPrice * ticketBasket.tent3PersonAmount;
+  const totalTwoTent =
+    ticketBasket.tent2PersonPrice * ticketBasket.tent2PersonAmount;
+  const totalThreeTent =
+    ticketBasket.tent3PersonPrice * ticketBasket.tent3PersonAmount;
 
   const totalPrice =
     totalTwoTent +
@@ -55,7 +57,9 @@ export default function FlowComplete(props) {
 
     // Ordernumber
     doc.setFontSize(16);
-    doc.text("Ordernumber: " + ordernumber.toString(), 100, 50, { align: "center" });
+    doc.text("Ordernumber: " + ordernumber.toString(), 100, 50, {
+      align: "center",
+    });
 
     // Line
     doc.setLineWidth(1.5);
@@ -123,7 +127,8 @@ export default function FlowComplete(props) {
 
       <div className="text_info">
         <h3>
-          We’ve received your order, and you should recieve a confirmation e-mail any minute now.
+          We’ve received your order, and you should recieve a confirmation
+          e-mail any minute now.
         </h3>
 
         <p>Please view your order details below</p>
@@ -159,11 +164,15 @@ export default function FlowComplete(props) {
               <p>Tent</p>
             </div>
             <div className="tent_ui">
-              <span className="amount_ticket">{ticketBasket.tent2PersonAmount}</span>
+              <span className="amount_ticket">
+                {ticketBasket.tent2PersonAmount}
+              </span>
             </div>
             <div className="tent_total">
               <p>
-                {ticketBasket.tent2PersonAmount > 1 ? totalTwoTent : ticketBasket.tent2PersonPrice}{" "}
+                {ticketBasket.tent2PersonAmount > 1
+                  ? totalTwoTent
+                  : ticketBasket.tent2PersonPrice}{" "}
                 kr.
               </p>
             </div>
@@ -177,7 +186,9 @@ export default function FlowComplete(props) {
               <p>Tent</p>
             </div>
             <div className="tent_ui">
-              <span className="amount_ticket">{ticketBasket.tent3PersonAmount}</span>
+              <span className="amount_ticket">
+                {ticketBasket.tent3PersonAmount}
+              </span>
             </div>
             <div className="tent_total">
               <p>

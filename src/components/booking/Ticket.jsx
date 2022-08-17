@@ -40,7 +40,8 @@ export default function Ticket(props) {
       >
         <div className="front">
           <img src={props.ticketInfo.img} alt={props.ticketInfo.img} />
-          <h4>FOO FESTIVAL</h4>⁄ <h2>{props.ticketInfo.ticketType}</h2>
+          <h4>FOO FESTIVAL</h4>
+          <h2>{props.ticketInfo.ticketType}</h2>
           {/* trying to map through li items, not working, coming out in the console */}
           <ul>
             {console.log("all info", props.ticketInfo.info)}
@@ -70,6 +71,7 @@ export default function Ticket(props) {
           </div>
         </div>
         <div className="back"></div>
+        {/* {flip ? flashcard.answer : flashcard.question} */}
       </div>
     </article>
   );

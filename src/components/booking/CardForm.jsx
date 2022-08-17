@@ -27,13 +27,16 @@ export default function CardForm(props) {
     function fullfillSpot() {
       const reserveSpotId = { id: ticketBasket.reserveSpotId };
       const postFullfillSpot = JSON.stringify(reserveSpotId);
-      fetch("https://prototype-masters-foofest.herokuapp.com/fullfill-reservation", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: postFullfillSpot,
-      })
+      fetch(
+        "https://prototype-masters-foofest.herokuapp.com/fullfill-reservation",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: postFullfillSpot,
+        }
+      )
         .then((response) => console.log(response))
         .then((data) => console.log(data))
         .catch((err) => console.error(err));
@@ -78,9 +81,15 @@ export default function CardForm(props) {
     // Here are loooking for at the charater and replainting all charater with empty string
     // So you can't type any character.
     // In match it group the number in four.
-    const cardValue = cardInput.current.value.replace(/\D/g, "").match(/(\d{0,4})(\d{0,4})(\d{0,4})(\d{0,4})/);
+    const cardValue = cardInput.current.value
+      .replace(/\D/g, "")
+      .match(/(\d{0,4})(\d{0,4})(\d{0,4})(\d{0,4})/);
     // With a ternaire operator we setting - in the card input.
-    cardInput.current.value = !cardValue[2] ? cardValue[1] : `${cardValue[1]}-${cardValue[2]}${`${cardValue[3] ? `-${cardValue[3]}` : ""}`}${`${cardValue[4] ? `-${cardValue[4]}` : ""}`}`;
+    cardInput.current.value = !cardValue[2]
+      ? cardValue[1]
+      : `${cardValue[1]}-${cardValue[2]}${`${
+          cardValue[3] ? `-${cardValue[3]}` : ""
+        }`}${`${cardValue[4] ? `-${cardValue[4]}` : ""}`}`;
     // The total input, and storing the input in the state.
     const numbers = cardInput.current.value.replace(/(\D)/g, "");
     setCard(numbers);
@@ -93,11 +102,15 @@ export default function CardForm(props) {
 
   // Check if the date length is 5, and if ture then focus on the next input.
   function handleDateInput(e) {
-    const dateValue = dateInput.current.value.replace(/\D/g, "").match(/(\d{0,2})(\d{0,2})/);
+    const dateValue = dateInput.current.value
+      .replace(/\D/g, "")
+      .match(/(\d{0,2})(\d{0,2})/);
     const inputCheck = dateInput.current.value;
 
     // With a ternaire operator we setting - in the card input.
-    dateInput.current.value = !dateValue[2] ? dateValue[1] : `${dateValue[1]}/${dateValue[2]}`;
+    dateInput.current.value = !dateValue[2]
+      ? dateValue[1]
+      : `${dateValue[1]}/${dateValue[2]}`;
     // // The total input, and storing the input in the state.
     const numbers = dateInput.current.value.replace(/(\D)/g, "");
 
@@ -138,16 +151,49 @@ export default function CardForm(props) {
         </div>
         <div className="field-container">
           <label htmlFor="cardnumber">Card Number</label>
-          <input id="cardnumber" type="text" inputMode="numeric" minLength="19" maxLength="19" placeholder="&nbsp;" required ref={cardInput} onChange={handleCardNumberInput} />
+          <input
+            id="cardnumber"
+            type="text"
+            inputMode="numeric"
+            minLength="19"
+            maxLength="19"
+            placeholder="&nbsp;"
+            required
+            ref={cardInput}
+            onChange={handleCardNumberInput}
+          />
         </div>
         <div className="field-container">
           <label htmlFor="expirationdate">Expiration (mm/yy)</label>
-          <input id="expirationdate" type="text" inputMode="numeric" minLength="5" maxLength="5" placeholder="&nbsp;" required ref={dateInput} onChange={handleDateInput} />
-          {dateval ? <span className="error_message">Incorrect date format</span> : null}
+          <input
+            id="expirationdate"
+            type="text"
+            inputMode="numeric"
+            minLength="5"
+            maxLength="5"
+            placeholder="&nbsp;"
+            required
+            ref={dateInput}
+            onChange={handleDateInput}
+          />
+          {dateval ? (
+            <span className="error_message">Incorrect date format</span>
+          ) : null}
         </div>
         <div className="field-container">
           <label htmlFor="securitycode">Security Code</label>
-          <input id="securitycode" type="text" inputMode="numeric" pattern="[0-9]+" ref={codeInput} minLength="3" maxLength="3" placeholder="&nbsp;" required onChange={handleCodeInput} />
+          <input
+            id="securitycode"
+            type="text"
+            inputMode="numeric"
+            pattern="[0-9]+"
+            ref={codeInput}
+            minLength="3"
+            maxLength="3"
+            placeholder="&nbsp;"
+            required
+            onChange={handleCodeInput}
+          />
         </div>
         <div className="booking_flow_nav">
           <button

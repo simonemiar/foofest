@@ -14,7 +14,7 @@ export default function TicketInBasket(props) {
   return (
     <article className="ticket">
       {/* <ReactCardFlip isFlipped={isFlipped} flipDirection="vertical"> */}
-      <div className="ticket_svg">
+      <div className="card">
         <div className="ticket_content">
           <h2>{ticketBasket.ticketType}</h2>
           <h3>FooFest 2022</h3>
