@@ -12,10 +12,57 @@
   }
 }
 
-#schedule_section {
+.selected {
+  background-color: color.$orange !important;
+}
+
+.open {
+  animation: flipdown 0.6s ease both;
+}
+
+@keyframes flipdown {
+  0% {
+    opacity: 0;
+    transform-origin: top center;
+    transform: rotateX(-90deg);
+  }
+  5% {
+    opacity: 1;
+  }
+  80% {
+    transform: rotateX(8deg);
+  }
+  83% {
+    transform: rotateX(6deg);
+  }
+  92% {
+    transform: rotateX(-3deg);
+  }
+  100% {
+    transform-origin: top center;
+    transform: rotateX(0deg);
+  }
+}
+
+.close {
+  animation: flipup 0.8s ease both;
+}
+
+@keyframes flipup {
+  0% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+}
+
+.schedule_section {
   margin: 0px 20px;
 
-  #schedule_date {
+  .schedule_date {
     width: 100%;
     background-color: color.$transparentblue;
     margin: 10px 0px 10px 6px;
@@ -26,12 +73,12 @@
     padding: 20px;
     transition: 1s;
   }
-  #schedule_date:hover {
+  .schedule_date:hover {
     background-color: color.$orange;
     cursor: pointer;
   }
 
-  #details_section {
+  .details_section {
     table {
       color: color.$white;
       border-collapse: collapse;
@@ -129,6 +176,11 @@
         height: 100%;
         width: 165px;
         padding: 15px;
+        // padding: 0.8rem;
+
+        // max-width: 40vh;
+        // min-width: 25vh;
+
         border-bottom: 5px solid color.$transparentblue;
 
         #text {
@@ -171,7 +223,7 @@
 }
 
 @media screen and (max-width: 600px) {
-  #schedule_section tbody .artists .artist .artist_readmore button {
+  .schedule_section tbody .artists .artist .artist_readmore button {
     float: none;
   }
 }

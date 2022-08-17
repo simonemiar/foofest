@@ -5,6 +5,7 @@ import { BandDataContext } from "../../contexts/BandDataContext";
 import { ScheduleContext } from "../../contexts/ScheduleContext";
 
 export default function ScheduleDetails(props) {
+
   const { setBandData } = useContext(BandDataContext);
   const { schedule } = useContext(ScheduleContext);
 
@@ -30,47 +31,48 @@ export default function ScheduleDetails(props) {
   // Here we are setting the filter by the day clicked
   function filterByDay() {
     switch (props.daySchedule) {
-      case "monday":
-        props.setMidgardFilter(schedule.Midgard.mon);
-        props.setJotunFilter(schedule.Jotunheim.mon);
-        props.setVanaFilter(schedule.Vanaheim.mon);
-        setDay("monday");
+      case "Monday":
+        props.setMidgardFilter(props.schedule.Midgard.mon);
+        props.setJotunFilter(props.schedule.Jotunheim.mon);
+        props.setVanaFilter(props.schedule.Vanaheim.mon);
+        setDay("Monday");
         break;
-      case "tuesday":
-        props.setMidgardFilter(schedule.Midgard.tue);
-        props.setJotunFilter(schedule.Jotunheim.tue);
-        props.setVanaFilter(schedule.Vanaheim.tue);
-        setDay("tuesday");
+      case "Tuesday":
+        props.setMidgardFilter(props.schedule.Midgard.tue);
+        props.setJotunFilter(props.schedule.Jotunheim.tue);
+        props.setVanaFilter(props.schedule.Vanaheim.tue);
+        setDay("Tuesday");
         break;
-      case "wednesday":
-        props.setMidgardFilter(schedule.Midgard.wed);
-        props.setJotunFilter(schedule.Jotunheim.wed);
-        props.setVanaFilter(schedule.Vanaheim.wed);
-        setDay("wednesday");
+      case "Wednesday":
+        props.setMidgardFilter(props.schedule.Midgard.wed);
+        props.setJotunFilter(props.schedule.Jotunheim.wed);
+        props.setVanaFilter(props.schedule.Vanaheim.wed);
+        setDay("Wednesday");
         break;
-      case "thursday":
-        props.setMidgardFilter(schedule.Midgard.thu);
-        props.setJotunFilter(schedule.Jotunheim.thu);
-        props.setVanaFilter(schedule.Vanaheim.thu);
-        setDay("thursday");
+      case "Thursday":
+        props.setMidgardFilter(props.schedule.Midgard.thu);
+        props.setJotunFilter(props.schedule.Jotunheim.thu);
+        props.setVanaFilter(props.schedule.Vanaheim.thu);
+        setDay("Thursday");
         break;
-      case "friday":
-        props.setMidgardFilter(schedule.Midgard.fri);
-        props.setJotunFilter(schedule.Jotunheim.fri);
-        props.setVanaFilter(schedule.Vanaheim.fri);
-        setDay("friday");
+      case "Friday":
+        props.setMidgardFilter(props.schedule.Midgard.fri);
+        props.setJotunFilter(props.schedule.Jotunheim.fri);
+        props.setVanaFilter(props.schedule.Vanaheim.fri);
+        setDay("Friday");
         break;
-      case "saturday":
-        props.setMidgardFilter(schedule.Midgard.sat);
-        props.setJotunFilter(schedule.Jotunheim.sat);
-        props.setVanaFilter(schedule.Vanaheim.sat);
-        setDay("saturday");
+      case "Saturday":
+        props.setMidgardFilter(props.schedule.Midgard.sat);
+        props.setJotunFilter(props.schedule.Jotunheim.sat);
+        props.setVanaFilter(props.schedule.Vanaheim.sat);
+        setDay("Saturday");
         break;
-      case "sunday":
-        props.setMidgardFilter(schedule.Midgard.sun);
-        props.setJotunFilter(schedule.Jotunheim.sun);
-        props.setVanaFilter(schedule.Vanaheim.sun);
-        setDay("sunday");
+      case "Sunday":
+        props.setMidgardFilter(props.schedule.Midgard.sun);
+        props.setJotunFilter(props.schedule.Jotunheim.sun);
+        props.setVanaFilter(props.schedule.Vanaheim.sun);
+        setDay("Sunday");
+        
         break;
       default:
         console.log("no match");
@@ -88,36 +90,39 @@ export default function ScheduleDetails(props) {
 
   return (
     <>
-      <section id="schedule_section">
+      <section className="schedule_section">
         <h2
-          id="schedule_date"
+          className={`schedule_date ${props.clicked === props.index ? "selected" : ""}`}
           onClick={() => {
-            if (showScheduleMore === false) {
-            }
-            setShowScheduleMore((old) => !old);
+            props.toggle(props.index);
+
             filterByDay(props.daySchedule);
           }}
         >
           {props.daySchedule}
         </h2>
-        <article id="details_section" style={{ display: showScheduleMore ? "block" : "none" }}>
-          <table>
-            <thead>
-              <tr>
-                <th className="time">TIME</th>
+
+        {props.clicked === props.index ? (
+          <article className={`details_section ${props.clicked === props.index ? "open" : "close"}`}>
+            <table>
+              <thead>
+                <tr>
+                  <th className="time">TIME</th>
                 <th className="stage">{stageNames.midgard}</th>
                 <th className="stage">{stageNames.jotunheim}</th>
                 <th className="stage">{stageNames.vanaheim}</th>
-              </tr>
-            </thead>
-            <tbody>
-              {/* Here we are taking the midgardFilter and mapping it and taking the parameters act and index
+                </tr>
+              </thead>
+              <tbody>
+                {/* Here we are taking the midgardFilter and mapping it and taking the parameters act and index
+
               Then we are making 3 variables, there is holding the filter by each scene and the index of the scene.
               */}
-              {props.midgardFilter.map((act, index) => {
-                const mAct = act;
-                const jAct = props.jotunFilter[index];
-                const vAct = props.vanaFilter[index];
+                {props.midgardFilter.map((act, index) => {
+                  const mAct = act;
+                  const jAct = props.jotunFilter[index];
+                  const vAct = props.vanaFilter[index];
+
 
                 return (
                   // There are we are making a table row with the time and the 3 scenes
