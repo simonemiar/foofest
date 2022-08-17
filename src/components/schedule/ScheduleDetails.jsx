@@ -2,13 +2,10 @@ import { useEffect, useState, useContext } from "react";
 
 import Act from "./Act";
 import { BandDataContext } from "../../contexts/BandDataContext";
-import { ScheduleContext } from "../../contexts/ScheduleContext";
 
 export default function ScheduleDetails(props) {
   const { setBandData } = useContext(BandDataContext);
-  const { schedule } = useContext(ScheduleContext);
 
-  const [showScheduleMore, setShowScheduleMore] = useState(false);
   const [day, setDay] = useState("monday");
 
   // Here we are fetcting the band data form the API, and setting the states of the band array.
