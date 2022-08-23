@@ -46,7 +46,7 @@ export default function Ticket(props) {
           <ul>
             {console.log("all info", props.ticketInfo.info)}
             {props.ticketInfo.info.map((old) => {
-              return <li>{old}</li>;
+              return <li key={Math.random()}>{old}</li>;
             })}
           </ul>
           <div className="flex_card">
