@@ -19,9 +19,9 @@ export default function Ticket(props) {
     setTicketBasket((old) => {
       return {
         ...old,
-        ticketType: props.ticketType,
+        ticketType: props.ticketInfo.ticketType,
         ticketAmount: 1,
-        ticketPrice: props.ticketPrice,
+        ticketPrice: props.ticketInfo.ticketPrice,
         tent2PersonAmount: 0,
         tent3PersonAmount: 0,
         isGreenCamping: false,
